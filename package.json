@@ -25,7 +25,9 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@briefyard/eslint-config": "workspace:^",
     "@types/node": "^20.12.7",
+    "eslint": "^8.57.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
@@ -34,7 +36,11 @@
     "typescript": "^5.4.5"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,mjs,cjs}": ["prettier --write"],
-    "*.{json,md,yml,yaml}": ["prettier --write"]
+    "*.{ts,tsx,js,jsx,mjs,cjs}": [
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
