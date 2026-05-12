@@ -9,4 +9,4 @@
  *     length-bounds, smoke-1000)
  */
 
-export { CONTENT_VERSION } from '../version.js';
+export { CONTENT_VERSION } from '../version';

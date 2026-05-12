@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --yard-primary: #c2410c;
+  --yard-rust: #7c2d12;
+  --yard-ink: #1a1a1a;
+  --yard-cream: #faf6ef;
+  --yard-moss: #3f6e47;
+  --yard-fog: #e7e0d3;
+  --yard-sun: #f59e0b;
+}
+
+body {
+  background: var(--yard-cream);
+  color: var(--yard-ink);
+}
+
+.dark body {
+  background: var(--yard-ink);
+  color: var(--yard-cream);
+}
