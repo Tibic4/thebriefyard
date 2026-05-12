@@ -9,6 +9,7 @@
 **Tech Stack:** Node 20 LTS, pnpm 9, Turborepo 2, TypeScript 5.4 strict, Vitest 2, Next.js 14, ESLint 9, Prettier 3, Husky + lint-staged, GitHub Actions.
 
 **Prerequisites:**
+
 - `D:\thebriefyard\docs\superpowers\specs\2026-05-12-thebriefyard-design.md` exists and is the source of truth.
 - Local Node 20+, pnpm 9+, git installed and on PATH.
 - GitHub account with permission to create a public repo named `thebriefyard`.
@@ -136,6 +137,7 @@ thebriefyard/
 ## Task 1 — Prerequisites and repo init
 
 **Files:**
+
 - Create: working directory `D:\thebriefyard\` already initialised; we work inside it.
 - Create: `D:\thebriefyard\.gitignore`
 - Create: `D:\thebriefyard\.nvmrc`
@@ -145,12 +147,15 @@ thebriefyard/
 - [ ] **Step 1: Verify local tooling**
 
 Run:
+
 ```
 node -v
 pnpm -v
 git --version
 ```
+
 Expected:
+
 - `node -v` ≥ `v20.0.0`
 - `pnpm -v` ≥ `9.0.0` (if not installed: `corepack enable && corepack prepare pnpm@9.12.0 --activate`)
 - `git --version` ≥ `2.30`
@@ -160,16 +165,19 @@ If any version is below threshold, STOP. Install/upgrade before continuing.
 - [ ] **Step 2: Initialise git repo**
 
 Run:
+
 ```
 cd D:\thebriefyard
 git init -b main
 git config core.autocrlf input
 ```
+
 Expected: `Initialized empty Git repository in D:/thebriefyard/.git/`. (If repo already initialised, this is a no-op; that is fine.)
 
 - [ ] **Step 3: Write `.gitignore`**
 
 Create `D:\thebriefyard\.gitignore`:
+
 ```gitignore
 # deps
 node_modules/
@@ -222,6 +230,7 @@ recon/                           # local recon notes (D:\thebriefyard\recon alre
 - [ ] **Step 4: Write `.nvmrc`**
 
 Create `D:\thebriefyard\.nvmrc`:
+
 ```
 20.18.0
 ```
@@ -229,6 +238,7 @@ Create `D:\thebriefyard\.nvmrc`:
 - [ ] **Step 5: Write `.npmrc`**
 
 Create `D:\thebriefyard\.npmrc`:
+
 ```ini
 auto-install-peers=true
 strict-peer-dependencies=false
@@ -240,6 +250,7 @@ engine-strict=true
 - [ ] **Step 6: Write `.editorconfig`**
 
 Create `D:\thebriefyard\.editorconfig`:
+
 ```ini
 root = true
 
@@ -261,10 +272,12 @@ indent_style = tab
 - [ ] **Step 7: Commit**
 
 Run:
+
 ```
 git add .gitignore .nvmrc .npmrc .editorconfig
 git commit -m "chore: initialise repo with editor and ignore config"
 ```
+
 Expected: 4 files committed.
 
 ---
@@ -272,6 +285,7 @@ Expected: 4 files committed.
 ## Task 2 — Root manifest, workspace, Turborepo
 
 **Files:**
+
 - Create: `D:\thebriefyard\package.json`
 - Create: `D:\thebriefyard\pnpm-workspace.yaml`
 - Create: `D:\thebriefyard\turbo.json`
@@ -280,6 +294,7 @@ Expected: 4 files committed.
 - [ ] **Step 1: Write root `package.json`**
 
 Create `D:\thebriefyard\package.json`:
+
 ```json
 {
   "name": "thebriefyard",
@@ -326,6 +341,7 @@ Create `D:\thebriefyard\package.json`:
 - [ ] **Step 2: Write `pnpm-workspace.yaml`**
 
 Create `D:\thebriefyard\pnpm-workspace.yaml`:
+
 ```yaml
 packages:
   - apps/*
@@ -335,6 +351,7 @@ packages:
 - [ ] **Step 3: Write `turbo.json`**
 
 Create `D:\thebriefyard\turbo.json`:
+
 ```json
 {
   "$schema": "https://turbo.build/schema.json",
@@ -375,6 +392,7 @@ Create `D:\thebriefyard\turbo.json`:
 - [ ] **Step 4: Write `tsconfig.base.json`**
 
 Create `D:\thebriefyard\tsconfig.base.json`:
+
 ```json
 {
   "compilerOptions": {
@@ -410,26 +428,32 @@ Create `D:\thebriefyard\tsconfig.base.json`:
 - [ ] **Step 5: Install dependencies**
 
 Run:
+
 ```
 pnpm install
 ```
+
 Expected: lockfile created, `node_modules/` populated. No build errors. (`packages/*` and `apps/*` don't exist yet — pnpm will warn but proceed.)
 
 - [ ] **Step 6: Verify Turbo CLI works**
 
 Run:
+
 ```
 pnpm exec turbo --version
 ```
+
 Expected: prints `2.1.x` or higher.
 
 - [ ] **Step 7: Commit**
 
 Run:
+
 ```
 git add package.json pnpm-workspace.yaml turbo.json tsconfig.base.json pnpm-lock.yaml
 git commit -m "chore: add root manifest, pnpm workspace, turborepo, base tsconfig"
 ```
+
 Expected: 5 files committed.
 
 ---
@@ -437,6 +461,7 @@ Expected: 5 files committed.
 ## Task 3 — Prettier and ESLint root config
 
 **Files:**
+
 - Create: `D:\thebriefyard\.prettierrc.json`
 - Create: `D:\thebriefyard\.prettierignore`
 - Create: `D:\thebriefyard\packages\eslint-config\package.json`
@@ -447,6 +472,7 @@ Expected: 5 files committed.
 - [ ] **Step 1: Write `.prettierrc.json`**
 
 Create `D:\thebriefyard\.prettierrc.json`:
+
 ```json
 {
   "semi": true,
@@ -463,6 +489,7 @@ Create `D:\thebriefyard\.prettierrc.json`:
 - [ ] **Step 2: Write `.prettierignore`**
 
 Create `D:\thebriefyard\.prettierignore`:
+
 ```
 node_modules
 dist
@@ -477,6 +504,7 @@ recon
 - [ ] **Step 3: Create `packages/eslint-config` directory and `package.json`**
 
 Create `D:\thebriefyard\packages\eslint-config\package.json`:
+
 ```json
 {
   "name": "@briefyard/eslint-config",
@@ -500,6 +528,7 @@ Create `D:\thebriefyard\packages\eslint-config\package.json`:
 - [ ] **Step 4: Write `packages/eslint-config/index.cjs`**
 
 Create `D:\thebriefyard\packages\eslint-config\index.cjs`:
+
 ```js
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -541,14 +570,22 @@ module.exports = {
     ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
-  ignorePatterns: ['dist', '.next', '.turbo', 'node_modules', 'coverage', 'packages/content/compiled'],
+  ignorePatterns: [
+    'dist',
+    '.next',
+    '.turbo',
+    'node_modules',
+    'coverage',
+    'packages/content/compiled',
+  ],
 };
 ```
 
 - [ ] **Step 5: Write `packages/eslint-config/README.md`**
 
 Create `D:\thebriefyard\packages\eslint-config\README.md`:
-```markdown
+
+````markdown
 # @briefyard/eslint-config
 
 Shared ESLint config for the thebriefyard monorepo. Extends `eslint:recommended`,
@@ -565,7 +602,9 @@ module.exports = {
   extends: ['@briefyard/eslint-config'],
 };
 ```
-```
+````
+
+````
 
 - [ ] **Step 6: Write root `.eslintrc.cjs`**
 
@@ -576,31 +615,37 @@ module.exports = {
   extends: ['@briefyard/eslint-config'],
   ignorePatterns: ['scripts/**', '*.config.*', '*.cjs', '*.mjs'],
 };
-```
+````
 
 - [ ] **Step 7: Install ESLint and Prettier deps at the root**
 
 Run:
+
 ```
 pnpm add -Dw eslint@^8.57.0 @briefyard/eslint-config@workspace:*
 ```
+
 Expected: lockfile updated, root `package.json` shows the two dev deps.
 
 - [ ] **Step 8: Verify lint runs (will pass — nothing to lint yet)**
 
 Run:
+
 ```
 pnpm exec eslint . --ext .ts,.tsx,.js,.cjs,.mjs --max-warnings=0
 ```
+
 Expected: exits with code 0 and no output (only `.cjs` config files exist; they are ignored by ignorePatterns or by extension match).
 
 - [ ] **Step 9: Commit**
 
 Run:
+
 ```
 git add .prettierrc.json .prettierignore .eslintrc.cjs packages/eslint-config package.json pnpm-lock.yaml
 git commit -m "chore: add prettier root config and @briefyard/eslint-config package"
 ```
+
 Expected: clean commit.
 
 ---
@@ -608,19 +653,23 @@ Expected: clean commit.
 ## Task 4 — Husky pre-commit hook
 
 **Files:**
+
 - Create: `D:\thebriefyard\.husky\pre-commit`
 
 - [ ] **Step 1: Initialise Husky**
 
 Run:
+
 ```
 pnpm exec husky init
 ```
+
 Expected: creates `.husky/pre-commit` with a placeholder `npm test` line, and modifies `package.json` (which already has `"prepare": "husky"`).
 
 - [ ] **Step 2: Overwrite `.husky/pre-commit` with the real hook**
 
 Replace contents of `D:\thebriefyard\.husky\pre-commit`:
+
 ```sh
 #!/usr/bin/env sh
 
@@ -632,6 +681,7 @@ pnpm exec turbo run typecheck test --filter='[HEAD^]' --cache-dir=.turbo
 ```
 
 Make it executable (Windows: not strictly needed for git; Linux/Mac):
+
 ```
 git update-index --chmod=+x .husky/pre-commit
 ```
@@ -639,10 +689,12 @@ git update-index --chmod=+x .husky/pre-commit
 - [ ] **Step 3: Test the pre-commit hook fires**
 
 Run:
+
 ```
 git add .husky/pre-commit
 git commit -m "chore: configure husky pre-commit hook"
 ```
+
 Expected: hook executes (`lint-staged` runs against staged files, turbo runs against `HEAD^` changes). Commit succeeds. If on a brand-new repo where `HEAD^` doesn't exist, turbo will warn but exit 0 — that is OK.
 
 ---
@@ -650,6 +702,7 @@ Expected: hook executes (`lint-staged` runs against staged files, turbo runs aga
 ## Task 5 — `@briefyard/types` package skeleton
 
 **Files:**
+
 - Create: `D:\thebriefyard\packages\types\package.json`
 - Create: `D:\thebriefyard\packages\types\tsconfig.json`
 - Create: `D:\thebriefyard\packages\types\src\index.ts`
@@ -660,6 +713,7 @@ Expected: hook executes (`lint-staged` runs against staged files, turbo runs aga
 - [ ] **Step 1: Write `package.json`**
 
 Create `D:\thebriefyard\packages\types\package.json`:
+
 ```json
 {
   "name": "@briefyard/types",
@@ -694,6 +748,7 @@ Create `D:\thebriefyard\packages\types\package.json`:
 - [ ] **Step 2: Write `tsconfig.json`**
 
 Create `D:\thebriefyard\packages\types\tsconfig.json`:
+
 ```json
 {
   "extends": "../../tsconfig.base.json",
@@ -708,6 +763,7 @@ Create `D:\thebriefyard\packages\types\tsconfig.json`:
 - [ ] **Step 3: Write `src/index.ts` with the locked literal enums from SPEC §9.2**
 
 Create `D:\thebriefyard\packages\types\src\index.ts`:
+
 ```ts
 import { z } from 'zod';
 
@@ -780,6 +836,7 @@ export const LOCALE_IDS = LocaleId.options;
 - [ ] **Step 4: Write `vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\types\vitest.config.ts`:
+
 ```ts
 import { defineConfig } from 'vitest/config';
 
@@ -803,6 +860,7 @@ Step 3, so the test passes on first run. Real TDD discipline kicks in for
 (15 jobs, 20 industries, 2 locales) at the type-package level.
 
 Create `D:\thebriefyard\packages\types\__tests__\smoke.test.ts`:
+
 ```ts
 import { describe, expect, it } from 'vitest';
 
@@ -842,6 +900,7 @@ describe('types package', () => {
 - [ ] **Step 6: Write `.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\types\.eslintrc.cjs`:
+
 ```js
 module.exports = {
   root: true,
@@ -852,34 +911,42 @@ module.exports = {
 - [ ] **Step 7: Install deps**
 
 Run:
+
 ```
 pnpm install
 ```
+
 Expected: workspace recognises `@briefyard/types`, vitest and zod installed.
 
 - [ ] **Step 8: Run the test — expect PASS (this is a smoke test, not a red→green TDD cycle)**
 
 Run:
+
 ```
 pnpm --filter @briefyard/types test
 ```
+
 Expected: 5 tests passed.
 
 - [ ] **Step 9: Typecheck**
 
 Run:
+
 ```
 pnpm --filter @briefyard/types typecheck
 ```
+
 Expected: no output, exit 0.
 
 - [ ] **Step 10: Commit**
 
 Run:
+
 ```
 git add packages/types pnpm-lock.yaml
 git commit -m "feat(types): scaffold @briefyard/types with canonical job/industry/locale enums"
 ```
+
 Expected: clean commit, husky hook passes.
 
 ---
@@ -889,12 +956,14 @@ Expected: clean commit, husky hook passes.
 These are full TDD targets in P1 and P2. Here we only create the empty-but-buildable scaffolds so the workspace resolves.
 
 **Files:**
+
 - Create: `packages/core/{package.json, tsconfig.json, vitest.config.ts, src/index.ts, __tests__/smoke.test.ts, .eslintrc.cjs}`
 - Create: `packages/content/{package.json, tsconfig.json, vitest.config.ts, src/index.ts, version.ts, __tests__/smoke.test.ts, .eslintrc.cjs}`
 
 - [ ] **Step 1: Write `packages/core/package.json`**
 
 Create `D:\thebriefyard\packages\core\package.json`:
+
 ```json
 {
   "name": "@briefyard/core",
@@ -930,6 +999,7 @@ Create `D:\thebriefyard\packages\core\package.json`:
 - [ ] **Step 2: Write `packages/core/tsconfig.json`**
 
 Create `D:\thebriefyard\packages\core\tsconfig.json`:
+
 ```json
 {
   "extends": "../../tsconfig.base.json",
@@ -944,6 +1014,7 @@ Create `D:\thebriefyard\packages\core\tsconfig.json`:
 - [ ] **Step 3: Write `packages/core/vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\core\vitest.config.ts`:
+
 ```ts
 import { defineConfig } from 'vitest/config';
 
@@ -955,7 +1026,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'lcov'],
       thresholds: {
-        lines: 0,        // P1 will raise this to 95
+        lines: 0, // P1 will raise this to 95
         functions: 0,
         branches: 0,
         statements: 0,
@@ -968,6 +1039,7 @@ export default defineConfig({
 - [ ] **Step 4: Write `packages/core/src/index.ts` placeholder**
 
 Create `D:\thebriefyard\packages\core\src\index.ts`:
+
 ```ts
 /**
  * @briefyard/core — pure deterministic brief generator.
@@ -988,6 +1060,7 @@ export const VERSION = '0.0.0';
 - [ ] **Step 5: Write `packages/core/__tests__/smoke.test.ts`**
 
 Create `D:\thebriefyard\packages\core\__tests__\smoke.test.ts`:
+
 ```ts
 import { describe, expect, it } from 'vitest';
 
@@ -1003,6 +1076,7 @@ describe('@briefyard/core smoke', () => {
 - [ ] **Step 6: Write `packages/core/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\core\.eslintrc.cjs`:
+
 ```js
 module.exports = {
   root: true,
@@ -1013,6 +1087,7 @@ module.exports = {
 - [ ] **Step 7: Write `packages/content/package.json`**
 
 Create `D:\thebriefyard\packages\content\package.json`:
+
 ```json
 {
   "name": "@briefyard/content",
@@ -1049,6 +1124,7 @@ Create `D:\thebriefyard\packages\content\package.json`:
 - [ ] **Step 8: Write `packages/content/tsconfig.json`**
 
 Create `D:\thebriefyard\packages\content\tsconfig.json`:
+
 ```json
 {
   "extends": "../../tsconfig.base.json",
@@ -1063,6 +1139,7 @@ Create `D:\thebriefyard\packages\content\tsconfig.json`:
 - [ ] **Step 9: Write `packages/content/vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\content\vitest.config.ts`:
+
 ```ts
 import { defineConfig } from 'vitest/config';
 
@@ -1077,6 +1154,7 @@ export default defineConfig({
 - [ ] **Step 10: Write `packages/content/version.ts`**
 
 Create `D:\thebriefyard\packages\content\version.ts`:
+
 ```ts
 /**
  * Monotonic content version. Bump on ANY PR that changes slot semantics:
@@ -1095,6 +1173,7 @@ export const CONTENT_VERSION = 1 as const;
 - [ ] **Step 11: Write `packages/content/src/index.ts` placeholder**
 
 Create `D:\thebriefyard\packages\content\src\index.ts`:
+
 ```ts
 /**
  * @briefyard/content — JSON-versioned slot corpus + Zod schema + loader.
@@ -1113,6 +1192,7 @@ export { CONTENT_VERSION } from '../version.js';
 - [ ] **Step 12: Write `packages/content/__tests__/smoke.test.ts`**
 
 Create `D:\thebriefyard\packages\content\__tests__\smoke.test.ts`:
+
 ```ts
 import { describe, expect, it } from 'vitest';
 
@@ -1128,6 +1208,7 @@ describe('@briefyard/content smoke', () => {
 - [ ] **Step 13: Write `packages/content/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\content\.eslintrc.cjs`:
+
 ```js
 module.exports = {
   root: true,
@@ -1138,31 +1219,37 @@ module.exports = {
 - [ ] **Step 14: Install and verify both packages**
 
 Run:
+
 ```
 pnpm install
 pnpm --filter @briefyard/core test
 pnpm --filter @briefyard/content test
 ```
+
 Expected: each suite reports 1 passing test.
 
 - [ ] **Step 15: Verify lint and typecheck**
 
 Run:
+
 ```
 pnpm --filter @briefyard/core lint
 pnpm --filter @briefyard/core typecheck
 pnpm --filter @briefyard/content lint
 pnpm --filter @briefyard/content typecheck
 ```
+
 Expected: all exit 0.
 
 - [ ] **Step 16: Commit**
 
 Run:
+
 ```
 git add packages/core packages/content pnpm-lock.yaml
 git commit -m "feat(core,content): scaffold empty @briefyard/core and @briefyard/content packages"
 ```
+
 Expected: clean commit.
 
 ---
@@ -1170,6 +1257,7 @@ Expected: clean commit.
 ## Task 7 — `apps/web` Next.js shell
 
 **Files:**
+
 - Create: `apps/web/{package.json, tsconfig.json, next.config.mjs, next-env.d.ts, postcss.config.mjs, tailwind.config.ts, .eslintrc.cjs}`
 - Create: `apps/web/app/{layout.tsx, page.tsx, globals.css}`
 - Create: `apps/web/public/robots.txt`
@@ -1179,6 +1267,7 @@ Expected: clean commit.
 - [ ] **Step 1: Write `apps/web/package.json`**
 
 Create `D:\thebriefyard\apps\web\package.json`:
+
 ```json
 {
   "name": "@briefyard/web",
@@ -1221,6 +1310,7 @@ Create `D:\thebriefyard\apps\web\package.json`:
 - [ ] **Step 2: Write `apps/web/tsconfig.json`**
 
 Create `D:\thebriefyard\apps\web\tsconfig.json`:
+
 ```json
 {
   "extends": "../../tsconfig.base.json",
@@ -1246,6 +1336,7 @@ Create `D:\thebriefyard\apps\web\tsconfig.json`:
 - [ ] **Step 3: Write `apps/web/next.config.mjs`**
 
 Create `D:\thebriefyard\apps\web\next.config.mjs`:
+
 ```js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -1262,6 +1353,7 @@ export default nextConfig;
 - [ ] **Step 4: Write `apps/web/next-env.d.ts`**
 
 Create `D:\thebriefyard\apps\web\next-env.d.ts`:
+
 ```ts
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -1273,6 +1365,7 @@ Create `D:\thebriefyard\apps\web\next-env.d.ts`:
 - [ ] **Step 5: Write Tailwind + PostCSS configs with the "Yard" palette tokens from SPEC §16.1**
 
 Create `D:\thebriefyard\apps\web\tailwind.config.ts`:
+
 ```ts
 import type { Config } from 'tailwindcss';
 
@@ -1302,6 +1395,7 @@ export default config;
 ```
 
 Create `D:\thebriefyard\apps\web\postcss.config.mjs`:
+
 ```js
 const config = {
   plugins: {
@@ -1316,6 +1410,7 @@ export default config;
 - [ ] **Step 6: Write `app/globals.css`**
 
 Create `D:\thebriefyard\apps\web\app\globals.css`:
+
 ```css
 @tailwind base;
 @tailwind components;
@@ -1345,6 +1440,7 @@ body {
 - [ ] **Step 7: Write `app/layout.tsx`**
 
 Create `D:\thebriefyard\apps\web\app\layout.tsx`:
+
 ```tsx
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
@@ -1370,6 +1466,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 - [ ] **Step 8: Write `app/page.tsx` — minimal placeholder home**
 
 Create `D:\thebriefyard\apps\web\app\page.tsx`:
+
 ```tsx
 import { CONTENT_VERSION } from '@briefyard/content';
 import { JOB_IDS, INDUSTRY_IDS } from '@briefyard/types';
@@ -1393,6 +1490,7 @@ export default function HomePage() {
 - [ ] **Step 9: Write `public/robots.txt` (placeholder until SEO routes ship in P3)**
 
 Create `D:\thebriefyard\apps\web\public\robots.txt`:
+
 ```
 User-agent: *
 Disallow: /
@@ -1404,6 +1502,7 @@ Disallow: /
 - [ ] **Step 10: Write `apps/web/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\apps\web\.eslintrc.cjs`:
+
 ```js
 module.exports = {
   root: true,
@@ -1414,6 +1513,7 @@ module.exports = {
 - [ ] **Step 11: Write Playwright config and one smoke test**
 
 Create `D:\thebriefyard\apps\web\playwright.config.ts`:
+
 ```ts
 import { defineConfig } from '@playwright/test';
 
@@ -1437,6 +1537,7 @@ export default defineConfig({
 ```
 
 Create `D:\thebriefyard\apps\web\e2e\smoke.spec.ts`:
+
 ```ts
 import { expect, test } from '@playwright/test';
 
@@ -1450,52 +1551,64 @@ test('home renders the foundation scaffold', async ({ page }) => {
 - [ ] **Step 12: Install deps**
 
 Run:
+
 ```
 pnpm install
 ```
+
 Expected: Next.js, React, Tailwind, Playwright pulled.
 
 - [ ] **Step 13: Verify the web app builds**
 
 Run:
+
 ```
 pnpm --filter @briefyard/web build
 ```
+
 Expected: Next produces `.next/` output, no errors. (Build will print a route table with `/` only.)
 
 - [ ] **Step 14: Verify typecheck and lint**
 
 Run:
+
 ```
 pnpm --filter @briefyard/web typecheck
 pnpm --filter @briefyard/web lint
 ```
+
 Expected: both exit 0.
 
 - [ ] **Step 15: Install Playwright browsers (one-time)**
 
 Run:
+
 ```
 pnpm exec playwright install --with-deps chromium
 ```
+
 Expected: chromium installed.
 
 - [ ] **Step 16: Run the Playwright smoke test against a freshly built server**
 
 Run:
+
 ```
 pnpm --filter @briefyard/web build
 pnpm --filter @briefyard/web test:e2e
 ```
+
 Expected: 1 test passes.
 
 - [ ] **Step 17: Commit**
 
 Run:
+
 ```
 git add apps/web pnpm-lock.yaml
 git commit -m "feat(web): scaffold Next.js 14 app with Yard palette and smoke e2e"
 ```
+
 Expected: clean commit.
 
 ---
@@ -1503,12 +1616,14 @@ Expected: clean commit.
 ## Task 8 — GitHub Actions CI
 
 **Files:**
+
 - Create: `D:\thebriefyard\.github\workflows\ci.yml`
 - Create: `D:\thebriefyard\.github\pull_request_template.md`
 
 - [ ] **Step 1: Write CI workflow**
 
 Create `D:\thebriefyard\.github\workflows\ci.yml`:
+
 ```yaml
 name: CI
 
@@ -1596,6 +1711,7 @@ jobs:
 - [ ] **Step 2: Write PR template**
 
 Create `D:\thebriefyard\.github\pull_request_template.md`:
+
 ```markdown
 ## What
 
@@ -1617,19 +1733,23 @@ Create `D:\thebriefyard\.github\pull_request_template.md`:
 ## How to verify
 
 <!-- Exact commands an engineer can run locally to confirm. -->
+```
+
+pnpm verify
 
 ```
-pnpm verify
-```
+
 ```
 
 - [ ] **Step 3: Commit**
 
 Run:
+
 ```
 git add .github
 git commit -m "ci: add GitHub Actions CI (verify, e2e, spec-check) and PR template"
 ```
+
 Expected: clean commit.
 
 ---
@@ -1637,6 +1757,7 @@ Expected: clean commit.
 ## Task 9 — `scripts/verify-phase.ts` and `scripts/new-adr.ts`
 
 **Files:**
+
 - Create: `D:\thebriefyard\scripts\verify-phase.ts`
 - Create: `D:\thebriefyard\scripts\new-adr.ts`
 
@@ -1645,6 +1766,7 @@ The phase-check script is intentionally lightweight in P0: it parses `STATE.md`,
 - [ ] **Step 1: Write `scripts/verify-phase.ts`**
 
 Create `D:\thebriefyard\scripts\verify-phase.ts`:
+
 ```ts
 #!/usr/bin/env tsx
 import { readFileSync } from 'node:fs';
@@ -1683,6 +1805,7 @@ main();
 - [ ] **Step 2: Write `scripts/new-adr.ts`**
 
 Create `D:\thebriefyard\scripts\new-adr.ts`:
+
 ```ts
 #!/usr/bin/env tsx
 import { readdirSync, writeFileSync } from 'node:fs';
@@ -1760,10 +1883,12 @@ main();
 - [ ] **Step 3: Commit**
 
 Run:
+
 ```
 git add scripts
 git commit -m "chore: add verify-phase and new-adr scripts"
 ```
+
 Expected: clean commit.
 
 ---
@@ -1771,6 +1896,7 @@ Expected: clean commit.
 ## Task 10 — License files and README
 
 **Files:**
+
 - Create: `D:\thebriefyard\LICENSE`
 - Create: `D:\thebriefyard\LICENSE-content`
 - Create: `D:\thebriefyard\README.md`
@@ -1778,6 +1904,7 @@ Expected: clean commit.
 - [ ] **Step 1: Write MIT `LICENSE`**
 
 Create `D:\thebriefyard\LICENSE`:
+
 ```
 MIT License
 
@@ -1805,6 +1932,7 @@ SOFTWARE.
 - [ ] **Step 2: Write content license pointer**
 
 Create `D:\thebriefyard\LICENSE-content`:
+
 ```
 The slot corpus authored under `packages/content/locales/**` is licensed under
 the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
@@ -1825,7 +1953,8 @@ To comply with CC BY-SA 4.0 when reusing the corpus:
 - [ ] **Step 3: Write `README.md`**
 
 Create `D:\thebriefyard\README.md`:
-```markdown
+
+````markdown
 # thebriefyard
 
 Practice briefs for designers. Human-curated combinatorial brief generator. No AI, no paywall.
@@ -1850,6 +1979,7 @@ pnpm install
 pnpm verify        # lint + typecheck + tests
 pnpm --filter @briefyard/web dev
 ```
+````
 
 ## Licenses
 
@@ -1867,15 +1997,18 @@ Implementation is decomposed:
 - **P4 — Corpus authoring + launch.** Full 15×20 EN corpus, curated seeds, launch.
 
 Each lives in `docs/superpowers/plans/`.
+
 ```
 
 - [ ] **Step 4: Commit**
 
 Run:
 ```
+
 git add LICENSE LICENSE-content README.md
 git commit -m "docs: add MIT license, CC BY-SA content license pointer, and README"
-```
+
+````
 Expected: clean commit.
 
 ---
@@ -1963,24 +2096,28 @@ If in doubt between Tier 1 and Tier 2, escalate to Tier 2.
 - Timing/scope question → ROADMAP.
 - Scaling threshold (Redis, ClickHouse, multi-region) → ROADMAP §9.
 - Code style → read existing code in the layer first.
-```
+````
 
 - [ ] **Step 2: Verify file length is under 200 lines**
 
 Run (bash on Windows, via Git Bash or WSL):
+
 ```
 wc -l D:/thebriefyard/CLAUDE.md
 ```
+
 Expected: number ≤ 200. (If using PowerShell instead:
 `(Get-Content D:\thebriefyard\CLAUDE.md | Measure-Object -Line).Lines`.)
 
 - [ ] **Step 3: Commit**
 
 Run:
+
 ```
 git add CLAUDE.md
 git commit -m "docs: add CLAUDE.md with inviolable rules and Tier 0/1/2 framework"
 ```
+
 Expected: clean commit.
 
 ---
@@ -1988,48 +2125,61 @@ Expected: clean commit.
 ## Task 12 — `STATE.md`
 
 **Files:**
+
 - Create: `D:\thebriefyard\STATE.md`
 
 - [ ] **Step 1: Write `STATE.md`**
 
 Create `D:\thebriefyard\STATE.md`:
+
 ```markdown
 # STATE
 
 ## Current phase
+
 P0 — Foundation
 
 ## Current week
+
 1 of 1 (P0 is a ~1-week effort)
 
 ## Active ADRs
+
 ADR-001 through ADR-013. See `docs/adrs/`.
 
 ## Active Landscape Decisions
+
 LD-001 through LD-012. See `LANDSCAPE.md`.
 
 ## In progress
+
 - Scaffolding the monorepo and governance docs (this plan).
 
 ## Blockers
+
 - None.
 
 ## Recent decisions
+
 - 2026-05-12: Brand palette "Yard" locked (SPEC §16.1).
 - 2026-05-12: Slot corpus license confirmed CC BY-SA 4.0.
 - 2026-05-12: Working name `thebriefyard.com` (RDAP-verified available).
 
 ## Last reviewed
+
 2026-05-12.
 ```
 
 - [ ] **Step 2: Verify `pnpm spec:check` parses the file**
 
 Run:
+
 ```
 pnpm spec:check
 ```
+
 Expected output (something like):
+
 ```
 [spec:check] Active phase: P0 — Foundation
 [spec:check] Week: 1 of 1 (P0 is a ~1-week effort)
@@ -2039,10 +2189,12 @@ Expected output (something like):
 - [ ] **Step 3: Commit**
 
 Run:
+
 ```
 git add STATE.md
 git commit -m "docs: add STATE.md tracking active phase, ADRs, and decisions"
 ```
+
 Expected: clean commit.
 
 ---
@@ -2050,11 +2202,13 @@ Expected: clean commit.
 ## Task 13 — `LANDSCAPE.md`
 
 **Files:**
+
 - Create: `D:\thebriefyard\LANDSCAPE.md`
 
 - [ ] **Step 1: Write `LANDSCAPE.md` consolidating SPEC §4 + §5 of the design**
 
 Create `D:\thebriefyard\LANDSCAPE.md`:
+
 ```markdown
 # LANDSCAPE — Architecture Landscape
 
@@ -2063,34 +2217,36 @@ Create `D:\thebriefyard\LANDSCAPE.md`:
 
 ## 1. Three-document system
 
-| Doc | Level | Authority | Lifetime |
-|---|---|---|---|
-| LANDSCAPE (this) | L-1, L-2 | Highest | Years |
-| ROADMAP | Temporal | Medium | Quarters |
-| SPEC | L-3 / partial L-4 | Lowest | Current phase |
+| Doc              | Level             | Authority | Lifetime      |
+| ---------------- | ----------------- | --------- | ------------- |
+| LANDSCAPE (this) | L-1, L-2          | Highest   | Years         |
+| ROADMAP          | Temporal          | Medium    | Quarters      |
+| SPEC             | L-3 / partial L-4 | Lowest    | Current phase |
 
 LANDSCAPE > ROADMAP > SPEC. No content duplication: SPEC references LANDSCAPE by name; LANDSCAPE never restates technical detail that lives in SPEC.
 
 ## 2. Capabilities (L-1)
 
-| ID | Capability | Status v1 | Role |
-|---|---|---|---|
-| CAP-1 | Brief Generation | Active | Technical heart |
-| CAP-2 | Discoverable Surface | Active | **Primary differentiator (traffic engine)** |
-| CAP-3 | Permanence & Sharing | Active | Virality |
-| CAP-4 | Multilingual Reach | Active (EN + PT) | Untapped market |
-| CAP-5 | Community & Engagement | Roadmap v2 | Differentiation vs FakeClients |
-| CAP-6 | Content Contribution | Roadmap v3 | Long-term moat |
+| ID    | Capability             | Status v1        | Role                                        |
+| ----- | ---------------------- | ---------------- | ------------------------------------------- |
+| CAP-1 | Brief Generation       | Active           | Technical heart                             |
+| CAP-2 | Discoverable Surface   | Active           | **Primary differentiator (traffic engine)** |
+| CAP-3 | Permanence & Sharing   | Active           | Virality                                    |
+| CAP-4 | Multilingual Reach     | Active (EN + PT) | Untapped market                             |
+| CAP-5 | Community & Engagement | Roadmap v2       | Differentiation vs FakeClients              |
+| CAP-6 | Content Contribution   | Roadmap v3       | Long-term moat                              |
 
 ## 3. Segments (L-2)
 
 ### Active in v1
+
 - **SEG-A — Generator Core.** Pure TS, seeded PRNG, slot picker, template filler. `packages/core`.
 - **SEG-B — Content Library.** Versioned JSON corpus, schema, build-time loader. `packages/content`.
 - **SEG-C — Discoverable Web.** Next.js SSG + SEO scaffolding + sitemap + schema.org. `apps/web`.
 - **SEG-D — Brief Permanence & Export.** Permalink routing, OG image (Edge), PDF/PNG export (Node).
 
 ### Planned
+
 - **SEG-E** — Community Layer (v2, gated by LD-009).
 - **SEG-F** — Editorial Content (v2).
 - **SEG-G** — Contribution Pipeline (v3, gated by LD-010).
@@ -2098,14 +2254,14 @@ LANDSCAPE > ROADMAP > SPEC. No content duplication: SPEC references LANDSCAPE by
 
 ## 4. Capability × Segment matrix
 
-|  | A | B | C | D | E | F | G | H |
-|---|---|---|---|---|---|---|---|---|
-| CAP-1 | ● | ◐ |   |   |   |   | ◐ |   |
-| CAP-2 |   | ◐ | ● | ◐ |   | ● |   |   |
-| CAP-3 | ◐ |   |   | ● | ◐ |   |   | ◐ |
-| CAP-4 | ◐ | ● | ● | ◐ |   | ◐ | ◐ |   |
-| CAP-5 |   |   |   |   | ● | ◐ |   | ● |
-| CAP-6 |   | ◐ |   |   |   |   | ● |   |
+|       | A   | B   | C   | D   | E   | F   | G   | H   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CAP-1 | ●   | ◐   |     |     |     |     | ◐   |     |
+| CAP-2 |     | ◐   | ●   | ◐   |     | ●   |     |     |
+| CAP-3 | ◐   |     |     | ●   | ◐   |     |     | ◐   |
+| CAP-4 | ◐   | ●   | ●   | ◐   |     | ◐   | ◐   |     |
+| CAP-5 |     |     |     |     | ●   | ◐   |     | ●   |
+| CAP-6 |     | ◐   |     |     |     |     | ●   |     |
 
 ● primary · ◐ partial
 
@@ -2136,6 +2292,7 @@ If in doubt, escalate.
 ## 7. Escalation to LD
 
 A technical ADR becomes a LD proposal when it:
+
 - Touches more than one active segment, OR
 - Inverts a SPEC §3 non-goal, OR
 - Creates a new segment in fact (even if the author didn't notice), OR
@@ -2151,10 +2308,12 @@ marked, never deleted.
 - [ ] **Step 2: Commit**
 
 Run:
+
 ```
 git add LANDSCAPE.md
 git commit -m "docs: add LANDSCAPE.md (capabilities, segments, 12 LDs)"
 ```
+
 Expected: clean commit.
 
 ---
@@ -2162,11 +2321,13 @@ Expected: clean commit.
 ## Task 14 — `ROADMAP.md`
 
 **Files:**
+
 - Create: `D:\thebriefyard\ROADMAP.md`
 
 - [ ] **Step 1: Write `ROADMAP.md`**
 
 Create `D:\thebriefyard\ROADMAP.md`:
+
 ```markdown
 # ROADMAP — Evolution & Versioning
 
@@ -2176,12 +2337,12 @@ Create `D:\thebriefyard\ROADMAP.md`:
 
 ## 1. Versions
 
-| Version | Scope | Status | Estimated duration |
-|---|---|---|---|
-| **v1** | SEG-A + SEG-B + SEG-C + SEG-D in minimal viable form | **Active** | 20 weeks (2 phases) |
-| **v2** | SEG-E + SEG-F + ES locale | Roadmap | Triggered by LD-009 |
-| **v3** | SEG-G + SEG-H + additional locales | Roadmap | Triggered by LD-010 |
-| **v4+** | Speculative — multi-modal, network effects | Not committed | — |
+| Version | Scope                                                | Status        | Estimated duration  |
+| ------- | ---------------------------------------------------- | ------------- | ------------------- |
+| **v1**  | SEG-A + SEG-B + SEG-C + SEG-D in minimal viable form | **Active**    | 20 weeks (2 phases) |
+| **v2**  | SEG-E + SEG-F + ES locale                            | Roadmap       | Triggered by LD-009 |
+| **v3**  | SEG-G + SEG-H + additional locales                   | Roadmap       | Triggered by LD-010 |
+| **v4+** | Speculative — multi-modal, network effects           | Not committed | —                   |
 
 ## 2. v1 scope
 
@@ -2196,11 +2357,13 @@ Acceptance criteria binary, in SPEC §10.
 v2 starts only if **either** set is satisfied.
 
 **Set Community (activates SEG-E):**
+
 - ≥ 30k organic clicks/month for 2 consecutive months.
 - ≥ 1,500 briefs/day.
 - ≥ 50 verifiable user requests for save/share/profile.
 
 **Set Editorial (activates SEG-F):**
+
 - Average CTR > 4% on hub pages.
 - ≥ 3 inbound newsletters/podcasts referencing the site.
 
@@ -2209,24 +2372,29 @@ If neither set is satisfied 12 months post-launch: revisit positioning, not just
 ## 4. Versioning policy
 
 ### SDK / API
+
 - **Patch:** bug fix.
 - **Minor:** additive feature.
 - **Major:** breaking change. 6-month deprecation notice. 12-month parallel support.
 
 ### Schema
+
 - Additive between majors (new columns, new tables, new indexes).
 - Breaking schema requires dual-write + backfill + cutover (template in §5).
 
 ### Events (analytics ingestion table)
+
 - Append-only. Type with version suffix for new shapes.
 
 ### Content
+
 - Slot corpus changes always bump `CONTENT_VERSION` (monotonic integer).
 - Permalinks resolve to the matching `compiled/content.<v>.json`.
 
 ## 5. Migration playbook (template)
 
 For any breaking change:
+
 1. Backward-compatible deploy.
 2. Dual-write.
 3. Backfill (idempotent).
@@ -2241,32 +2409,42 @@ Tier 1 ADR proposals to introduce these are auto-rejected before the threshold i
 measured.
 
 ### 6.1 Postgres queue → Redis / NATS
+
 Keep Postgres queue (FOR UPDATE SKIP LOCKED) until:
+
 - p95 `SELECT FOR UPDATE SKIP LOCKED` > 500 ms sustained 1 week, OR
 - Queue depth > 50k jobs at peak, recurring.
 
 ### 6.2 Single-region → multi-region
+
 Keep single-region until:
+
 - 3+ enterprise customers requiring EU residency, OR
 - p95 client→origin latency > 300 ms for > 10% of users.
 
 ### 6.3 Postgres → ClickHouse for analytics
+
 Keep Postgres until:
+
 - Analytics query p95 > 5 s, OR
 - `event` table > 1B rows in one region.
 
 ### 6.4 Single Vercel project → sharded
+
 Keep single until:
+
 - Build time > 30 min (Vercel limit 45 min), OR
 - Cold-start latency on Edge > 1 s p95.
 
 ### 6.5 better-auth → WorkOS / Auth0 SSO
+
 Only if SEG-F (enterprise) activates AND maintaining SSO integrations in-house exceeds
 the licensing cost of a managed provider.
 
 ## 7. Anti-pattern signals
 
 If any of these appear, revisit strategy, not just delivery:
+
 - 6 months post-launch < 10k organic clicks/month.
 - Trace viewer (or its equivalent — Search Console + Plausible) goes unused by the
   founder for 2 weeks running.
@@ -2289,10 +2467,12 @@ If any of these appear, revisit strategy, not just delivery:
 - [ ] **Step 2: Commit**
 
 Run:
+
 ```
 git add ROADMAP.md
 git commit -m "docs: add ROADMAP.md with triggers, versioning policy, scaling thresholds"
 ```
+
 Expected: clean commit.
 
 ---
@@ -2300,6 +2480,7 @@ Expected: clean commit.
 ## Task 15 — `SPEC.md` (split version of the design doc)
 
 **Files:**
+
 - Create: `D:\thebriefyard\SPEC.md`
 
 The repo's `SPEC.md` is the architecture-and-implementation reference. It pulls everything below L-1/L-2 out of the design doc. Most of it links back to ADRs and the design.
@@ -2307,6 +2488,7 @@ The repo's `SPEC.md` is the architecture-and-implementation reference. It pulls 
 - [ ] **Step 1: Write `SPEC.md`**
 
 Create `D:\thebriefyard\SPEC.md`:
+
 ```markdown
 # SPEC — Architecture & Implementation Reference
 
@@ -2349,6 +2531,7 @@ friction.
 ## 4. Architecture
 
 ### Layers
+
 - **Edge / CDN** (Vercel) — SSG HTML, ISR, Edge runtime for OG.
 - **Next.js app** (`apps/web`) — routes, API handlers, sitemap, robots.
 - **Generator core** (`@briefyard/core`) — pure seeded TS function. SEG-A.
@@ -2356,6 +2539,7 @@ friction.
 - **Postgres** (Supabase) — analytics-only in v1.
 
 ### Canonical flow
+
 1. User visits `/brief/logo/food`.
 2. Page is SSG with 10 curated permalinks + interactive generator + 200–400-word blurb.
 3. Click "generate new" → POST `/api/brief`.
@@ -2364,15 +2548,18 @@ friction.
 6. Client `history.replaceState` to permalink. Permalink valid forever.
 
 ### Deterministic generator contract (ADR-004)
+
 For a fixed tuple `(job, industry, locale, seed, contentVersion, expanded)`, the
 generator returns byte-identical output across any machine at any future time, while
 the corresponding `compiled/content.<contentVersion>.json` exists.
 
 ### SEO surface (v1 after Phase 2)
+
 ~6,700 indexable URLs: 600 hubs, 6,000 curated permalinks, 70 guides, plus statics.
 Ad-hoc permalinks carry `<meta name="robots" content="noindex,follow">`.
 
 ### Permanence & export
+
 - OG image: Edge satori, cache 1 year.
 - PDF: react-pdf, Node runtime.
 - PNG: satori, Edge runtime.
@@ -2380,20 +2567,20 @@ Ad-hoc permalinks carry `<meta name="robots" content="noindex,follow">`.
 
 ## 5. Stack (locked — see ADRs)
 
-| Layer | Tech | ADR |
-|---|---|---|
-| Framework | Next.js 14 App Router + TS strict | ADR-001 |
-| Styles | Tailwind + shadcn/ui | — |
-| DB | Postgres 16 (Supabase) | ADR-002 |
-| Corpus | JSON in git | ADR-003 |
-| Generator | Pure TS, mulberry32, base36 seeds | ADR-004 |
-| Render | react-pdf (Node) / satori (Edge) | ADR-005 |
-| Auth (v2+) | better-auth self-hosted | ADR-006 |
-| i18n | next-intl | ADR-007 |
-| Licenses | MIT code / CC BY-SA 4.0 corpus | ADR-008 |
-| DB access | postgres-js | ADR-009 |
-| Schema validation | Zod | ADR-010 |
-| Quality gate | Husky + lint-staged | ADR-013 |
+| Layer             | Tech                              | ADR     |
+| ----------------- | --------------------------------- | ------- |
+| Framework         | Next.js 14 App Router + TS strict | ADR-001 |
+| Styles            | Tailwind + shadcn/ui              | —       |
+| DB                | Postgres 16 (Supabase)            | ADR-002 |
+| Corpus            | JSON in git                       | ADR-003 |
+| Generator         | Pure TS, mulberry32, base36 seeds | ADR-004 |
+| Render            | react-pdf (Node) / satori (Edge)  | ADR-005 |
+| Auth (v2+)        | better-auth self-hosted           | ADR-006 |
+| i18n              | next-intl                         | ADR-007 |
+| Licenses          | MIT code / CC BY-SA 4.0 corpus    | ADR-008 |
+| DB access         | postgres-js                       | ADR-009 |
+| Schema validation | Zod                               | ADR-010 |
+| Quality gate      | Husky + lint-staged               | ADR-013 |
 
 Forbidden without ADR: Redis, Kafka, MongoDB, headless Chromium, any LLM provider,
 AGPL code, GA4, GTM, ORM heavier than postgres-js.
@@ -2401,20 +2588,25 @@ AGPL code, GA4, GTM, ORM heavier than postgres-js.
 ## 6. Data model
 
 ### Slot corpus (filesystem)
+
 `packages/content/locales/{en,pt}/{slots,industries,jobs,guides,ui}.json`.
 Compiled artifact: `packages/content/compiled/content.<v>.json` (gitignored).
 
 ### Postgres v1
+
 Only `brief_log` and `brief_reaction`. Schema in design doc §9.3.
 
 ### Content versioning
+
 `CONTENT_VERSION` monotonic int in `packages/content/version.ts`. Bumped in any PR
 that changes slot semantics.
 
 ## 7. Phase plan
 
 ### Phase 1 (weeks 1–10) — "Generator + 600 hubs"
+
 EN only. 300 (job × industry) pairs. 6,000 indexable URLs. Binary acceptance:
+
 - `pnpm install && pnpm test` passes on fresh clone.
 - `pnpm build` produces ≥ 6,000 static pages.
 - Lighthouse mobile: Performance ≥ 90, SEO 100, A11y ≥ 95, Best Practices ≥ 95.
@@ -2429,12 +2621,14 @@ EN only. 300 (job × industry) pairs. 6,000 indexable URLs. Binary acceptance:
 - `main` CI green 5 consecutive commits + 14 consecutive days.
 
 ### Phase 2 (weeks 11–20) — "PT-BR + guides + permanence UX"
+
 Add PT corpus, 30 + 40 guides, expanded mode, regenerate-slot, history, sponsor slot,
 external a11y audit. Acceptance in design §10.2.
 
 ## 8. Anti-patterns
 
 See design §14. Highlights repeated here:
+
 - `Math.random()` in generator → use seeded PRNG.
 - Slot text inside TS files → use JSON corpus.
 - Machine-translating EN → PT → author per locale.
@@ -2465,18 +2659,22 @@ See design §14. Highlights repeated here:
 ## 10. Quality gates
 
 ### Pre-commit (Husky)
+
 lint-staged → prettier → typecheck + test on changed packages.
 
 ### Pre-PR (GitHub Actions)
+
 lint, typecheck, test, build, e2e (Playwright), spec-check.
 P1+ adds: content-lint, lighthouse, sitemap crawler.
 
 ### Pre-release
+
 Full E2E + SEO crawler + manual spot-check + reconcile LANDSCAPE/ROADMAP/SPEC.
 
 ## 11. Open gaps (resolved at P0 close)
 
 All gaps from design §16 are resolved at P0 completion:
+
 - License confirmed (CC BY-SA).
 - Brand palette locked (Yard).
 - Sponsor policy: `docs/sponsor-policy.md`.
@@ -2487,10 +2685,12 @@ All gaps from design §16 are resolved at P0 completion:
 - [ ] **Step 2: Commit**
 
 Run:
+
 ```
 git add SPEC.md
 git commit -m "docs: add SPEC.md (architecture, data model, phase plan, ADR index)"
 ```
+
 Expected: clean commit.
 
 ---
@@ -2498,6 +2698,7 @@ Expected: clean commit.
 ## Task 16 — Author 13 ADRs
 
 **Files:**
+
 - Create: `D:\thebriefyard\docs\adrs\README.md`
 - Create: `D:\thebriefyard\docs\adrs\ADR-001-nextjs-app-router-typescript.md`
 - Create: `D:\thebriefyard\docs\adrs\ADR-002-postgres-single-store.md`
@@ -2518,7 +2719,8 @@ Each ADR follows the template emitted by `scripts/new-adr.ts`. To keep this plan
 - [ ] **Step 1: Write `docs/adrs/README.md`**
 
 Create `D:\thebriefyard\docs\adrs\README.md`:
-```markdown
+
+````markdown
 # Architecture Decision Records
 
 ADRs document technical decisions inside an active segment. They are Tier 1 in the
@@ -2530,6 +2732,7 @@ LANDSCAPE §6 framework. Strategic decisions (Tier 2) live in
 ```sh
 pnpm adr:new "Title of the decision"
 ```
+````
 
 ## Index
 
@@ -2546,7 +2749,8 @@ pnpm adr:new "Title of the decision"
 - ADR-011 — Cookie and privacy policy (cookieless default)
 - ADR-012 — Public API rate-limit policy
 - ADR-013 — Husky pre-commit + lint-staged quality gate
-```
+
+````
 
 - [ ] **Step 2: Write ADR-001**
 
@@ -2596,11 +2800,12 @@ React-first stack.
 ### Remix
 Strong server-side story. Rejected: SSG/ISR pattern is less idiomatic; Vercel
 support weaker than Next.
-```
+````
 
 - [ ] **Step 3: Write ADR-002**
 
 Create `D:\thebriefyard\docs\adrs\ADR-002-postgres-single-store.md`:
+
 ```markdown
 # ADR-002 — Postgres as single store (no Redis/Mongo)
 
@@ -2621,14 +2826,17 @@ No separate analytics warehouse until ROADMAP §6.3 threshold is measured.
 ## Consequences
 
 ### Positive
+
 - One mental model, one connection pool, one set of credentials.
 - Postgres FTS handles in-product search until volume justifies Meilisearch.
 - Supabase free tier covers v1 traffic.
 
 ### Negative
+
 - Sub-second analytics aggregations may slow as volume grows.
 
 ### Risks accepted
+
 - Analytics scale: we will migrate to ClickHouse only when ROADMAP §6.3 threshold
   is observed in telemetry.
 ```
@@ -2636,6 +2844,7 @@ No separate analytics warehouse until ROADMAP §6.3 threshold is measured.
 - [ ] **Step 4: Write ADR-003**
 
 Create `D:\thebriefyard\docs\adrs\ADR-003-slot-corpus-json-in-git.md`:
+
 ```markdown
 # ADR-003 — Slot corpus as JSON in git, not in DB
 
@@ -2645,6 +2854,7 @@ Create `D:\thebriefyard\docs\adrs\ADR-003-slot-corpus-json-in-git.md`:
 ## Context
 
 The slot corpus is the product's moat (CAP-3). It must be:
+
 - Reviewable in a PR (diffs matter).
 - Versioned with the code that consumes it.
 - Loadable at build time for SSG.
@@ -2659,16 +2869,19 @@ Postgres holds zero corpus data.
 ## Consequences
 
 ### Positive
+
 - PR review is line-by-line.
 - Schema validation runs at CI time, fails before merge.
 - No DB migration to change content.
 - Trivial backups (git history).
 
 ### Negative
+
 - No live editing without a deploy.
 - Localised corpora can drift; parity tests enforce structure (not text).
 
 ### Risks accepted
+
 - Build-time loading caps total corpus size at a few MB compiled. v2 corpus
   ~10MB compiled is comfortable; if we ever approach 100MB, revisit.
 ```
@@ -2676,6 +2889,7 @@ Postgres holds zero corpus data.
 - [ ] **Step 5: Write ADR-004**
 
 Create `D:\thebriefyard\docs\adrs\ADR-004-pure-deterministic-generator.md`:
+
 ```markdown
 # ADR-004 — Pure deterministic generator (mulberry32, base36 seeds)
 
@@ -2699,21 +2913,25 @@ base36 (`[0-9a-z]{6}`, ~2.18B combinations).
 ## Consequences
 
 ### Positive
+
 - Byte-identical output across builds, regions, future deploys.
 - Trivially testable (1,000 iterations of `expect(generateBrief(x)).toEqual(...)`).
 - SSG can pre-render permalinks ahead of time.
 
 ### Negative
+
 - Any code that touches the generator path inherits the no-IO discipline.
 - Lint rule needed: forbid `Math.random` in `packages/core/**`.
 
 ### Risks accepted
+
 - mulberry32 is not cryptographic. Acceptable: seeds are not secrets.
 ```
 
 - [ ] **Step 6: Write ADR-005**
 
 Create `D:\thebriefyard\docs\adrs\ADR-005-pdf-react-pdf-og-satori.md`:
+
 ```markdown
 # ADR-005 — PDF via react-pdf (Node); OG/PNG via satori (Edge)
 
@@ -2735,15 +2953,18 @@ year (the seed is immutable for a fixed contentVersion).
 ## Consequences
 
 ### Positive
+
 - Edge render: < 100 ms cold, no browser to manage.
 - PDF: react-pdf is small (~200 KB) compared to Chromium-in-Lambda.
 - Both renderers consume the same `Brief` object — single source of truth.
 
 ### Negative
+
 - Satori has limits on CSS features and font loading. We curate two fonts (a
   display sans for headlines and a mono for labels) and avoid filter effects.
 
 ### Risks accepted
+
 - Visual parity between PDF and PNG requires effort. We accept slight divergence
   because they serve different contexts (print vs feed).
 ```
@@ -2751,6 +2972,7 @@ year (the seed is immutable for a fixed contentVersion).
 - [ ] **Step 7: Write ADR-006**
 
 Create `D:\thebriefyard\docs\adrs\ADR-006-better-auth-self-hosted.md`:
+
 ```markdown
 # ADR-006 — better-auth self-hosted (when auth arrives)
 
@@ -2771,13 +2993,16 @@ auth becomes necessary.
 ## Consequences
 
 ### Positive
+
 - No per-MAU cost. Acceptable as v2 scales.
 - Owns the user table; no vendor lock-in.
 
 ### Negative
+
 - Maintenance load: SSO integrations are not free.
 
 ### Risks accepted
+
 - If SEG-F (enterprise) materialises (v3+), WorkOS sits on top for SSO
   specifically. Documented in ROADMAP §6.5.
 ```
@@ -2785,6 +3010,7 @@ auth becomes necessary.
 - [ ] **Step 8: Write ADR-007**
 
 Create `D:\thebriefyard\docs\adrs\ADR-007-next-intl-localized-routes.md`:
+
 ```markdown
 # ADR-007 — next-intl with localized routes
 
@@ -2806,14 +3032,17 @@ EN content exists in Phase 1.
 ## Consequences
 
 ### Positive
+
 - Standard Next.js routing model.
 - One source of truth for translatable UI strings (`packages/content/locales/<l>/ui.json`).
 
 ### Negative
+
 - Default-locale prefix vs no-prefix has known edge cases. We document the
   canonical convention in `docs/seo-playbook.md`.
 
 ### Risks accepted
+
 - Locale negotiation runs in middleware. Small cold-start cost, well below
   Lighthouse budget.
 ```
@@ -2821,6 +3050,7 @@ EN content exists in Phase 1.
 - [ ] **Step 9: Write ADR-008**
 
 Create `D:\thebriefyard\docs\adrs\ADR-008-code-mit-content-ccbysa.md`:
+
 ```markdown
 # ADR-008 — Code MIT, slot corpus CC BY-SA 4.0
 
@@ -2844,14 +3074,17 @@ re-share their derivatives.
 ## Consequences
 
 ### Positive
+
 - Code reuse with no friction.
 - Forks of the corpus must remain CC BY-SA, so the ecosystem grows in the open.
 
 ### Negative
+
 - Some companies refuse CC BY-SA content for compliance reasons. Acceptable;
   the v1 audience is independent designers.
 
 ### Risks accepted
+
 - Re-evaluation to CC BY 4.0 stays open if a strong commercial-reuse demand
   emerges. Decision is reversible by switching license file forward — past
   contributions remain BY-SA per their original terms.
@@ -2860,6 +3093,7 @@ re-share their derivatives.
 - [ ] **Step 10: Write ADR-009**
 
 Create `D:\thebriefyard\docs\adrs\ADR-009-no-orm-postgres-js.md`:
+
 ```markdown
 # ADR-009 — No ORM; postgres-js direct with Zod
 
@@ -2880,13 +3114,16 @@ co-located with the relevant module. Migrations are raw SQL files in
 ## Consequences
 
 ### Positive
+
 - SQL is readable. Performance is predictable.
 - Zero ORM-specific bug surface.
 
 ### Negative
+
 - Manual joins. Acceptable at our scale.
 
 ### Risks accepted
+
 - If complexity grows (v3+), Drizzle is the most likely upgrade — it keeps the
   SQL-first feel.
 ```
@@ -2894,6 +3131,7 @@ co-located with the relevant module. Migrations are raw SQL files in
 - [ ] **Step 11: Write ADR-010**
 
 Create `D:\thebriefyard\docs\adrs\ADR-010-zod-schema-validates-content-in-ci.md`:
+
 ```markdown
 # ADR-010 — Zod schema validates corpus in CI
 
@@ -2916,14 +3154,17 @@ generates 1,000 random briefs and validates each against `Brief.parse`.
 ## Consequences
 
 ### Positive
+
 - Corpus bugs caught at PR time, not runtime.
 - Forbidden-terms list is enforced uniformly.
 
 ### Negative
+
 - Schemas must evolve alongside the corpus. PRs that add new slot kinds must
   update schema and tests together.
 
 ### Risks accepted
+
 - Schema is more conservative than runtime behaviour: a permissive runtime
   could accept things the schema rejects. We choose schema-strict on purpose.
 ```
@@ -2931,6 +3172,7 @@ generates 1,000 random briefs and validates each against `Brief.parse`.
 - [ ] **Step 12: Write ADR-011**
 
 Create `D:\thebriefyard\docs\adrs\ADR-011-cookie-and-privacy-policy.md`:
+
 ```markdown
 # ADR-011 — Cookie and privacy policy (cookieless default)
 
@@ -2957,13 +3199,16 @@ respect for users.
 ## Consequences
 
 ### Positive
+
 - No cookie banner needed. Better UX. Better Lighthouse score.
 - Less legal exposure.
 
 ### Negative
+
 - Coarser analytics than third-party tools provide.
 
 ### Risks accepted
+
 - If we ever ship a feature that requires a cookie (e.g. saved auth in v2),
   this ADR is amended and a banner is added under standard consent rules.
 ```
@@ -2971,6 +3216,7 @@ respect for users.
 - [ ] **Step 13: Write ADR-012**
 
 Create `D:\thebriefyard\docs\adrs\ADR-012-public-api-rate-limit-policy.md`:
+
 ```markdown
 # ADR-012 — Public API rate-limit policy
 
@@ -2996,13 +3242,16 @@ free tier.
 ## Consequences
 
 ### Positive
+
 - Abusers gated without affecting normal users.
 - Public attribution norm reinforces brand.
 
 ### Negative
+
 - Rate limits at the Edge add ~1 ms latency.
 
 ### Risks accepted
+
 - Aggressive scrapers can rotate IPs. Acceptable: they still hit aggregate
   quotas at the Vercel function level.
 ```
@@ -3010,6 +3259,7 @@ free tier.
 - [ ] **Step 14: Write ADR-013**
 
 Create `D:\thebriefyard\docs\adrs\ADR-013-husky-precommit-quality-gate.md`:
+
 ```markdown
 # ADR-013 — Husky pre-commit + lint-staged quality gate
 
@@ -3030,14 +3280,17 @@ packages). Total expected runtime < 10 s on incremental commits.
 ## Consequences
 
 ### Positive
+
 - Format and trivial typecheck errors caught instantly.
 - Turbo cache reuses prior test results.
 
 ### Negative
+
 - New contributors need to run `pnpm install` first. The `prepare` hook makes
   this automatic.
 
 ### Risks accepted
+
 - The hook can be bypassed with `git commit --no-verify`. CI is the
   authoritative gate.
 ```
@@ -3045,10 +3298,13 @@ packages). Total expected runtime < 10 s on incremental commits.
 - [ ] **Step 15: Verify `pnpm adr:new` doesn't collide with existing numbers**
 
 Run:
+
 ```
 pnpm adr:new "Test placeholder"
 ```
+
 Expected: creates `docs/adrs/ADR-014-test-placeholder.md`. Delete it:
+
 ```
 rm docs/adrs/ADR-014-test-placeholder.md
 ```
@@ -3056,10 +3312,12 @@ rm docs/adrs/ADR-014-test-placeholder.md
 - [ ] **Step 16: Commit**
 
 Run:
+
 ```
 git add docs/adrs
 git commit -m "docs(adrs): author ADRs 001–013 covering stack, licenses, quality gates"
 ```
+
 Expected: clean commit (14 files).
 
 ---
@@ -3067,6 +3325,7 @@ Expected: clean commit (14 files).
 ## Task 17 — Supporting docs
 
 **Files:**
+
 - Create: `D:\thebriefyard\docs\content-style-guide.md`
 - Create: `D:\thebriefyard\docs\seo-playbook.md`
 - Create: `D:\thebriefyard\docs\sponsor-policy.md`
@@ -3075,6 +3334,7 @@ Expected: clean commit (14 files).
 - [ ] **Step 1: Write `docs/content-style-guide.md`**
 
 Create `D:\thebriefyard\docs\content-style-guide.md`:
+
 ```markdown
 # Content Style Guide
 
@@ -3129,6 +3389,7 @@ authors (founder, future contributors).
 - [ ] **Step 2: Write `docs/seo-playbook.md`**
 
 Create `D:\thebriefyard\docs\seo-playbook.md`:
+
 ```markdown
 # SEO Playbook
 
@@ -3151,14 +3412,14 @@ Operational guide for shipping new SEO-relevant pages. Aligns with SPEC §4
 
 ## Page-type matrix
 
-| Page | JSON-LD types | Internal links to |
-|---|---|---|
-| `/` | `WebSite` + `SearchAction` | Top-traffic hubs, FAQ |
-| Hub | `CollectionPage` + `BreadcrumbList` + `ItemList` | 4 same-industry hubs, 4 same-job hubs, job guide, industry guide, 10 curated permalinks |
-| Curated permalink | `CreativeWork` + `BreadcrumbList` | Parent hub, "generate another", locale alternate |
-| Ad-hoc permalink | none (noindex) | — |
-| Guide | `Article` + `BreadcrumbList` + `Author` | Related hubs, other related guides |
-| FAQ | `FAQPage` | — |
+| Page              | JSON-LD types                                    | Internal links to                                                                       |
+| ----------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `/`               | `WebSite` + `SearchAction`                       | Top-traffic hubs, FAQ                                                                   |
+| Hub               | `CollectionPage` + `BreadcrumbList` + `ItemList` | 4 same-industry hubs, 4 same-job hubs, job guide, industry guide, 10 curated permalinks |
+| Curated permalink | `CreativeWork` + `BreadcrumbList`                | Parent hub, "generate another", locale alternate                                        |
+| Ad-hoc permalink  | none (noindex)                                   | —                                                                                       |
+| Guide             | `Article` + `BreadcrumbList` + `Author`          | Related hubs, other related guides                                                      |
+| FAQ               | `FAQPage`                                        | —                                                                                       |
 
 ## Sitemap rules
 
@@ -3187,6 +3448,7 @@ Operational guide for shipping new SEO-relevant pages. Aligns with SPEC §4
 - [ ] **Step 3: Write `docs/sponsor-policy.md`**
 
 Create `D:\thebriefyard\docs\sponsor-policy.md`:
+
 ```markdown
 # Sponsor of the Month — Policy
 
@@ -3225,6 +3487,7 @@ tracking, no auction.
 - [ ] **Step 4: Write `docs/outreach-manu.md`**
 
 Create `D:\thebriefyard\docs\outreach-manu.md`:
+
 ```markdown
 # Outreach draft — Manuel Moreale (Goodbrief.io)
 
@@ -3266,10 +3529,12 @@ internet and I hope mine is too.
 - [ ] **Step 5: Commit**
 
 Run:
+
 ```
 git add docs/content-style-guide.md docs/seo-playbook.md docs/sponsor-policy.md docs/outreach-manu.md
 git commit -m "docs: add content style guide, SEO playbook, sponsor policy, outreach draft"
 ```
+
 Expected: clean commit.
 
 ---
@@ -3277,6 +3542,7 @@ Expected: clean commit.
 ## Task 18 — Claude Code subagents and slash commands
 
 **Files:**
+
 - Create: `D:\thebriefyard\.claude\settings.json`
 - Create: `D:\thebriefyard\.claude\agents\generator-engineer.md`
 - Create: `D:\thebriefyard\.claude\agents\content-curator.md`
@@ -3294,6 +3560,7 @@ Expected: clean commit.
 - [ ] **Step 1: Write `.claude/settings.json`**
 
 Create `D:\thebriefyard\.claude\settings.json`:
+
 ```json
 {
   "permissions": {
@@ -3316,6 +3583,7 @@ Create `D:\thebriefyard\.claude\settings.json`:
 - [ ] **Step 2: Write `generator-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\generator-engineer.md`:
+
 ```markdown
 ---
 name: generator-engineer
@@ -3327,6 +3595,7 @@ model: opus
 You are staff engineer on `@briefyard/core`.
 
 Rules:
+
 - SPEC §2 (vocabulary), §4 (architecture), §6 (data model) are canonical.
 - TDD mandatory. Failing test before code.
 - ADR-004 is non-negotiable: deterministic, no IO, no Math.random.
@@ -3340,6 +3609,7 @@ test, accepted risk.
 - [ ] **Step 3: Write `content-curator.md`**
 
 Create `D:\thebriefyard\.claude\agents\content-curator.md`:
+
 ```markdown
 ---
 name: content-curator
@@ -3351,6 +3621,7 @@ model: opus
 You are content lead for `@briefyard/content`.
 
 Rules:
+
 - Read `docs/content-style-guide.md` before writing entries.
 - ADR-003 (JSON in git) and ADR-010 (Zod-validated in CI) are non-negotiable.
 - Bump `CONTENT_VERSION` on any slot semantic change.
@@ -3364,6 +3635,7 @@ When editing the schema, update both Zod and tests in the same commit.
 - [ ] **Step 4: Write `seo-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\seo-engineer.md`:
+
 ```markdown
 ---
 name: seo-engineer
@@ -3375,6 +3647,7 @@ model: opus
 You are SEO engineer for `apps/web`.
 
 Rules:
+
 - `docs/seo-playbook.md` is canonical operations guide.
 - Every indexable page: title, description, canonical, hreflang pair, OG, twitter,
   appropriate JSON-LD, ≥ 5 internal links.
@@ -3389,6 +3662,7 @@ merge.
 - [ ] **Step 5: Write `frontend-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\frontend-engineer.md`:
+
 ```markdown
 ---
 name: frontend-engineer
@@ -3400,6 +3674,7 @@ model: opus
 You are frontend engineer for `apps/web`.
 
 Rules:
+
 - Tailwind + shadcn/ui as base. Use the "Yard" palette tokens from SPEC §16.1.
 - Server Components by default. Client Components only where interaction requires.
 - A11y first: semantic HTML, ARIA when needed, focus visible, keyboard navigation.
@@ -3411,6 +3686,7 @@ Rules:
 - [ ] **Step 6: Write `architect-reviewer.md`**
 
 Create `D:\thebriefyard\.claude\agents\architect-reviewer.md`:
+
 ```markdown
 ---
 name: architect-reviewer
@@ -3422,6 +3698,7 @@ model: opus
 You are an architecture reviewer. You do not write code; you review proposals.
 
 For every proposal, output:
+
 1. Conformance with SPEC §3 (non-goals) and §5 (stack) — yes / no / partial, citing section.
 2. Tier classification per LANDSCAPE §6 (0 / 1 / 2). If 2, STOP.
 3. Risks (≤ 5 bullets).
@@ -3435,12 +3712,14 @@ Do not soften the verdict. Reject is information, not a social failure.
 - [ ] **Step 7: Write slash commands**
 
 Create `D:\thebriefyard\.claude\commands\adr-new.md`:
+
 ```markdown
 Run `pnpm adr:new "$ARGUMENTS"` and report the file created. If `$ARGUMENTS` is empty,
 ask the user for an ADR title first.
 ```
 
 Create `D:\thebriefyard\.claude\commands\phase-status.md`:
+
 ```markdown
 Run `pnpm spec:check` and print its output verbatim. Then summarise: which acceptance
 criteria from SPEC §10 (matching the current phase) are still open, citing the
@@ -3448,12 +3727,14 @@ checklist. Do not invent criteria.
 ```
 
 Create `D:\thebriefyard\.claude\commands\verify.md`:
+
 ```markdown
 Run `pnpm verify` (lint + typecheck + test). Print the output. If anything fails, list
 exactly which packages and tests failed; do not propose fixes unless asked.
 ```
 
 Create `D:\thebriefyard\.claude\commands\content-lint.md`:
+
 ```markdown
 Run `pnpm --filter @briefyard/content test`. Print the output. If any content-lint
 test fails (parity, no-duplicates, forbidden-terms, length-bounds), name the file
@@ -3461,6 +3742,7 @@ path and entry. Do not propose fixes unless asked.
 ```
 
 Create `D:\thebriefyard\.claude\commands\seo-audit.md`:
+
 ```markdown
 Tell the user this command will become operational in P3 (Discoverable Web). For now,
 it is a placeholder. In P3 it will run Lighthouse CI on 5 reference routes
@@ -3471,6 +3753,7 @@ budget.
 - [ ] **Step 8: Write Claude hooks**
 
 Create `D:\thebriefyard\.claude\hooks\pre-commit-tests.sh`:
+
 ```sh
 #!/usr/bin/env sh
 # Hook executed by Husky pre-commit (see .husky/pre-commit). Lives in .claude/ so the
@@ -3482,6 +3765,7 @@ pnpm exec turbo run typecheck test --filter='[HEAD^]' --cache-dir=.turbo
 ```
 
 Create `D:\thebriefyard\.claude\hooks\pre-pr-spec-check.sh`:
+
 ```sh
 #!/usr/bin/env sh
 # Hook intended for CI / pre-PR. Runs spec:check and content-lint.
@@ -3494,10 +3778,12 @@ pnpm --filter @briefyard/content test
 - [ ] **Step 9: Commit**
 
 Run:
+
 ```
 git add .claude
 git commit -m "chore(claude): add settings, 5 subagents, 5 slash commands, 2 hooks"
 ```
+
 Expected: clean commit.
 
 ---
@@ -3507,50 +3793,62 @@ Expected: clean commit.
 - [ ] **Step 1: Fresh install**
 
 Run:
+
 ```
 pnpm install --frozen-lockfile
 ```
+
 Expected: lockfile honoured, no diff.
 
 - [ ] **Step 2: Format check**
 
 Run:
+
 ```
 pnpm format:check
 ```
+
 Expected: exit 0. If files fail, run `pnpm format` then re-commit.
 
 - [ ] **Step 3: Lint, typecheck, test, build (single command)**
 
 Run:
+
 ```
 pnpm verify
 ```
+
 Expected: all four pass. Output ends with `Tasks:  N successful, N total`.
 
 - [ ] **Step 4: Build the web app and run the e2e**
 
 Run:
+
 ```
 pnpm --filter @briefyard/web build
 pnpm --filter @briefyard/web test:e2e
 ```
+
 Expected: e2e passes (1 test).
 
 - [ ] **Step 5: Spec check**
 
 Run:
+
 ```
 pnpm spec:check
 ```
+
 Expected: prints "Active phase: P0 — Foundation".
 
 - [ ] **Step 6: Confirm Husky hook still runs**
 
 Run:
+
 ```
 git commit --allow-empty -m "chore: smoke test pre-commit hook"
 ```
+
 Expected: hook runs (`lint-staged` finds nothing to do, turbo runs cached typecheck +
 test). Commit succeeds.
 
@@ -3569,11 +3867,13 @@ NOT initialise with README or license (we already have them).
 - [ ] **Step 2: Add remote and push**
 
 Run:
+
 ```
 git remote add origin git@github.com:<your-gh-user>/thebriefyard.git
 git branch -M main
 git push -u origin main
 ```
+
 Expected: push succeeds, GitHub Actions CI triggers automatically.
 
 - [ ] **Step 3: Verify CI passes on `main`**
@@ -3588,12 +3888,14 @@ In Vercel: New Project → Import from GitHub → select `thebriefyard`.
 **Root Directory:** `apps/web` (click "Edit" and set this — critical for monorepo).
 **Framework Preset:** Next.js (auto-detected after setting root).
 **Build & Development Settings (override defaults):**
+
 - **Install Command:** `cd ../.. && pnpm install --frozen-lockfile`
 - **Build Command:** `cd ../.. && pnpm turbo run build --filter @briefyard/web`
 - **Output Directory:** `.next` (default — relative to Root Directory)
 - **Development Command:** leave default
 
 **Environment Variables:**
+
 - `TURBO_TELEMETRY_DISABLED=1`
 - `ENABLE_EXPERIMENTAL_COREPACK=1` (lets Vercel honour the `packageManager` field in
   root `package.json`)
@@ -3611,6 +3913,7 @@ with the "thebriefyard" headline.
 - [ ] **Step 6: Update README with the preview URL**
 
 Edit `D:\thebriefyard\README.md`. Add a line under the status block:
+
 ```markdown
 **Preview:** https://thebriefyard-<your-deployment>.vercel.app
 ```
@@ -3618,11 +3921,13 @@ Edit `D:\thebriefyard\README.md`. Add a line under the status block:
 - [ ] **Step 7: Commit and push**
 
 Run:
+
 ```
 git add README.md
 git commit -m "docs: add Vercel preview URL to README"
 git push
 ```
+
 Expected: CI re-runs and stays green.
 
 ---
@@ -3632,6 +3937,7 @@ Expected: CI re-runs and stays green.
 - [ ] **Step 1: Verify the binary acceptance criteria for P0**
 
 Manually walk through this checklist. Tick each:
+
 - [ ] `pnpm install --frozen-lockfile` works on a fresh clone (test by deleting `node_modules` and re-installing).
 - [ ] `pnpm verify` exits 0.
 - [ ] `pnpm build` exits 0, produces `apps/web/.next` and package `dist/` artifacts (for `@briefyard/types`).
@@ -3646,54 +3952,67 @@ Manually walk through this checklist. Tick each:
 - [ ] **Step 2: Update STATE.md**
 
 Edit `D:\thebriefyard\STATE.md`:
+
 ```markdown
 # STATE
 
 ## Current phase
+
 P1 — Generator core (next)
 
 ## Current week
+
 0 (between phases — write P1 plan before starting)
 
 ## Active ADRs
+
 ADR-001 through ADR-013.
 
 ## Active Landscape Decisions
+
 LD-001 through LD-012.
 
 ## In progress
+
 - Awaiting P1 plan authoring (`docs/superpowers/plans/<date>-thebriefyard-p1-core.md`).
 
 ## Blockers
+
 - None.
 
 ## Recent decisions
+
 - 2026-MM-DD: P0 (Foundation) closed. Monorepo and governance ready.
 - 2026-05-12: Brand palette "Yard" locked.
 - 2026-05-12: Slot corpus license CC BY-SA 4.0.
 - 2026-05-12: Working name `thebriefyard.com` (RDAP-verified available).
 
 ## Last reviewed
+
 <today's date>.
 ```
 
 - [ ] **Step 3: Commit and push**
 
 Run:
+
 ```
 git add STATE.md
 git commit -m "docs(state): close P0, mark P1 as next phase"
 git push
 ```
+
 Expected: clean commit, CI green.
 
 - [ ] **Step 4: Tag the foundation**
 
 Run:
+
 ```
 git tag -a p0-foundation -m "P0 — Foundation complete"
 git push origin p0-foundation
 ```
+
 Expected: tag visible on GitHub.
 
 ---
@@ -3702,6 +4021,7 @@ Expected: tag visible on GitHub.
 
 After P0 lands and `STATE.md` reads "P1 — Generator core (next)", write the P1 plan
 into `docs/superpowers/plans/<date>-thebriefyard-p1-core.md` covering:
+
 - mulberry32 PRNG with chi-squared tests
 - seed encoding (base36 6 chars)
 - slot picker (weighted)

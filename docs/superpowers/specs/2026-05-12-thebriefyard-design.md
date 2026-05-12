@@ -16,7 +16,7 @@ This is the validated brainstorming output. It is the **input** to `writing-plan
 
 Read order in the project once docs are split:
 
-1. `LANDSCAPE.md` — capabilities (CAP-*), segments (SEG-*), Landscape Decisions (LD-*). Highest authority.
+1. `LANDSCAPE.md` — capabilities (CAP-_), segments (SEG-_), Landscape Decisions (LD-\*). Highest authority.
 2. `ROADMAP.md` — versions, triggers, scaling thresholds, deprecation policy.
 3. `SPEC.md` — architecture, data model, ADRs, phase plan.
 4. `STATE.md` — current phase, active ADRs, blockers.
@@ -45,16 +45,16 @@ This single design doc consolidates the content of all five — once the impleme
 
 **12-month success criteria (objective is A1: live product with traffic):**
 
-| Metric | 12-month target |
-|---|---|
-| Google-indexed pages | ≥ 6,000 (covers full v1 surface) |
-| Organic clicks per month (Search Console) | ≥ 30,000 |
-| Monthly sessions | ≥ 50,000 |
-| Briefs generated per day | ≥ 1,500 |
-| Permalink share clicks (unique outbound from /brief URLs) | ≥ 500 / week |
-| Average SERP position for "design brief generator" | ≤ 3 |
-| Monthly uptime | ≥ 99.9% |
-| Monthly infrastructure spend | ≤ US$ 50 |
+| Metric                                                    | 12-month target                  |
+| --------------------------------------------------------- | -------------------------------- |
+| Google-indexed pages                                      | ≥ 6,000 (covers full v1 surface) |
+| Organic clicks per month (Search Console)                 | ≥ 30,000                         |
+| Monthly sessions                                          | ≥ 50,000                         |
+| Briefs generated per day                                  | ≥ 1,500                          |
+| Permalink share clicks (unique outbound from /brief URLs) | ≥ 500 / week                     |
+| Average SERP position for "design brief generator"        | ≤ 3                              |
+| Monthly uptime                                            | ≥ 99.9%                          |
+| Monthly infrastructure spend                              | ≤ US$ 50                         |
 
 **Comparisons we accept.** Goodbrief.io, FakeClients, Brandbrief, Sharpen.
 **Comparisons we reject.** Briefly, FakeBrief, Nikhara — AI-first generators, different category.
@@ -104,14 +104,14 @@ To decline if requested, citing this section:
 
 ### 4.1 Capabilities (L-1, ArchiMate)
 
-| ID | Capability | Status v1 | Role |
-|---|---|---|---|
-| CAP-1 | Brief Generation — combinatorial, reproducible, seeded | Active | Technical heart |
-| CAP-2 | Discoverable Surface — long-tail SEO, performance, schema.org | Active | **Primary differentiator — traffic engine (P3)** |
-| CAP-3 | Permanence & Sharing — permalink, OG image, export | Active | Virality lever |
-| CAP-4 | Multilingual Reach — i18n structural | Active (EN + PT) | Untapped market |
-| CAP-5 | Community & Engagement | Roadmap v2 | Differentiation vs FakeClients (P2) |
-| CAP-6 | Content Contribution — community adds slots | Roadmap v3 | Long-term moat |
+| ID    | Capability                                                    | Status v1        | Role                                             |
+| ----- | ------------------------------------------------------------- | ---------------- | ------------------------------------------------ |
+| CAP-1 | Brief Generation — combinatorial, reproducible, seeded        | Active           | Technical heart                                  |
+| CAP-2 | Discoverable Surface — long-tail SEO, performance, schema.org | Active           | **Primary differentiator — traffic engine (P3)** |
+| CAP-3 | Permanence & Sharing — permalink, OG image, export            | Active           | Virality lever                                   |
+| CAP-4 | Multilingual Reach — i18n structural                          | Active (EN + PT) | Untapped market                                  |
+| CAP-5 | Community & Engagement                                        | Roadmap v2       | Differentiation vs FakeClients (P2)              |
+| CAP-6 | Content Contribution — community adds slots                   | Roadmap v3       | Long-term moat                                   |
 
 ### 4.2 Segments active in v1 (L-2)
 
@@ -129,14 +129,14 @@ To decline if requested, citing this section:
 
 ### 4.4 Capability × Segment matrix
 
-|  | A | B | C | D | E | F | G | H |
-|---|---|---|---|---|---|---|---|---|
-| CAP-1 | ● | ◐ |   |   |   |   | ◐ |   |
-| CAP-2 |   | ◐ | ● | ◐ |   | ● |   |   |
-| CAP-3 | ◐ |   |   | ● | ◐ |   |   | ◐ |
-| CAP-4 | ◐ | ● | ● | ◐ |   | ◐ | ◐ |   |
-| CAP-5 |   |   |   |   | ● | ◐ |   | ● |
-| CAP-6 |   | ◐ |   |   |   |   | ● |   |
+|       | A   | B   | C   | D   | E   | F   | G   | H   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CAP-1 | ●   | ◐   |     |     |     |     | ◐   |     |
+| CAP-2 |     | ◐   | ●   | ◐   |     | ●   |     |     |
+| CAP-3 | ◐   |     |     | ●   | ◐   |     |     | ◐   |
+| CAP-4 | ◐   | ●   | ●   | ◐   |     | ◐   | ◐   |     |
+| CAP-5 |     |     |     |     | ●   | ◐   |     | ●   |
+| CAP-6 |     | ◐   |     |     |     |     | ●   |     |
 
 ● primary · ◐ partial
 
@@ -210,11 +210,11 @@ packages/core    packages/content v2+: users, saved_brief, response, vote
 
 ```typescript
 function generateBrief(input: {
-  job: JobId;                      // one of 15 literal strings
-  industry: IndustryId;            // one of 20 literal strings
-  locale: "en" | "pt";
-  seed?: string;                   // 6 chars [0-9a-z]; if omitted, cryptographically random
-  contentVersion?: number;         // default = current
+  job: JobId; // one of 15 literal strings
+  industry: IndustryId; // one of 20 literal strings
+  locale: 'en' | 'pt';
+  seed?: string; // 6 chars [0-9a-z]; if omitted, cryptographically random
+  contentVersion?: number; // default = current
   expanded?: boolean;
 }): Brief;
 ```
@@ -240,28 +240,28 @@ Guarantees:
 
 ### 6.4 SEO surface area (P3 — traffic engine)
 
-| Page type | URLs in v1 | Indexable? | Content rules |
-|---|---|---|---|
-| Home | 2 (`/`, `/pt`) | yes | Generator + value prop + curated examples list |
-| Hub `/brief/[job]/[industry]` | 600 (300 pairs × 2 locales) | yes | Mandatory 200-400-word editorial blurb (humans write, from `industries.blurb` + `jobs.blurb` composed), 10 curated example links, FAQ schema, internal links to 4 related hubs |
-| Curated permalink | 6,000 (10 per hub × 600 hubs) | yes | Brief, OG image, share, "generate another", breadcrumb |
-| Ad-hoc permalink | unbounded | **noindex,follow** | Shareable, OG-rendered, not in sitemap, not in robots filter |
-| Job guides | 30 (15 × 2 locales) | yes (v1 fase 2) | 1,500-2,500 authored words |
-| Industry guides | 40 (20 × 2 locales) | yes (v1 fase 2) | 1,500-2,500 authored words |
-| About / FAQ / Newsletter | 6 | yes | FAQPage JSON-LD on FAQ |
-| **Total v1 (after fase 2)** | **~6,700 URLs** | | vs ~4 on the original Goodbrief.io |
+| Page type                     | URLs in v1                    | Indexable?         | Content rules                                                                                                                                                                  |
+| ----------------------------- | ----------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Home                          | 2 (`/`, `/pt`)                | yes                | Generator + value prop + curated examples list                                                                                                                                 |
+| Hub `/brief/[job]/[industry]` | 600 (300 pairs × 2 locales)   | yes                | Mandatory 200-400-word editorial blurb (humans write, from `industries.blurb` + `jobs.blurb` composed), 10 curated example links, FAQ schema, internal links to 4 related hubs |
+| Curated permalink             | 6,000 (10 per hub × 600 hubs) | yes                | Brief, OG image, share, "generate another", breadcrumb                                                                                                                         |
+| Ad-hoc permalink              | unbounded                     | **noindex,follow** | Shareable, OG-rendered, not in sitemap, not in robots filter                                                                                                                   |
+| Job guides                    | 30 (15 × 2 locales)           | yes (v1 fase 2)    | 1,500-2,500 authored words                                                                                                                                                     |
+| Industry guides               | 40 (20 × 2 locales)           | yes (v1 fase 2)    | 1,500-2,500 authored words                                                                                                                                                     |
+| About / FAQ / Newsletter      | 6                             | yes                | FAQPage JSON-LD on FAQ                                                                                                                                                         |
+| **Total v1 (after fase 2)**   | **~6,700 URLs**               |                    | vs ~4 on the original Goodbrief.io                                                                                                                                             |
 
 Each indexable URL carries: `<link rel="canonical">`, `hreflang` pair (en↔pt), unique OG image, unique title, unique meta description, route-appropriate JSON-LD.
 
 JSON-LD per page type:
 
-| Page | Schema.org types |
-|---|---|
-| `/` | `WebSite` + `SearchAction` |
-| Hub | `CollectionPage` + `BreadcrumbList` + `ItemList` |
-| Curated permalink | `CreativeWork` + `BreadcrumbList` |
-| Guide | `Article` + `BreadcrumbList` + `Author` |
-| FAQ | `FAQPage` |
+| Page              | Schema.org types                                 |
+| ----------------- | ------------------------------------------------ |
+| `/`               | `WebSite` + `SearchAction`                       |
+| Hub               | `CollectionPage` + `BreadcrumbList` + `ItemList` |
+| Curated permalink | `CreativeWork` + `BreadcrumbList`                |
+| Guide             | `Article` + `BreadcrumbList` + `Author`          |
+| FAQ               | `FAQPage`                                        |
 
 Web Vitals targets: LCP ≤ 1.5 s on 4G, CLS ≤ 0.05, INP ≤ 200 ms. Fonts self-hosted via `next/font`. No CDN-cascade.
 
@@ -285,24 +285,24 @@ Single "Sponsor of the month" slot in global footer + one spot per guide. Hand-s
 
 Changing any row requires an ADR.
 
-| Layer | Tech | Reason |
-|---|---|---|
-| Framework | Next.js 14 App Router + TypeScript strict | ADR-001 — SSG/ISR maturity, Vercel native |
-| Styles | Tailwind + shadcn/ui | Pragmatic, controllable design system |
-| Database | PostgreSQL 16 (Supabase) | ADR-002 — single store, no Redis/Mongo |
-| Slot corpus | JSON in git, loaded at build | ADR-003 — diff-reviewable, no DB migration to change content |
-| Brief renderer | Pure TS function (ADR-004) | Same code in SSG and runtime |
-| PDF export | `@react-pdf/renderer` (Node runtime) | ADR-005 — no headless Chromium |
-| PNG / OG | `satori` + `@vercel/og` (Edge runtime) | ADR-005 — Edge-friendly |
-| Auth (v2+) | `better-auth` self-hosted | ADR-006 — no Clerk/Auth0 |
-| i18n | `next-intl` with localized routes | ADR-007 — `/en/*`, `/pt/*` |
-| Schema validation | Zod | ADR-010 — runtime + build-time |
-| Search (v2+) | Postgres FTS (tsvector) | YAGNI on Meilisearch |
-| Analytics | Plausible + Vercel Web Analytics | LD-012 — cookieless |
-| Error tracking | Sentry | Standard |
-| Hosting | Vercel (web) + Supabase (DB) | Velocity > sophistication |
-| CI/CD | GitHub Actions + Turborepo + Husky (pre-commit) + lint-staged | Standard, fast feedback |
-| Repo | Monorepo with pnpm workspaces | Shared `packages/*` |
+| Layer             | Tech                                                          | Reason                                                       |
+| ----------------- | ------------------------------------------------------------- | ------------------------------------------------------------ |
+| Framework         | Next.js 14 App Router + TypeScript strict                     | ADR-001 — SSG/ISR maturity, Vercel native                    |
+| Styles            | Tailwind + shadcn/ui                                          | Pragmatic, controllable design system                        |
+| Database          | PostgreSQL 16 (Supabase)                                      | ADR-002 — single store, no Redis/Mongo                       |
+| Slot corpus       | JSON in git, loaded at build                                  | ADR-003 — diff-reviewable, no DB migration to change content |
+| Brief renderer    | Pure TS function (ADR-004)                                    | Same code in SSG and runtime                                 |
+| PDF export        | `@react-pdf/renderer` (Node runtime)                          | ADR-005 — no headless Chromium                               |
+| PNG / OG          | `satori` + `@vercel/og` (Edge runtime)                        | ADR-005 — Edge-friendly                                      |
+| Auth (v2+)        | `better-auth` self-hosted                                     | ADR-006 — no Clerk/Auth0                                     |
+| i18n              | `next-intl` with localized routes                             | ADR-007 — `/en/*`, `/pt/*`                                   |
+| Schema validation | Zod                                                           | ADR-010 — runtime + build-time                               |
+| Search (v2+)      | Postgres FTS (tsvector)                                       | YAGNI on Meilisearch                                         |
+| Analytics         | Plausible + Vercel Web Analytics                              | LD-012 — cookieless                                          |
+| Error tracking    | Sentry                                                        | Standard                                                     |
+| Hosting           | Vercel (web) + Supabase (DB)                                  | Velocity > sophistication                                    |
+| CI/CD             | GitHub Actions + Turborepo + Husky (pre-commit) + lint-staged | Standard, fast feedback                                      |
+| Repo              | Monorepo with pnpm workspaces                                 | Shared `packages/*`                                          |
 
 **Forbidden without ADR:** Redis, Kafka, MongoDB, headless Chromium, any LLM provider, AGPL code, jQuery, GA4, GTM, ORM heavier than `postgres-js`.
 
@@ -370,21 +370,47 @@ packages/content/
 
 ```typescript
 const JobId = z.enum([
-  "logo", "brand-identity", "website", "packaging", "billboard",
-  "illustration", "mobile-app", "icon-set", "social-campaign",
-  "presentation", "editorial", "motion", "type-design",
-  "merch", "wayfinding"
-]);                               // 15
+  'logo',
+  'brand-identity',
+  'website',
+  'packaging',
+  'billboard',
+  'illustration',
+  'mobile-app',
+  'icon-set',
+  'social-campaign',
+  'presentation',
+  'editorial',
+  'motion',
+  'type-design',
+  'merch',
+  'wayfinding',
+]); // 15
 
 const IndustryId = z.enum([
-  "tech", "food", "fashion", "retail", "entertainment",
-  "education", "transportation", "real-estate", "travel",
-  "sports", "healthcare", "fintech", "nonprofit",
-  "government", "legal", "agriculture", "religion",
-  "gaming", "beauty", "automotive"
-]);                               // 20
+  'tech',
+  'food',
+  'fashion',
+  'retail',
+  'entertainment',
+  'education',
+  'transportation',
+  'real-estate',
+  'travel',
+  'sports',
+  'healthcare',
+  'fintech',
+  'nonprofit',
+  'government',
+  'legal',
+  'agriculture',
+  'religion',
+  'gaming',
+  'beauty',
+  'automotive',
+]); // 20
 
-const LocaleId = z.enum(["en", "pt"]);
+const LocaleId = z.enum(['en', 'pt']);
 
 const SlotEntry = z.object({
   text: z.string().min(1).max(280),
@@ -399,10 +425,14 @@ const IndustryFile = z.object({
   displayName: z.string(),
   blurb: z.string().min(200).max(2000),
   slots: z.record(z.string(), z.array(SlotEntry)),
-  templates: z.array(z.object({
-    pattern: z.string(),
-    minLength: z.number().optional(),
-  })).min(1),
+  templates: z
+    .array(
+      z.object({
+        pattern: z.string(),
+        minLength: z.number().optional(),
+      }),
+    )
+    .min(1),
   seoTitle: z.string().min(20).max(70),
   seoDescription: z.string().min(50).max(160),
 });
@@ -412,9 +442,13 @@ const JobFile = z.object({
   locale: LocaleId,
   displayName: z.string(),
   blurb: z.string().min(200).max(2000),
-  jobDescriptionTemplates: z.array(z.object({
-    pattern: z.string(),
-  })).min(1),
+  jobDescriptionTemplates: z
+    .array(
+      z.object({
+        pattern: z.string(),
+      }),
+    )
+    .min(1),
   jobSlots: z.record(z.string(), z.array(SlotEntry)),
   seoTitle: z.string().min(20).max(70),
   seoDescription: z.string().min(50).max(160),
@@ -438,12 +472,14 @@ const Brief = z.object({
     useCases: z.array(z.string()),
   }),
   deadline: z.string(),
-  expanded: z.object({
-    competitiveContext: z.string().optional(),
-    creativeConstraint: z.string().optional(),
-    moodWords: z.array(z.string()).optional(),
-    forbidden: z.array(z.string()).optional(),
-  }).optional(),
+  expanded: z
+    .object({
+      competitiveContext: z.string().optional(),
+      creativeConstraint: z.string().optional(),
+      moodWords: z.array(z.string()).optional(),
+      forbidden: z.array(z.string()).optional(),
+    })
+    .optional(),
   generatedAt: z.string().datetime(),
 });
 ```
@@ -569,15 +605,15 @@ v1 ships in two phases, ~10 weeks each.
 
 ### 10.3 v1 exit metrics (combined, to declare v1 done)
 
-| Metric | Minimum |
-|---|---|
-| Google-indexed pages (Search Console) | ≥ 4,000 |
-| Organic clicks/month | ≥ 8,000 |
-| MAU | ≥ 5,000 |
-| Briefs/day | ≥ 200 |
-| Average SERP position "design brief generator" | top 5 |
-| Monthly infra cost | ≤ US$ 30 |
-| Monthly downtime | ≤ 0.5% |
+| Metric                                         | Minimum  |
+| ---------------------------------------------- | -------- |
+| Google-indexed pages (Search Console)          | ≥ 4,000  |
+| Organic clicks/month                           | ≥ 8,000  |
+| MAU                                            | ≥ 5,000  |
+| Briefs/day                                     | ≥ 200    |
+| Average SERP position "design brief generator" | top 5    |
+| Monthly infra cost                             | ≤ US$ 30 |
+| Monthly downtime                               | ≤ 0.5%   |
 
 Crossing these triggers ROADMAP review for v2 (SEG-E / SEG-F gating via LD-009).
 
@@ -666,14 +702,14 @@ thebriefyard/
 
 ## 12. Testing strategy
 
-| Layer | Tool | What it covers |
-|---|---|---|
-| Unit | Vitest | Generator: determinism (1,000 iterations same seed → same output), PRNG distribution (chi-squared on 10k draws), slot picker weighting, template filling errors. Content: schema validation, parity, forbidden terms. |
-| Integration | Vitest + Supabase local | Loader compiles `locales/*` correctly. `/api/brief` round-trip. `brief_log` ingestion. |
-| E2E | Playwright (`apps/web/e2e`) | Home → generate → seed in URL → reload → identical render. Hub lists curated examples. Permalink renders server-side (no JS required). PDF export → magic bytes. PNG export → signature. axe-core: no critical violations. i18n PT route renders. |
-| SEO crawler | Custom script (`tests/seo`) | Each indexable page: canonical correct, hreflang pair, OG complete, JSON-LD type matches expectation, internal-link count ≥ 5. Sitemap entries valid, no orphan URLs in build, ad-hoc permalinks carry noindex. |
-| Lighthouse | Lighthouse CI in CI | Performance ≥ 90, SEO 100, A11y ≥ 95, Best Practices ≥ 95 on 5 reference routes. |
-| Content lint | Vitest custom matchers | All Zod schemas pass. EN/PT parity. No duplicates. No forbidden terms. Length bounds. |
+| Layer        | Tool                        | What it covers                                                                                                                                                                                                                                    |
+| ------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unit         | Vitest                      | Generator: determinism (1,000 iterations same seed → same output), PRNG distribution (chi-squared on 10k draws), slot picker weighting, template filling errors. Content: schema validation, parity, forbidden terms.                             |
+| Integration  | Vitest + Supabase local     | Loader compiles `locales/*` correctly. `/api/brief` round-trip. `brief_log` ingestion.                                                                                                                                                            |
+| E2E          | Playwright (`apps/web/e2e`) | Home → generate → seed in URL → reload → identical render. Hub lists curated examples. Permalink renders server-side (no JS required). PDF export → magic bytes. PNG export → signature. axe-core: no critical violations. i18n PT route renders. |
+| SEO crawler  | Custom script (`tests/seo`) | Each indexable page: canonical correct, hreflang pair, OG complete, JSON-LD type matches expectation, internal-link count ≥ 5. Sitemap entries valid, no orphan URLs in build, ad-hoc permalinks carry noindex.                                   |
+| Lighthouse   | Lighthouse CI in CI         | Performance ≥ 90, SEO 100, A11y ≥ 95, Best Practices ≥ 95 on 5 reference routes.                                                                                                                                                                  |
+| Content lint | Vitest custom matchers      | All Zod schemas pass. EN/PT parity. No duplicates. No forbidden terms. Length bounds.                                                                                                                                                             |
 
 Inviolable rules:
 
@@ -716,39 +752,39 @@ Inviolable rules:
 
 See SPEC §14 in the deployed docs for the full table. Highlights:
 
-| Anti-pattern | Why it kills the product | Do instead |
-|---|---|---|
-| `Math.random()` anywhere in the generator path | Breaks determinism | `packages/core`'s seeded mulberry32 |
-| Slot added without updating Zod schema | Build silently breaks runtime | Schema is source of truth |
-| Authoring slot text inside TS source files | Contributors can't review | JSON with schema |
-| Machine-translating EN to PT | Robotic content kills the differentiation | Authored per-locale |
-| Headless Chromium for OG | Cold start, cost | satori at the Edge |
-| Adding Redis "for cache" | Violates ADR-002 | Vercel cache + ISR handle scale until > 500k MAU |
-| Logging IP | LGPD / GDPR risk | Truncated UA hash only |
-| `any` in TypeScript | Defeats the type system | `unknown` + narrow |
-| Hardcoding the 300 hubs in a manual list | Unmaintainable | `generateAll(jobs, industries)` at build |
-| LLM-generated slot entries | Violates LD-002 | Author by hand |
-| Ad-hoc seed in sitemap | Bloat + thin content | `noindex` on ad-hoc |
-| OG image cache < 30 days | Wasted compute (seed is immutable) | Cache 1 year |
-| Skipping hreflang because PT is "coming later" | Confuses Google, hurts ranking | Wire hreflang from day 1 |
-| Blocking UI on export call | Bad UX | Loading state + cancel button |
+| Anti-pattern                                   | Why it kills the product                  | Do instead                                       |
+| ---------------------------------------------- | ----------------------------------------- | ------------------------------------------------ |
+| `Math.random()` anywhere in the generator path | Breaks determinism                        | `packages/core`'s seeded mulberry32              |
+| Slot added without updating Zod schema         | Build silently breaks runtime             | Schema is source of truth                        |
+| Authoring slot text inside TS source files     | Contributors can't review                 | JSON with schema                                 |
+| Machine-translating EN to PT                   | Robotic content kills the differentiation | Authored per-locale                              |
+| Headless Chromium for OG                       | Cold start, cost                          | satori at the Edge                               |
+| Adding Redis "for cache"                       | Violates ADR-002                          | Vercel cache + ISR handle scale until > 500k MAU |
+| Logging IP                                     | LGPD / GDPR risk                          | Truncated UA hash only                           |
+| `any` in TypeScript                            | Defeats the type system                   | `unknown` + narrow                               |
+| Hardcoding the 300 hubs in a manual list       | Unmaintainable                            | `generateAll(jobs, industries)` at build         |
+| LLM-generated slot entries                     | Violates LD-002                           | Author by hand                                   |
+| Ad-hoc seed in sitemap                         | Bloat + thin content                      | `noindex` on ad-hoc                              |
+| OG image cache < 30 days                       | Wasted compute (seed is immutable)        | Cache 1 year                                     |
+| Skipping hreflang because PT is "coming later" | Confuses Google, hurts ranking            | Wire hreflang from day 1                         |
+| Blocking UI on export call                     | Bad UX                                    | Loading state + cancel button                    |
 
 ---
 
 ## 15. Risks and mitigations
 
-| Risk | Probability | Impact | Mitigation |
-|---|---|---|---|
-| Authoring the slot corpus takes longer than coding | High | High | Phase 1 ships EN only; PT is phase 2. Optionally contract a design copywriter for one sprint. |
-| AI-first competitors capture the SERP | Medium | High | Explicit "human-curated, no AI slop" copy. LD-007. Attack PT-BR where AI competition is thin. |
-| Google does not index 6k URLs effectively | Medium | High | Strong SEO foundation (canonical, schema, hreflang, internal links, Web Vitals). 6-month review: if < 5k organic clicks/month, reduce surface and reinvest in P2. |
-| Moral conflict with the original Goodbrief author | Medium | Medium | (a) No text copy, (b) different name & visual identity, (c) cordial outreach before public launch, (d) credit Goodbrief as inspiration in `/about`. |
-| Wordlab heritage carries over inadvertently | Low | Medium | Slot corpus is authored from scratch; ADR documents the prohibition on importing Wordlab lists. |
-| CC BY-SA contamination concern from third parties | Low | Medium | Content and code licenses are separate. BY-SA only forces derivative content to share-alike, not code. Re-evaluate to CC BY 4.0 if commercial reuse becomes a goal. |
-| SSG build time exceeds Vercel's 45-minute limit | Low | Medium | Benchmark at week 3 with 1k pages. If trending high, paginate `generateStaticParams` and let ISR cover the long tail. |
-| OG image quota on Edge | Low | Low | Curated permalinks pre-rendered at build; ad-hoc cached forever. |
-| External a11y audit reveals systemic issues | Medium | Medium | axe-core in CI from day 1; pay for a formal audit in phase 2 before launch. |
-| No traction post-launch | Medium | High | Hard binary metrics in §10.3 force honest review. Launch plan: Product Hunt + Hacker News + designernews + Layers podcast outreach + indie communities. |
+| Risk                                               | Probability | Impact | Mitigation                                                                                                                                                          |
+| -------------------------------------------------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Authoring the slot corpus takes longer than coding | High        | High   | Phase 1 ships EN only; PT is phase 2. Optionally contract a design copywriter for one sprint.                                                                       |
+| AI-first competitors capture the SERP              | Medium      | High   | Explicit "human-curated, no AI slop" copy. LD-007. Attack PT-BR where AI competition is thin.                                                                       |
+| Google does not index 6k URLs effectively          | Medium      | High   | Strong SEO foundation (canonical, schema, hreflang, internal links, Web Vitals). 6-month review: if < 5k organic clicks/month, reduce surface and reinvest in P2.   |
+| Moral conflict with the original Goodbrief author  | Medium      | Medium | (a) No text copy, (b) different name & visual identity, (c) cordial outreach before public launch, (d) credit Goodbrief as inspiration in `/about`.                 |
+| Wordlab heritage carries over inadvertently        | Low         | Medium | Slot corpus is authored from scratch; ADR documents the prohibition on importing Wordlab lists.                                                                     |
+| CC BY-SA contamination concern from third parties  | Low         | Medium | Content and code licenses are separate. BY-SA only forces derivative content to share-alike, not code. Re-evaluate to CC BY 4.0 if commercial reuse becomes a goal. |
+| SSG build time exceeds Vercel's 45-minute limit    | Low         | Medium | Benchmark at week 3 with 1k pages. If trending high, paginate `generateStaticParams` and let ISR cover the long tail.                                               |
+| OG image quota on Edge                             | Low         | Low    | Curated permalinks pre-rendered at build; ad-hoc cached forever.                                                                                                    |
+| External a11y audit reveals systemic issues        | Medium      | Medium | axe-core in CI from day 1; pay for a formal audit in phase 2 before launch.                                                                                         |
+| No traction post-launch                            | Medium      | High   | Hard binary metrics in §10.3 force honest review. Launch plan: Product Hunt + Hacker News + designernews + Layers podcast outreach + indie communities.             |
 
 ---
 
@@ -766,15 +802,15 @@ These are not part of the design but must be decided before code starts. Capture
 
 Differentiated from the SERP competitive set (teal/purple/blue saturated by AI-first competitors). Reads as a designer's atelier, not as a SaaS product page.
 
-| Token | Hex | Tailwind reference | Primary use |
-|---|---|---|---|
-| `yard-primary` | `#C2410C` | `orange-700` | Brand mark, CTAs, links, focused state |
-| `yard-rust` | `#7C2D12` | `orange-900` | Hover/active for primary; headings in dark mode |
-| `yard-ink` | `#1A1A1A` | custom (near-black) | Body text on light; surface in dark mode |
-| `yard-cream` | `#FAF6EF` | custom | Light-mode background; "paper" of the rendered brief |
-| `yard-moss` | `#3F6E47` | custom | Secondary accent; "curated" badges; success states |
-| `yard-fog` | `#E7E0D3` | custom | Borders, dividers, secondary surfaces |
-| `yard-sun` | `#F59E0B` | `amber-500` | Tertiary highlight: "new", "tip", "hot" tags |
+| Token          | Hex       | Tailwind reference  | Primary use                                          |
+| -------------- | --------- | ------------------- | ---------------------------------------------------- |
+| `yard-primary` | `#C2410C` | `orange-700`        | Brand mark, CTAs, links, focused state               |
+| `yard-rust`    | `#7C2D12` | `orange-900`        | Hover/active for primary; headings in dark mode      |
+| `yard-ink`     | `#1A1A1A` | custom (near-black) | Body text on light; surface in dark mode             |
+| `yard-cream`   | `#FAF6EF` | custom              | Light-mode background; "paper" of the rendered brief |
+| `yard-moss`    | `#3F6E47` | custom              | Secondary accent; "curated" badges; success states   |
+| `yard-fog`     | `#E7E0D3` | custom              | Borders, dividers, secondary surfaces                |
+| `yard-sun`     | `#F59E0B` | `amber-500`         | Tertiary highlight: "new", "tip", "hot" tags         |
 
 Constraints:
 

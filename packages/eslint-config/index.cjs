@@ -38,5 +38,12 @@ module.exports = {
     ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
-  ignorePatterns: ['dist', '.next', '.turbo', 'node_modules', 'coverage', 'packages/content/compiled'],
+  ignorePatterns: [
+    'dist',
+    '.next',
+    '.turbo',
+    'node_modules',
+    'coverage',
+    'packages/content/compiled',
+  ],
 };
