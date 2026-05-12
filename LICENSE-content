@@ -1,0 +1,14 @@
+The slot corpus authored under `packages/content/locales/**` is licensed under
+the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+
+Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+This license applies ONLY to the JSON corpus and editorial prose authored for
+the brief grammar. The TypeScript code, configuration, build scripts, and
+application source remain under the MIT license (see LICENSE).
+
+To comply with CC BY-SA 4.0 when reusing the corpus:
+
+  1. Attribute: "thebriefyard slot corpus — https://thebriefyard.com"
+  2. Indicate any changes you made.
+  3. Distribute your derivative under the same CC BY-SA 4.0 license.
