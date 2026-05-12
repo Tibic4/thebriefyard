@@ -1,0 +1,46 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+.next/
+out/
+build/
+.turbo/
+coverage/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# generated content (compiled corpus)
+packages/content/compiled/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Vercel
+.vercel/
+
+# test artifacts
+.vitest-cache/
+playwright-report/
+test-results/
+
+# misc local
+recon/                           # local recon notes (D:\thebriefyard\recon already exists)
