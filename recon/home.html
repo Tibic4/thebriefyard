@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-131354364-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-131354364-1");
+    </script>
+
+    <!-- Plausible Analytics -->
+    <script
+      defer
+      data-domain="goodbrief.io"
+      src="https://plausible.io/js/script.tagged-events.js"
+    ></script>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+      Get Unique Design Briefs - Creative Brief Generator | Good Brief
+    </title>
+    <meta name="title" content="Goodbrief: Get Unique Design Briefs" />
+    <meta
+      name="description"
+      content="Randomly generate smart design briefs to
+    practice your design skills, get content for your portfolio
+    and gain experience working off a real design brief."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://goodbrief.io/" />
+    <meta property="og:title" content="Goodbrief: Get Unique Design Briefs" />
+    <meta
+      property="og:description"
+      content="Randomly generate design briefs to practice your design skills, get content for your portfolio and gain experience."
+    />
+    <meta property="og:image" content="https://goodbrief.io/social.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://goodbrief.io/" />
+    <meta
+      property="twitter:title"
+      content="Goodbrief: Get Unique Design Briefs"
+    />
+    <meta
+      property="twitter:description"
+      content="Randomly generate design briefs to practice your design skills, get content for your portfolio and gain experience."
+    />
+    <meta property="twitter:image" content="https://goodbrief.io/social.png" />
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png?v=3"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest?v=3" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico?v=3" />
+    <meta name="apple-mobile-web-app-title" content="Goodbrief" />
+    <meta name="application-name" content="Goodbrief" />
+    <meta name="msapplication-TileColor" content="#086054" />
+    <meta
+      name="msapplication-config"
+      content="/favicons/browserconfig.xml?v=3"
+    />
+
+    <meta name="theme-color" content="#0F9587" />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Dark Mode -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.querySelector("html").classList.add("dark");
+      } else {
+        document.querySelector("html").classList.remove("dark");
+      }
+    </script>
+
+    <style>
+      body {
+        background: #00bfa5;
+        visibility: hidden;
+      }
+
+      .dark body {
+        background: black;
+      }
+    </style>
+
+    <!-- CSS -->
+    <link
+      rel="preload"
+      href="/main.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/main.min.css" />
+    </noscript>
+  </head>
+
+  <body
+    class="preload bg-teal-500 dark:bg-black min-h-screen overflow-auto transition-colors duration-1000 visible"
+  >
+    <header
+      class="flex items-center sm:items-baseline m-4 sm:mt-[1.15em] sm:mb-7 sm:mx-0 sm:px-4"
+    >
+      <a href="/" class="flex items-center sm:items-baseline mr-4">
+        <img src="/assets/logo32.png" class="mr-3 h-8 self-center" />
+        <h1 class="sm:inline-block text-white hidden sm:text-2xl">Goodbrief</h1>
+      </a>
+      <nav class="flex ml-auto text-white items-center">
+        
+        <a
+          href="https://goodpalette.io"
+          class="flex relative rounded-full items-center py-1 mr-2 transition-colors duration-1000"
+        >
+          <img
+            src="https://goodpalette.io/favicon-32x32.png"
+            class="h-5 md:h-4 sm:mr-1"
+          />
+          <p class="text-teal-50 dark:text-white hidden md:inline-block">
+            Goodpalette
+          </p>
+        </a>
+        <div class="mr-2 text-teal-400 dark:text-teal-800 transition-colors duration-1000">|</div>
+        <a
+          href="/newsletter"
+          class="flex relative rounded-full items-center bg-teal-600 dark:bg-teal-800 py-1 px-3 mr-4 transition-colors duration-1000 plausible-event-name=Merch+Header"
+        >
+          <ion-icon name="mail" size="small" class="mr-1 -rotate-6 text-teal-200"></ion-icon>
+          <p class="text-teal-50 dark:text-white md:inline-block">
+            Newsletter
+          </p>
+          <p
+            class="bg-yellow-400 text-yellow-900 rounded-full text-[0.65em] font-black px-1 pt-[1px] -pb-[2px] absolute -top-2 -right-4 sm:-top-2 sm:-right-3"
+          >
+            NEW!
+          </p>
+        </a>
+        <p><a href="/about">About</a></p>
+        <button
+          class="leading-0 ml-4 rounded-full p-1.5 bg-teal-400 dark:bg-dark-teal transition-colors duration-1000"
+          type="button"
+          onclick="changeTheme()"
+        >
+          <ion-icon name="moon" size="small" class="dark:hidden"></ion-icon>
+          <ion-icon
+            name="sunny"
+            size="small"
+            class="hidden dark:inline-block"
+          ></ion-icon>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="relative max-w-3xl mx-auto pb-12 sm:px-3"
+    >
+<div class="flex flex-col-reverse sm:flex-row">
+  <div
+    class="options bg-teal-500 dark:bg-teal-900 sm:dark:bg-black p-3 pt-9 sm:pt-0 sm:pl-0 sm:max-w-1/3 sm:mr-0 flex-1 fixed sm:relative z-20 w-full bottom-0 transition-colors duration-1000"
+  >
+    <div
+      class="sm:hidden opacity-100 dark:opacity-0 absolute w-full h-16 -top-16 left-0 bg-gradient-to-t from-white to-white-trn transition-opacity duration-1000"
+    ></div>
+    <div
+      class="sm:hidden opacity-0 dark:opacity-100 absolute w-full h-16 -top-16 left-0 bg-gradient-to-t from-[#001310] to-dark-teal-trn transition-opacity duration-1000"
+    ></div>
+    <span
+      class="inline sm:hidden absolute top-0 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+    >
+      <input 
+type="button" 
+class="gen-btn bg-yellow-400 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-600 outline-none shadow hover:shadow-md transition-all relative cursor-pointer py-4 px-12 font-bold rounded-full" 
+value="Generate" 
+onclick="generateBrief()">
+</input>
+    </span>
+    <div class="flex flex-row sm:flex-col gap-2 sm:gap-0">
+      <div
+        class="job option w-full sm:mb-3 rounded overflow-hidden bg-white dark:bg-teal-700 bg-opacity-80 dark:bg-opacity-50 transition-colors duration-1000"
+        id="job-options"
+      >
+        <div
+          class="option-bar flex items-center p-4 bg-white dark:bg-transparent border-teal-200 dark:border-teal-900 border-b cursor-pointer transition-colors duration-1000"
+        >
+          <p
+            class="hidden sm:inline mr-2 text-teal-600 dark:text-teal-500 transition-colors duration-1000"
+          >
+            Type:
+          </p>
+          <p
+            class="sm:ml-auto mr-1 text-teal-900 dark:text-white font-bold transition-colors duration-1000"
+            id="job-value"
+          ></p>
+          <ion-icon
+            name="chevron-down-outline"
+            class="ml-auto sm:ml-0 text-teal-900 dark:text-white transition-colors duration-1000"
+          >
+          </ion-icon>
+        </div>
+        <section
+          class="collapsed max-h-40 sm:max-h-96 transition-max-h duration-300 overflow-y-auto overflow-x-hidden"
+        >
+          <fieldset>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="logo"
+                id="job-logo"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-logo"
+              >
+                <ion-icon
+                  name="shapes"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Logo
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="brandid"
+                id="job-brandid"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-brandid"
+              >
+                <ion-icon
+                  name="person-circle"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Brand Identity
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="illus"
+                id="job-illus"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-illus"
+              >
+                <ion-icon
+                  name="brush"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Illustration
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="packaging"
+                id="job-packaging"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-packaging"
+              >
+                <ion-icon
+                  name="gift"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Packaging
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="billboard"
+                id="job-billboard"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-billboard"
+              >
+                <ion-icon
+                  name="trail-sign"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Billboard
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="website"
+                id="job-website"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-website"
+              >
+                <ion-icon
+                  name="desktop"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Website
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="job"
+                value="random"
+                id="job-random"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="job-random"
+              >
+                <ion-icon
+                  name="dice"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white"
+                >
+                  Random
+                </p>
+              </label>
+            </div>
+            
+          </fieldset>
+        </section>
+      </div>
+      <div
+        class="industry option w-full sm:mb-3 rounded overflow-hidden bg-white dark:bg-teal-700 bg-opacity-80 dark:bg-opacity-50 transition-colors duration-1000"
+        id="industry-options"
+      >
+        <div
+          class="option-bar flex items-center p-4 bg-white dark:bg-transparent border-teal-200 dark:border-teal-900 border-b cursor-pointer transition-colors duration-1000"
+        >
+          <p
+            class="hidden sm:inline mr-2 text-teal-600 dark:text-teal-500 transition-colors duration-1000"
+          >
+            Industry:
+          </p>
+          <p
+            class="sm:ml-auto mr-1 text-teal-900 dark:text-white font-bold transition-colors duration-1000"
+            id="industry-value"
+          ></p>
+          <ion-icon
+            name="chevron-down-outline"
+            class="ml-auto sm:ml-0 text-teal-900 dark:text-white transition-colors duration-1000"
+          >
+          </ion-icon>
+        </div>
+        <section
+          class="collapsed max-h-40 sm:max-h-96 transition-max-h duration-300 overflow-y-auto overflow-x-hidden"
+        >
+          <fieldset>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="tech"
+                id="industry-tech"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-tech"
+              >
+                <ion-icon
+                  name="code-slash"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Technology
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="food"
+                id="industry-food"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-food"
+              >
+                <ion-icon
+                  name="fast-food"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Food
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="store"
+                id="industry-store"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-store"
+              >
+                <ion-icon
+                  name="storefront"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Retail Store
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="ent"
+                id="industry-ent"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-ent"
+              >
+                <ion-icon
+                  name="game-controller"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Entertainment
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="fashion"
+                id="industry-fashion"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-fashion"
+              >
+                <ion-icon
+                  name="shirt"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Fashion
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="sports"
+                id="industry-sports"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-sports"
+              >
+                <ion-icon
+                  name="football"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Sports
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="edu"
+                id="industry-edu"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-edu"
+              >
+                <ion-icon
+                  name="school"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Education
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="transp"
+                id="industry-transp"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-transp"
+              >
+                <ion-icon
+                  name="car"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Transportation
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="realestate"
+                id="industry-realestate"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-realestate"
+              >
+                <ion-icon
+                  name="home"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Real Estate
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="travel"
+                id="industry-travel"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-travel"
+              >
+                <ion-icon
+                  name="airplane"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Travel
+                </p>
+              </label>
+            </div>
+            
+            <div
+              class="flex items-center bg-teal-200 dark:bg-dark-teal hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors duration-200"
+            >
+              <input
+                class="invisible absolute"
+                type="radio"
+                name="industry"
+                value="random"
+                id="industry-random"
+              />
+              <label
+                class="flex p-3 w-full cursor-pointer items-center"
+                for="industry-random"
+              >
+                <ion-icon
+                  name="dice"
+                  size="small"
+                  class="text-teal-500 sm:bg-teal-300 sm:dark:bg-teal-700 rounded-xl py-2 sm:px-2 mr-2"
+                >
+                </ion-icon>
+                <p
+                  class="font-mono font-bold text-sm tracking-wider uppercase text-teal-900 dark:text-white max-w-"
+                >
+                  Random
+                </p>
+              </label>
+            </div>
+            
+          </fieldset>
+        </section>
+      </div>
+    </div>
+    <div id="native-js" class="native-carbon hidden sm:block"></div>
+    <a href="/newsletter" class="hidden sm:block mb-3">
+      <div
+        class="group flex gap-2 px-3 py-4 rounded bg-yellow-100 dark:bg-teal-700 dark:bg-opacity-50 transition-colors duration-1000"
+      >
+        <div
+          class="flex shrink-0 w-8 h-8 bg-yellow-500 group-hover:bg-yellow-600 dark:bg-yellow-700 rounded-full items-center justify-center transition-colors"
+        >
+          <ion-icon
+            name="mail"
+            class="absolute text-white text-xl -rotate-6 group-hover:rotate-6 group-hover:scale-110 opacity-100 group-hover:opacity-0 transition-transform ease-out"
+          ></ion-icon>
+          <ion-icon
+            name="mail-open"
+            class="absolute text-white text-xl -rotate-6 group-hover:rotate-6 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-transform ease-out"
+          ></ion-icon>
+        </div>
+        <div>
+          <h2
+            class="text-yellow-900 leading-none dark:text-white flex items-center gap-1 font-bold transition-colors duration-1000"
+          >
+            Goodbrief Newsletter
+          </h2>
+          <p
+            class="leading-4 text-yellow-800 dark:text-teal-300 transition-colors duration-1000"
+          >
+            Design tips, resources, and curated practice briefs.
+            <ion-icon
+              name="arrow-forward"
+              class="align-bottom group-hover:translate-x-1 transition-transform ease-out"
+            ></ion-icon>
+          </p>
+        </div>
+      </div>
+    </a>
+    <div class="mt-3 sm:mt-0 flex justify-between sm:flex-col">
+      <p class="text-white mb-2">
+        Made by
+        <a href="https://manu.coffee/" class="font-bold underline">Manu</a>
+      </p>
+      <p
+        class="text-teal-200 dark:text-teal-600 transition-colors duration-1000"
+      >
+        <a
+          class="inline-flex items-center gap-1 mr-2 hover:underline plausible-event-name=Merch+Footer"
+          href="https://cottonbureau.com/people/manu-4"
+        >
+          <ion-icon name="shirt"></ion-icon>
+          <span class="hidden sm:inline-block">Merch</span>
+        </a>
+        <a
+          class="inline-flex items-center gap-1 mr-2 hover:underline"
+          href="https://mastodon.social/@manutastic"
+        >
+          <ion-icon name="logo-mastodon"></ion-icon>
+          <span class="hidden sm:inline-block">Mastodon</span>
+        </a>
+        <a
+          class="inline-flex items-center gap-1 mr-2 hover:underline"
+          href="https://bsky.app/profile/goodbrief.bsky.social"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="w-4 h-4 fill-current"
+          >
+            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2c42.1-31.6 110.3-56 110.3 21.8c0 15.5-8.9 130.5-14.1 149.2C478.2 298 412 314.6 353.1 304.5c102.9 17.5 129.1 75.5 72.5 133.5c-107.4 110.2-154.3-27.6-166.3-62.9l0 0c-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8l0 0c-12 35.3-59 173.1-166.3 62.9c-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1C10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"
+            />
+          </svg>
+          <span class="hidden sm:inline-block">Bluesky</span>
+        </a>
+        <a
+          class="inline-flex items-center gap-1 mr-2 hover:underline"
+          href="https://www.instagram.com/goodbriefio/"
+        >
+          <ion-icon name="logo-instagram"></ion-icon>
+          <span class="hidden sm:inline-block">Instagram</span>
+        </a>
+        <a
+          class="inline-flex items-center gap-1 mr-2 hover:underline"
+          href="/faq"
+        >
+          <ion-icon name="help-circle"></ion-icon>
+          <span class="hidden sm:inline-block">FAQ</span>
+        </a>
+      </p>
+    </div>
+  </div>
+  <div
+    class="brief relative bg-white dark:bg-teal-900 dark:bg-opacity-50 sm:rounded p-4 min-h-screen sm:min-h-0 w-full sm:max-w-2/3 flex-1 self-start transition-colors duration-1000"
+  >
+    <div id="mobile-ad"></div>
+    <div
+      id="brief-header"
+      class="hidden flex justify-between items-center font-mono font-bold text-sm"
+    >
+      <h2
+        class="font-mono text-teal-900 dark:text-white opacity-50 tracking-wider uppercase transition-colors duration-1000"
+      >
+        Design Brief
+      </h2>
+      <div
+        class="flex bg-gray-200 dark:bg-teal-900 rounded-full px-2 py-1 font-normal text-gray-800 dark:text-teal-500 transition-colors duration-1000"
+      >
+        <button
+          class="export flex hover:underline"
+          onclick="showExportOptions()"
+        >
+          <ion-icon class="mr-1 text-base" name="download-outline"></ion-icon>
+          Export
+        </button>
+        <button
+          class="export-pdf flex items-center mr-3 hover:underline hidden"
+          onclick="exportBrief('pdf')"
+        >
+          <ion-icon
+            class="mr-1 text-base"
+            name="document-text-outline"
+          ></ion-icon>
+          Export PDF
+        </button>
+        <button
+          class="export-img flex items-center hover:underline hidden"
+          onclick="exportBrief('img')"
+        >
+          <ion-icon class="mr-1 text-base" name="image-outline"></ion-icon>
+          Export Image
+        </button>
+        <span class="export-loading flex items-center hidden">
+          <ion-icon
+            class="animate-spin mr-2 text-base"
+            name="sync-outline"
+          ></ion-icon>
+          Exporting...
+        </span>
+      </div>
+    </div>
+    <div class="skeleton">
+      <div class="skeleton-header"></div>
+      <div class="skeleton-p"></div>
+      <div class="skeleton-header"></div>
+      <div class="skeleton-p"></div>
+      <div class="skeleton-p"></div>
+      <div class="skeleton-header"></div>
+      <div class="skeleton-p"></div>
+      <div class="skeleton-p"></div>
+      <div class="skeleton-header"></div>
+    </div>
+    <div
+      id="brief-content"
+      class="content hidden text-teal-900 dark:text-white min-h-full pb-64 sm:p-0 transition-colors duration-1000"
+    >
+      <h3 class="font-bold mt-4" id="name-label">Company Name:</h3>
+      <p id="brief-name"></p>
+      <h3 class="font-bold mt-4">Company Description:</h3>
+      <p id="brief-desc"></p>
+      <h3 class="font-bold mt-4">Job Description:</h3>
+      <p id="brief-job"></p>
+      <h3 class="font-bold mt-4">Deadline:</h3>
+      <p id="brief-deadline"></p>
+    </div>
+    <div
+      id="brief-empty"
+      class="text-center dark:text-white text-teal-900 pb-72 sm:p-0"
+    >
+      <a href="/newsletter" class="block sm:hidden">
+        <div
+          class="group flex gap-2 p-3 rounded bg-yellow-100 dark:bg-teal-900 transition-colors duration-1000"
+        >
+          <div
+            class="flex shrink-0 w-8 h-8 bg-yellow-500 group-hover:bg-yellow-600 dark:bg-yellow-700 rounded-full items-center justify-center transition-colors"
+          >
+            <ion-icon
+              name="mail"
+              class="absolute text-white text-xl -rotate-6 group-hover:rotate-6 group-hover:scale-110 opacity-100 group-hover:opacity-0 transition-transform ease-out"
+            ></ion-icon>
+            <ion-icon
+              name="mail-open"
+              class="absolute text-white text-xl -rotate-6 group-hover:rotate-6 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-transform ease-out"
+            ></ion-icon>
+          </div>
+          <div class="text-left leading-none flex items-center gap-1">
+            <p
+              class="text-yellow-800 dark:text-teal-200 transition-colors duration-1000 text-left"
+            >
+              <span
+                class="text-yellow-900 dark:text-white items-center gap-1 font-bold transition-colors duration-1000"
+              >
+                Goodbrief Newsletter:
+              </span>
+              Design tips, resources, curated practice briefs.
+              <ion-icon
+                name="arrow-forward"
+                class="align-bottom group-hover:translate-x-1 transition-transform ease-out"
+              ></ion-icon>
+            </p>
+          </div>
+        </div>
+      </a>
+      <div class="relative inline-block mt-6">
+        <img class="mx-auto relative z-10" src="/assets/empty.svg" />
+        <div
+          class="absolute w-full h-0 -mt-px ml-px top-1/2 left-1/2 dark:bg-teal-800 bg-teal-200 pt-full rounded-full z-0 transform -translate-y-1/2 -translate-x-1/2 scale-125 transition-colors duration-1000"
+        ></div>
+      </div>
+      <h2 class="font-bold text-2xl mt-3">Get A Unique Design Brief</h2>
+      <p class="text-lg mt-3">
+        Choose the job type and industry,<br />then hit "Generate."
+      </p>
+      <ion-icon
+        class="text-2xl mt-4 -mb-6"
+        name="arrow-down-outline"
+      ></ion-icon>
+    </div>
+    <span
+      class="hidden sm:inline-block relative left-1/2 transition-all transform -translate-x-1/2 translate-y-3/4 hover:translate-y-2/3"
+    >
+      <input 
+type="button" 
+class="gen-btn bg-yellow-400 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-600 outline-none shadow hover:shadow-md transition-all relative cursor-pointer py-4 px-12 font-bold rounded-full" 
+value="Generate" 
+onclick="generateBrief()">
+</input>
+    </span>
+  </div>
+</div>
+</div>
+<div class="fixed bottom-2 right-4 text-teal-900 dark:text-teal-600 transition-colors duration-1000">v3.0</div>
+<script src="/js/main.min.js"></script>
+</body>
+
+</html>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</noscript>
+<script>
+    if (window.innerWidth <= 640) {
+        document.querySelector(".native-carbon").remove();
+        document
+            .querySelector(".native-carbon-mobile")
+            .classList.add("native-carbon");
+        document
+            .querySelector(".native-carbon-mobile")
+            .classList.remove("native-carbon-mobile");
+    }
+</script>
+<script src="//m.servedby-buysellads.com/monetization.custom.js" type="text/javascript"></script>
+<script>
+    (function () {
+        if (typeof _bsa !== 'undefined' && _bsa) {
+            _bsa.init('custom', 'CESIPKJJ', 'placement:SITENAME', {
+                target: '.native-carbon',
+                template: `
+                <div class="native-container relative border-gray-200 border-2 sm:border-none dark:border-teal-900 bg-white dark:bg-teal-900 rounded sm:p-2 mb-3 transition-colors duration-1000">
+                    <a href="##link##" class="native-banner flex sm:flex-col">
+                        <div class="flex items-center justify-center p-2 min-w-1/3 sm:min-w-0" style="background: ##backgroundColor##">
+                          <img class="native-img max-h-10" src="##logo##" style="background: ##backgroundColor##">
+                        </div>
+                        <span>
+                            <div class="native-details flex flex-col justify-center p-2 text-teal-800 dark:text-white transition-colors duration-1000">
+                            <span class="flex justify-between items-center">
+                                <span class="native-company text-gray-500 dark:text-teal-500 text-xs mb-1 transition-colors duration-1000">Sponsored by ##company##</span>
+                                <span class="native-cta text-xs sm:text-sm rounded-full flex sm:hidden justify-center flex-shrink-0 w-max h-full ml-2 sm:ml-0 mb-1 py-1 px-4" style="color: ##ctaTextColor##; background-color: ##ctaBackgroundColor##">##callToAction##</span>
+                            </span>
+                            <span class="native-desc text-xs sm:text-sm">##description##</span>
+                            </div>
+                            <span class="native-cta text-xs sm:text-sm rounded-full hidden sm:flex justify-center w-max ml-2 sm:ml-0 mb-1 py-1 px-4" style="color: ##ctaTextColor##; background-color: ##ctaBackgroundColor##">##callToAction##</span>
+                        </span>
+                        </a>
+                    </div>
+                    `,
+            });
+        }
+    })();
+</script>

@@ -1,0 +1,17 @@
+{
+  "name": "@briefyard/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.cjs",
+  "files": ["index.cjs"],
+  "peerDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-unused-imports": "^4.1.4"
+  }
+}
