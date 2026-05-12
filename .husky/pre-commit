@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Run lint-staged for formatting on staged files
+pnpm exec lint-staged
+
+# Run typecheck and tests against changed packages only (cheap with turbo cache)
+pnpm exec turbo run typecheck test --filter='[HEAD^]' --cache-dir=.turbo
