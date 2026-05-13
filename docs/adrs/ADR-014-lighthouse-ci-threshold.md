@@ -12,33 +12,25 @@ category targets — without a gate, these get drift-checked only by hand.
 
 ## Decision
 
-Run `@lhci/cli` on a 5-route reference set on every PR. Routes:
+Run `@lhci/cli` on a 5-route reference set on every PR. Routes are all
+**indexable** pages — ad-hoc permalinks are deliberately excluded because they
+carry `noindex,follow` and Lighthouse correctly penalizes that (SEO ~0.66).
+The exclusion is by design: ad-hoc permalinks are not part of the SEO surface.
 
 1. `/` (home, EN)
 2. `/pt` (home, PT)
 3. `/brief/logo/food` (hub, EN)
-4. `/brief/logo/food/regd001` (ad-hoc permalink, EN, deterministic seed)
-5. `/faq` (static)
+4. `/faq` (static, with `FAQPage` JSON-LD)
+5. `/about` (static)
 
 Thresholds (mobile, throttled 4G):
 
 - Performance ≥ 0.90
-- SEO ≥ 0.92 (interim — see Notes)
+- SEO 1.00
 - Accessibility ≥ 0.95
 - Best Practices ≥ 0.95
 
 A score below threshold fails CI.
-
-### Notes on SEO threshold
-
-The original target from SPEC §10 is SEO 1.00. The interim 0.92 is in effect
-because LHCI runs against `127.0.0.1` while canonical URLs point to
-`https://thebriefyard.com` — Lighthouse penalizes the host mismatch. Raising
-back to 1.00 requires either (a) running LHCI against the production preview,
-or (b) overriding canonical for the LHCI environment. Both are P4-or-later
-work. **Do not lower below 0.92.** Above 0.92 confirms structural SEO
-correctness (meta tags, hreflang, robots, structured data) — the missing
-points are the canonical/host edge case.
 
 Configuration lives at `apps/web/lighthouserc.json`. A new `lighthouse` job in
 `.github/workflows/ci.yml` runs after `verify`.
