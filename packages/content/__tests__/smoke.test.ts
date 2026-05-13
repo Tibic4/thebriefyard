@@ -20,8 +20,8 @@ describe('@briefyard/content smoke', () => {
     expect(parsed.text).toBe('sample');
   });
 
-  it('SlotEntry rejects empty text', () => {
-    expect(SlotEntry.safeParse({ text: '' }).success).toBe(false);
+  it('SlotEntry accepts empty text (name-prefix/suffix sentinel for "absent token")', () => {
+    expect(SlotEntry.safeParse({ text: '' }).success).toBe(true);
   });
 
   it('SlotEntry rejects text over 280 chars', () => {

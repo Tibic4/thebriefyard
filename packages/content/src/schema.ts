@@ -2,7 +2,11 @@ import { IndustryId, JobId, LocaleId, Seed } from '@briefyard/types';
 import { z } from 'zod';
 
 export const SlotEntry = z.object({
-  text: z.string().min(1).max(280),
+  // Empty text is allowed: name-prefix and name-suffix slots use "" entries
+  // (typically weighted heavily) to mean "no prefix / no suffix" when assembling
+  // company names. The generator concatenates raw text, so "" is the correct
+  // representation of the absent token.
+  text: z.string().max(280),
   weight: z.number().int().positive().default(1),
   tags: z.array(z.string()).optional(),
   contributor: z.string().optional(),

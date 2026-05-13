@@ -1,0 +1,50 @@
+{
+  "id": "food",
+  "locale": "en",
+  "displayName": "Food & Beverage",
+  "blurb": "Designing for food brands sits at an awkward crossroads. The product is sensory, but the design lives on shelves, screens, and signage where the smell and taste are absent. Your work has to bridge the gap. A logo for a small bakery has to read at thirty feet on a window decal and at three centimetres on a paper bag. Packaging has to win a glance in a crowded aisle, then survive a freezer, then end up on a kitchen counter where it competes with everything else the household owns. Menu typography has to be legible by candlelight and by phone-screen glow. Regulation matters too: nutrition panels, allergen warnings, and origin claims all carry layout rules that vary by country. The strongest food work tends to be specific. Generic warmth and generic abundance look like every other brand on the shelf. A clear point of view about who eats this food, in what context, and how often, is what gives a food identity a chance of being remembered. Use this brief as a chance to practise that specificity. Decide who the eater is before you reach for a colour palette. Decide where the product is bought before you choose a logo construction. Then make something that fits. The brief below gives you a fictional company, audience, and constraint. Treat it like a real client kickoff: ask the questions you would normally ask, then commit to a direction.",
+  "slots": {
+    "cuisine": [
+      { "text": "vegan", "weight": 1 },
+      { "text": "Italian", "weight": 1 },
+      { "text": "Mexican", "weight": 1 },
+      { "text": "all-American", "weight": 1 },
+      { "text": "Indian", "weight": 1 },
+      { "text": "low-calorie", "weight": 1 },
+      { "text": "gluten-free", "weight": 1 },
+      { "text": "fusion", "weight": 1 },
+      { "text": "regional Brazilian", "weight": 1 },
+      { "text": "plant-based", "weight": 1 }
+    ],
+    "product": [
+      { "text": "soft drinks", "weight": 1 },
+      { "text": "snacks", "weight": 1 },
+      { "text": "frozen meals", "weight": 1 },
+      { "text": "pastries", "weight": 1 },
+      { "text": "desserts", "weight": 1 },
+      { "text": "fresh juices", "weight": 1 },
+      { "text": "ready-to-eat lunches", "weight": 1 },
+      { "text": "specialty coffee", "weight": 1 }
+    ],
+    "process": [
+      { "text": "a secret family recipe", "weight": 1 },
+      { "text": "fresh local ingredients", "weight": 1 },
+      { "text": "love and attention to detail", "weight": 1 },
+      { "text": "five generations of know-how", "weight": 1 },
+      { "text": "small-batch craftsmanship", "weight": 1 }
+    ],
+    "distribution": [
+      { "text": "shipped directly to your home", "weight": 1 },
+      { "text": "available in stores nationwide", "weight": 1 },
+      { "text": "served in cafés across the country", "weight": 1 },
+      { "text": "sold at weekend farmers' markets", "weight": 1 }
+    ]
+  },
+  "templates": [
+    {
+      "pattern": "We are a company that makes and distributes {{cuisine}} {{product}}. Our main product is made with {{process}} and {{distribution}}. Our target audience is {{audiences}}. We want to convey a sense of {{emotions}}, while at the same time being approachable."
+    }
+  ],
+  "seoTitle": "Logo Design Brief Generator for Food Brands — thebriefyard",
+  "seoDescription": "Practice realistic logo briefs for food and beverage brands. Reproducible, shareable, no AI. Generate a unique brief in one click."
+}
