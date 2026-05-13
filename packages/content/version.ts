@@ -9,4 +9,4 @@
  * Old permalinks resolve against the matching `compiled/content.<v>.json`.
  * See SPEC §9.4.
  */
-export const CONTENT_VERSION = 1 as const;
+export const CONTENT_VERSION = 2 as const;
