@@ -1,0 +1,31 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "http://127.0.0.1:3100/",
+        "http://127.0.0.1:3100/pt",
+        "http://127.0.0.1:3100/brief/logo/food",
+        "http://127.0.0.1:3100/brief/logo/food/regd01",
+        "http://127.0.0.1:3100/faq"
+      ],
+      "startServerCommand": "pnpm --filter @briefyard/web exec next start -p 3100",
+      "startServerReadyPattern": "Ready",
+      "numberOfRuns": 2,
+      "settings": {
+        "preset": "desktop",
+        "chromeFlags": "--no-sandbox --headless=new"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 1.0 }],
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["error", { "minScore": 0.95 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
