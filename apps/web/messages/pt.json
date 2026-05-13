@@ -1,0 +1,27 @@
+{
+  "site": {
+    "title": "thebriefyard",
+    "tagline": "Briefings de prática para designers. Sem IA, sem paywall."
+  },
+  "cta": {
+    "generate": "Gerar briefing",
+    "another": "Gerar outro",
+    "permalink": "Copiar permalink"
+  },
+  "footer": {
+    "credit": "Código aberto no GitHub. Corpus CC BY-SA 4.0."
+  },
+  "hub": {
+    "examplesHeading": "Exemplos",
+    "generatorHeading": "Experimente"
+  },
+  "permalink": {
+    "noindexNote": "Este briefing é ad-hoc. A semente na URL o torna compartilhável."
+  },
+  "faq": {
+    "title": "Perguntas frequentes"
+  },
+  "comingSoon": {
+    "ptPlaceholder": "Conteúdo em PT-BR está no roadmap. A infraestrutura está pronta; o corpus está sendo escrito."
+  }
+}

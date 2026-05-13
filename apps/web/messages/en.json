@@ -1,0 +1,27 @@
+{
+  "site": {
+    "title": "thebriefyard",
+    "tagline": "Practice briefs for designers. No AI, no paywall."
+  },
+  "cta": {
+    "generate": "Generate brief",
+    "another": "Generate another",
+    "permalink": "Copy permalink"
+  },
+  "footer": {
+    "credit": "Open source on GitHub. Slot corpus CC BY-SA 4.0."
+  },
+  "hub": {
+    "examplesHeading": "Examples",
+    "generatorHeading": "Try it"
+  },
+  "permalink": {
+    "noindexNote": "This is an ad-hoc brief. The seed in the URL makes it shareable."
+  },
+  "faq": {
+    "title": "FAQ"
+  },
+  "comingSoon": {
+    "ptPlaceholder": "PT-BR content is on the roadmap. The infrastructure is ready; the corpus is being authored."
+  }
+}
