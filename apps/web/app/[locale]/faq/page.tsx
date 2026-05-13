@@ -19,7 +19,7 @@ const FAQS: ReadonlyArray<{ question: string; answer: string }> = [
   {
     question: 'Do you use AI to write the briefs?',
     answer:
-      'No. The slot corpus is human-authored. No language model fills the slots. We deliberately avoid the category "AI-generated briefs" — it is a different product.',
+      'No LLM runs when you click "Generate brief" — the generator is pure combinatorial slot grammar with a seeded PRNG, and that is permanent (LD-002 + ADR-004). The slot entries themselves are drafted with AI assistance and reviewed entry-by-entry by the founder before they land on main (LD-013). We deliberately avoid the category "AI-generated briefs" served live — it is a different product.',
   },
   {
     question: 'Why are the briefs deterministic?',

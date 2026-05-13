@@ -14,7 +14,10 @@ ADR-001 through ADR-014.
 
 ## Active Landscape Decisions
 
-LD-001 through LD-012.
+LD-001 through LD-013. LD-013 (added 2026-05-12) amends LD-002 to permit
+AI-assisted drafting of slot corpus with mandatory per-entry founder review;
+runtime generator remains 100% combinatorial. See
+`docs/landscape-decisions/LD-013-ai-drafted-corpus-human-curated.md`.
 
 ## In progress
 

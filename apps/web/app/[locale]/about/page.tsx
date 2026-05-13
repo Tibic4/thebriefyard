@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: AboutParams }): Pro
     path: '/about',
     title: 'About — thebriefyard',
     description:
-      'thebriefyard is a free practice-brief generator for designers. Human-curated. No AI. Inspired by Goodbrief.io.',
+      'thebriefyard is a free practice-brief generator for designers. Combinatorial, deterministic permalinks, human-curated corpus. No LLM in the runtime. Inspired by Goodbrief.io.',
   });
 }
 
@@ -31,9 +31,20 @@ export default function AboutPage({ params }: { params: AboutParams }) {
           same link, every time, forever.
         </p>
         <p>
-          The corpus is human-curated. No language model writes the slot entries; no machine
-          translation produces the localized versions. The point is to practise against prose that a
-          real client would write, not against the median of the internet.
+          The corpus is human-curated. The runtime generator has no LLM in its dependency tree — it
+          is pure combinatorial slot grammar with a seeded PRNG. The seed in the URL is the brief.
+        </p>
+        <p>
+          Honest disclosure: the slot entries themselves are drafted with AI assistance and reviewed
+          entry-by-entry by the founder before they land on `main` (see{' '}
+          <a
+            className="underline text-yard-primary"
+            href="https://github.com/Tibic4/thebriefyard/blob/main/docs/landscape-decisions/LD-013-ai-drafted-corpus-human-curated.md"
+          >
+            LD-013
+          </a>
+          ). What you see on this site has been sight-read. Machine translation is forbidden — PT
+          entries are authored, not translated.
         </p>
         <p>
           The project is inspired by{' '}
@@ -41,8 +52,8 @@ export default function AboutPage({ params }: { params: AboutParams }) {
             Goodbrief.io
           </a>{' '}
           by Manuel Moreale, which has been the indie reference for combinatorial briefs since
-          before AI generators existed. thebriefyard takes the same philosophical line — no AI in
-          the loop — and adds permalinks, long-tail SEO, and a bilingual corpus.
+          before AI generators existed. thebriefyard takes the same architectural line — no LLM in
+          the request path — and adds permalinks, long-tail SEO, and a bilingual corpus.
         </p>
         <p>
           Code is MIT-licensed. The slot corpus is{' '}

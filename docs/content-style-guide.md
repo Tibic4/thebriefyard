@@ -18,7 +18,14 @@ authors (founder, future contributors).
 - No proper nouns of real companies, real people, real products.
 - No slurs, no harmful stereotypes. Forbidden-terms list lives in
   `packages/content/__tests__/forbidden-terms.test.ts`.
-- No LLM-generated text. Every entry is authored.
+- **Authorship workflow (LD-013, 2026-05-12 onward).** Entries may be drafted with
+  LLM assistance, but every entry is read and approved by the founder before it
+  lands on `main`. No bulk-merge without per-entry sight-read. The runtime
+  generator stays 100% combinatorial — LD-002 still forbids LLM in the request
+  path. See `docs/landscape-decisions/LD-013-ai-drafted-corpus-human-curated.md`.
+- Set `contributor: "founder"` for hand-authored entries and
+  `"founder-reviewed-ai-draft"` for AI-drafted entries that survived review.
+  External contributions (v3+) use the GitHub handle.
 
 ## Slot weights
 

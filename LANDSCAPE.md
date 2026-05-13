@@ -67,6 +67,7 @@ LANDSCAPE > ROADMAP > SPEC. No content duplication: SPEC references LANDSCAPE by
 - **LD-010 — SEG-G (Contribution) activation gate.** Corpus stable 6 months AND ≥ 5 external contributors with accepted PRs.
 - **LD-011 — Web only.** No iOS, Android, Electron. PWA installable is the ceiling.
 - **LD-012 — Zero invasive tracking.** Plausible + Vercel Web Analytics only.
+- **LD-013 — AI-drafted slot corpus, human-curated** (2026-05-12). Amends LD-002 by narrowing it: the runtime generator stays 100% combinatorial (no LLM in request path), but the slot corpus and editorial prose may be drafted with LLM assistance and human-reviewed per entry before merge. Public copy must describe the workflow honestly. See `docs/landscape-decisions/LD-013-ai-drafted-corpus-human-curated.md`.
 
 ## 6. Classification framework (used by the AI agent)
 

@@ -20,7 +20,13 @@ sits in the same neighbourhood, with a few different bets:
 - Permalinks per generated brief (`/brief/[job]/[industry]/[seed]`).
 - Long-tail SEO: a landing page for every (job, industry) pair plus curated
   examples.
-- Same philosophical line: no AI in the loop.
+- The runtime generator has no LLM — pure seeded PRNG + slot grammar, like
+  Goodbrief.
+- Honest divergence: the slot entries are drafted with AI assistance and
+  reviewed entry-by-entry. I considered authoring everything from scratch but
+  the volume (~6,000 entries plus 300 industry/job blurbs) was incompatible
+  with shipping. Decision recorded in LD-013 in the repo; the About page and
+  FAQ say so plainly.
 
 The corpus is original — I deliberately didn't reuse Wordlab or any
 Goodbrief text. The visual identity diverges too (warmer palette).
