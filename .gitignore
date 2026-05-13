@@ -42,5 +42,8 @@ pnpm-debug.log*
 playwright-report/
 test-results/
 
+# TS incremental build info
+*.tsbuildinfo
+
 # misc local
 recon/                           # local recon notes (D:\thebriefyard\recon already exists)
