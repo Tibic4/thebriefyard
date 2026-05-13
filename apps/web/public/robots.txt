@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /
-
-# P0 scaffold — site is not ready for indexing. P3 replaces this with a generated
-# /robots.txt route serving production directives.
