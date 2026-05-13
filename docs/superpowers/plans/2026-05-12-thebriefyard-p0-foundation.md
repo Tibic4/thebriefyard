@@ -144,7 +144,7 @@ thebriefyard/
 - Create: `D:\thebriefyard\.npmrc`
 - Create: `D:\thebriefyard\.editorconfig`
 
-- [ ] **Step 1: Verify local tooling**
+- [x] **Step 1: Verify local tooling**
 
 Run:
 
@@ -162,7 +162,7 @@ Expected:
 
 If any version is below threshold, STOP. Install/upgrade before continuing.
 
-- [ ] **Step 2: Initialise git repo**
+- [x] **Step 2: Initialise git repo**
 
 Run:
 
@@ -174,7 +174,7 @@ git config core.autocrlf input
 
 Expected: `Initialized empty Git repository in D:/thebriefyard/.git/`. (If repo already initialised, this is a no-op; that is fine.)
 
-- [ ] **Step 3: Write `.gitignore`**
+- [x] **Step 3: Write `.gitignore`**
 
 Create `D:\thebriefyard\.gitignore`:
 
@@ -227,7 +227,7 @@ test-results/
 recon/                           # local recon notes (D:\thebriefyard\recon already exists)
 ```
 
-- [ ] **Step 4: Write `.nvmrc`**
+- [x] **Step 4: Write `.nvmrc`**
 
 Create `D:\thebriefyard\.nvmrc`:
 
@@ -235,7 +235,7 @@ Create `D:\thebriefyard\.nvmrc`:
 20.18.0
 ```
 
-- [ ] **Step 5: Write `.npmrc`**
+- [x] **Step 5: Write `.npmrc`**
 
 Create `D:\thebriefyard\.npmrc`:
 
@@ -247,7 +247,7 @@ shamefully-hoist=false
 engine-strict=true
 ```
 
-- [ ] **Step 6: Write `.editorconfig`**
+- [x] **Step 6: Write `.editorconfig`**
 
 Create `D:\thebriefyard\.editorconfig`:
 
@@ -269,7 +269,7 @@ trim_trailing_whitespace = false
 indent_style = tab
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 Run:
 
@@ -291,7 +291,7 @@ Expected: 4 files committed.
 - Create: `D:\thebriefyard\turbo.json`
 - Create: `D:\thebriefyard\tsconfig.base.json`
 
-- [ ] **Step 1: Write root `package.json`**
+- [x] **Step 1: Write root `package.json`**
 
 Create `D:\thebriefyard\package.json`:
 
@@ -338,7 +338,7 @@ Create `D:\thebriefyard\package.json`:
 }
 ```
 
-- [ ] **Step 2: Write `pnpm-workspace.yaml`**
+- [x] **Step 2: Write `pnpm-workspace.yaml`**
 
 Create `D:\thebriefyard\pnpm-workspace.yaml`:
 
@@ -348,7 +348,7 @@ packages:
   - packages/*
 ```
 
-- [ ] **Step 3: Write `turbo.json`**
+- [x] **Step 3: Write `turbo.json`**
 
 Create `D:\thebriefyard\turbo.json`:
 
@@ -389,7 +389,7 @@ Create `D:\thebriefyard\turbo.json`:
 }
 ```
 
-- [ ] **Step 4: Write `tsconfig.base.json`**
+- [x] **Step 4: Write `tsconfig.base.json`**
 
 Create `D:\thebriefyard\tsconfig.base.json`:
 
@@ -425,7 +425,7 @@ Create `D:\thebriefyard\tsconfig.base.json`:
 }
 ```
 
-- [ ] **Step 5: Install dependencies**
+- [x] **Step 5: Install dependencies**
 
 Run:
 
@@ -435,7 +435,7 @@ pnpm install
 
 Expected: lockfile created, `node_modules/` populated. No build errors. (`packages/*` and `apps/*` don't exist yet — pnpm will warn but proceed.)
 
-- [ ] **Step 6: Verify Turbo CLI works**
+- [x] **Step 6: Verify Turbo CLI works**
 
 Run:
 
@@ -445,7 +445,7 @@ pnpm exec turbo --version
 
 Expected: prints `2.1.x` or higher.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 Run:
 
@@ -469,7 +469,7 @@ Expected: 5 files committed.
 - Create: `D:\thebriefyard\packages\eslint-config\README.md`
 - Create: `D:\thebriefyard\.eslintrc.cjs`
 
-- [ ] **Step 1: Write `.prettierrc.json`**
+- [x] **Step 1: Write `.prettierrc.json`**
 
 Create `D:\thebriefyard\.prettierrc.json`:
 
@@ -486,7 +486,7 @@ Create `D:\thebriefyard\.prettierrc.json`:
 }
 ```
 
-- [ ] **Step 2: Write `.prettierignore`**
+- [x] **Step 2: Write `.prettierignore`**
 
 Create `D:\thebriefyard\.prettierignore`:
 
@@ -501,7 +501,7 @@ packages/content/compiled
 recon
 ```
 
-- [ ] **Step 3: Create `packages/eslint-config` directory and `package.json`**
+- [x] **Step 3: Create `packages/eslint-config` directory and `package.json`**
 
 Create `D:\thebriefyard\packages\eslint-config\package.json`:
 
@@ -525,7 +525,7 @@ Create `D:\thebriefyard\packages\eslint-config\package.json`:
 }
 ```
 
-- [ ] **Step 4: Write `packages/eslint-config/index.cjs`**
+- [x] **Step 4: Write `packages/eslint-config/index.cjs`**
 
 Create `D:\thebriefyard\packages\eslint-config\index.cjs`:
 
@@ -581,7 +581,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 5: Write `packages/eslint-config/README.md`**
+- [x] **Step 5: Write `packages/eslint-config/README.md`**
 
 Create `D:\thebriefyard\packages\eslint-config\README.md`:
 
@@ -606,7 +606,7 @@ module.exports = {
 
 ````
 
-- [ ] **Step 6: Write root `.eslintrc.cjs`**
+- [x] **Step 6: Write root `.eslintrc.cjs`**
 
 Create `D:\thebriefyard\.eslintrc.cjs`:
 ```js
@@ -617,7 +617,7 @@ module.exports = {
 };
 ````
 
-- [ ] **Step 7: Install ESLint and Prettier deps at the root**
+- [x] **Step 7: Install ESLint and Prettier deps at the root**
 
 Run:
 
@@ -627,7 +627,7 @@ pnpm add -Dw eslint@^8.57.0 @briefyard/eslint-config@workspace:*
 
 Expected: lockfile updated, root `package.json` shows the two dev deps.
 
-- [ ] **Step 8: Verify lint runs (will pass — nothing to lint yet)**
+- [x] **Step 8: Verify lint runs (will pass — nothing to lint yet)**
 
 Run:
 
@@ -637,7 +637,7 @@ pnpm exec eslint . --ext .ts,.tsx,.js,.cjs,.mjs --max-warnings=0
 
 Expected: exits with code 0 and no output (only `.cjs` config files exist; they are ignored by ignorePatterns or by extension match).
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 Run:
 
@@ -656,7 +656,7 @@ Expected: clean commit.
 
 - Create: `D:\thebriefyard\.husky\pre-commit`
 
-- [ ] **Step 1: Initialise Husky**
+- [x] **Step 1: Initialise Husky**
 
 Run:
 
@@ -666,7 +666,7 @@ pnpm exec husky init
 
 Expected: creates `.husky/pre-commit` with a placeholder `npm test` line, and modifies `package.json` (which already has `"prepare": "husky"`).
 
-- [ ] **Step 2: Overwrite `.husky/pre-commit` with the real hook**
+- [x] **Step 2: Overwrite `.husky/pre-commit` with the real hook**
 
 Replace contents of `D:\thebriefyard\.husky\pre-commit`:
 
@@ -686,7 +686,7 @@ Make it executable (Windows: not strictly needed for git; Linux/Mac):
 git update-index --chmod=+x .husky/pre-commit
 ```
 
-- [ ] **Step 3: Test the pre-commit hook fires**
+- [x] **Step 3: Test the pre-commit hook fires**
 
 Run:
 
@@ -710,7 +710,7 @@ Expected: hook executes (`lint-staged` runs against staged files, turbo runs aga
 - Create: `D:\thebriefyard\packages\types\vitest.config.ts`
 - Create: `D:\thebriefyard\packages\types\.eslintrc.cjs`
 
-- [ ] **Step 1: Write `package.json`**
+- [x] **Step 1: Write `package.json`**
 
 Create `D:\thebriefyard\packages\types\package.json`:
 
@@ -745,7 +745,7 @@ Create `D:\thebriefyard\packages\types\package.json`:
 }
 ```
 
-- [ ] **Step 2: Write `tsconfig.json`**
+- [x] **Step 2: Write `tsconfig.json`**
 
 Create `D:\thebriefyard\packages\types\tsconfig.json`:
 
@@ -760,7 +760,7 @@ Create `D:\thebriefyard\packages\types\tsconfig.json`:
 }
 ```
 
-- [ ] **Step 3: Write `src/index.ts` with the locked literal enums from SPEC §9.2**
+- [x] **Step 3: Write `src/index.ts` with the locked literal enums from SPEC §9.2**
 
 Create `D:\thebriefyard\packages\types\src\index.ts`:
 
@@ -833,7 +833,7 @@ export const INDUSTRY_IDS = IndustryId.options;
 export const LOCALE_IDS = LocaleId.options;
 ```
 
-- [ ] **Step 4: Write `vitest.config.ts`**
+- [x] **Step 4: Write `vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\types\vitest.config.ts`:
 
@@ -852,7 +852,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 5: Write the smoke test**
+- [x] **Step 5: Write the smoke test**
 
 This is a smoke test, not a red→green TDD cycle. The types are already defined in
 Step 3, so the test passes on first run. Real TDD discipline kicks in for
@@ -897,7 +897,7 @@ describe('types package', () => {
 });
 ```
 
-- [ ] **Step 6: Write `.eslintrc.cjs`**
+- [x] **Step 6: Write `.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\types\.eslintrc.cjs`:
 
@@ -908,7 +908,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 7: Install deps**
+- [x] **Step 7: Install deps**
 
 Run:
 
@@ -918,7 +918,7 @@ pnpm install
 
 Expected: workspace recognises `@briefyard/types`, vitest and zod installed.
 
-- [ ] **Step 8: Run the test — expect PASS (this is a smoke test, not a red→green TDD cycle)**
+- [x] **Step 8: Run the test — expect PASS (this is a smoke test, not a red→green TDD cycle)**
 
 Run:
 
@@ -928,7 +928,7 @@ pnpm --filter @briefyard/types test
 
 Expected: 5 tests passed.
 
-- [ ] **Step 9: Typecheck**
+- [x] **Step 9: Typecheck**
 
 Run:
 
@@ -938,7 +938,7 @@ pnpm --filter @briefyard/types typecheck
 
 Expected: no output, exit 0.
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 Run:
 
@@ -960,7 +960,7 @@ These are full TDD targets in P1 and P2. Here we only create the empty-but-build
 - Create: `packages/core/{package.json, tsconfig.json, vitest.config.ts, src/index.ts, __tests__/smoke.test.ts, .eslintrc.cjs}`
 - Create: `packages/content/{package.json, tsconfig.json, vitest.config.ts, src/index.ts, version.ts, __tests__/smoke.test.ts, .eslintrc.cjs}`
 
-- [ ] **Step 1: Write `packages/core/package.json`**
+- [x] **Step 1: Write `packages/core/package.json`**
 
 Create `D:\thebriefyard\packages\core\package.json`:
 
@@ -996,7 +996,7 @@ Create `D:\thebriefyard\packages\core\package.json`:
 }
 ```
 
-- [ ] **Step 2: Write `packages/core/tsconfig.json`**
+- [x] **Step 2: Write `packages/core/tsconfig.json`**
 
 Create `D:\thebriefyard\packages\core\tsconfig.json`:
 
@@ -1011,7 +1011,7 @@ Create `D:\thebriefyard\packages\core\tsconfig.json`:
 }
 ```
 
-- [ ] **Step 3: Write `packages/core/vitest.config.ts`**
+- [x] **Step 3: Write `packages/core/vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\core\vitest.config.ts`:
 
@@ -1036,7 +1036,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 4: Write `packages/core/src/index.ts` placeholder**
+- [x] **Step 4: Write `packages/core/src/index.ts` placeholder**
 
 Create `D:\thebriefyard\packages\core\src\index.ts`:
 
@@ -1057,7 +1057,7 @@ Create `D:\thebriefyard\packages\core\src\index.ts`:
 export const VERSION = '0.0.0';
 ```
 
-- [ ] **Step 5: Write `packages/core/__tests__/smoke.test.ts`**
+- [x] **Step 5: Write `packages/core/__tests__/smoke.test.ts`**
 
 Create `D:\thebriefyard\packages\core\__tests__\smoke.test.ts`:
 
@@ -1073,7 +1073,7 @@ describe('@briefyard/core smoke', () => {
 });
 ```
 
-- [ ] **Step 6: Write `packages/core/.eslintrc.cjs`**
+- [x] **Step 6: Write `packages/core/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\core\.eslintrc.cjs`:
 
@@ -1084,7 +1084,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 7: Write `packages/content/package.json`**
+- [x] **Step 7: Write `packages/content/package.json`**
 
 Create `D:\thebriefyard\packages\content\package.json`:
 
@@ -1121,7 +1121,7 @@ Create `D:\thebriefyard\packages\content\package.json`:
 }
 ```
 
-- [ ] **Step 8: Write `packages/content/tsconfig.json`**
+- [x] **Step 8: Write `packages/content/tsconfig.json`**
 
 Create `D:\thebriefyard\packages\content\tsconfig.json`:
 
@@ -1136,7 +1136,7 @@ Create `D:\thebriefyard\packages\content\tsconfig.json`:
 }
 ```
 
-- [ ] **Step 9: Write `packages/content/vitest.config.ts`**
+- [x] **Step 9: Write `packages/content/vitest.config.ts`**
 
 Create `D:\thebriefyard\packages\content\vitest.config.ts`:
 
@@ -1151,7 +1151,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 10: Write `packages/content/version.ts`**
+- [x] **Step 10: Write `packages/content/version.ts`**
 
 Create `D:\thebriefyard\packages\content\version.ts`:
 
@@ -1170,7 +1170,7 @@ Create `D:\thebriefyard\packages\content\version.ts`:
 export const CONTENT_VERSION = 1 as const;
 ```
 
-- [ ] **Step 11: Write `packages/content/src/index.ts` placeholder**
+- [x] **Step 11: Write `packages/content/src/index.ts` placeholder**
 
 Create `D:\thebriefyard\packages\content\src\index.ts`:
 
@@ -1189,7 +1189,7 @@ Create `D:\thebriefyard\packages\content\src\index.ts`:
 export { CONTENT_VERSION } from '../version.js';
 ```
 
-- [ ] **Step 12: Write `packages/content/__tests__/smoke.test.ts`**
+- [x] **Step 12: Write `packages/content/__tests__/smoke.test.ts`**
 
 Create `D:\thebriefyard\packages\content\__tests__\smoke.test.ts`:
 
@@ -1205,7 +1205,7 @@ describe('@briefyard/content smoke', () => {
 });
 ```
 
-- [ ] **Step 13: Write `packages/content/.eslintrc.cjs`**
+- [x] **Step 13: Write `packages/content/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\packages\content\.eslintrc.cjs`:
 
@@ -1216,7 +1216,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 14: Install and verify both packages**
+- [x] **Step 14: Install and verify both packages**
 
 Run:
 
@@ -1228,7 +1228,7 @@ pnpm --filter @briefyard/content test
 
 Expected: each suite reports 1 passing test.
 
-- [ ] **Step 15: Verify lint and typecheck**
+- [x] **Step 15: Verify lint and typecheck**
 
 Run:
 
@@ -1241,7 +1241,7 @@ pnpm --filter @briefyard/content typecheck
 
 Expected: all exit 0.
 
-- [ ] **Step 16: Commit**
+- [x] **Step 16: Commit**
 
 Run:
 
@@ -1264,7 +1264,7 @@ Expected: clean commit.
 - Create: `apps/web/e2e/smoke.spec.ts`
 - Create: `apps/web/playwright.config.ts`
 
-- [ ] **Step 1: Write `apps/web/package.json`**
+- [x] **Step 1: Write `apps/web/package.json`**
 
 Create `D:\thebriefyard\apps\web\package.json`:
 
@@ -1307,7 +1307,7 @@ Create `D:\thebriefyard\apps\web\package.json`:
 }
 ```
 
-- [ ] **Step 2: Write `apps/web/tsconfig.json`**
+- [x] **Step 2: Write `apps/web/tsconfig.json`**
 
 Create `D:\thebriefyard\apps\web\tsconfig.json`:
 
@@ -1333,7 +1333,7 @@ Create `D:\thebriefyard\apps\web\tsconfig.json`:
 }
 ```
 
-- [ ] **Step 3: Write `apps/web/next.config.mjs`**
+- [x] **Step 3: Write `apps/web/next.config.mjs`**
 
 Create `D:\thebriefyard\apps\web\next.config.mjs`:
 
@@ -1350,7 +1350,7 @@ const nextConfig = {
 export default nextConfig;
 ```
 
-- [ ] **Step 4: Write `apps/web/next-env.d.ts`**
+- [x] **Step 4: Write `apps/web/next-env.d.ts`**
 
 Create `D:\thebriefyard\apps\web\next-env.d.ts`:
 
@@ -1362,7 +1362,7 @@ Create `D:\thebriefyard\apps\web\next-env.d.ts`:
 // see https://nextjs.org/docs/basic-features/typescript for more information.
 ```
 
-- [ ] **Step 5: Write Tailwind + PostCSS configs with the "Yard" palette tokens from SPEC §16.1**
+- [x] **Step 5: Write Tailwind + PostCSS configs with the "Yard" palette tokens from SPEC §16.1**
 
 Create `D:\thebriefyard\apps\web\tailwind.config.ts`:
 
@@ -1407,7 +1407,7 @@ const config = {
 export default config;
 ```
 
-- [ ] **Step 6: Write `app/globals.css`**
+- [x] **Step 6: Write `app/globals.css`**
 
 Create `D:\thebriefyard\apps\web\app\globals.css`:
 
@@ -1437,7 +1437,7 @@ body {
 }
 ```
 
-- [ ] **Step 7: Write `app/layout.tsx`**
+- [x] **Step 7: Write `app/layout.tsx`**
 
 Create `D:\thebriefyard\apps\web\app\layout.tsx`:
 
@@ -1463,7 +1463,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 }
 ```
 
-- [ ] **Step 8: Write `app/page.tsx` — minimal placeholder home**
+- [x] **Step 8: Write `app/page.tsx` — minimal placeholder home**
 
 Create `D:\thebriefyard\apps\web\app\page.tsx`:
 
@@ -1487,7 +1487,7 @@ export default function HomePage() {
 }
 ```
 
-- [ ] **Step 9: Write `public/robots.txt` (placeholder until SEO routes ship in P3)**
+- [x] **Step 9: Write `public/robots.txt` (placeholder until SEO routes ship in P3)**
 
 Create `D:\thebriefyard\apps\web\public\robots.txt`:
 
@@ -1499,7 +1499,7 @@ Disallow: /
 # /robots.txt route serving production directives.
 ```
 
-- [ ] **Step 10: Write `apps/web/.eslintrc.cjs`**
+- [x] **Step 10: Write `apps/web/.eslintrc.cjs`**
 
 Create `D:\thebriefyard\apps\web\.eslintrc.cjs`:
 
@@ -1510,7 +1510,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 11: Write Playwright config and one smoke test**
+- [x] **Step 11: Write Playwright config and one smoke test**
 
 Create `D:\thebriefyard\apps\web\playwright.config.ts`:
 
@@ -1548,7 +1548,7 @@ test('home renders the foundation scaffold', async ({ page }) => {
 });
 ```
 
-- [ ] **Step 12: Install deps**
+- [x] **Step 12: Install deps**
 
 Run:
 
@@ -1558,7 +1558,7 @@ pnpm install
 
 Expected: Next.js, React, Tailwind, Playwright pulled.
 
-- [ ] **Step 13: Verify the web app builds**
+- [x] **Step 13: Verify the web app builds**
 
 Run:
 
@@ -1568,7 +1568,7 @@ pnpm --filter @briefyard/web build
 
 Expected: Next produces `.next/` output, no errors. (Build will print a route table with `/` only.)
 
-- [ ] **Step 14: Verify typecheck and lint**
+- [x] **Step 14: Verify typecheck and lint**
 
 Run:
 
@@ -1579,7 +1579,7 @@ pnpm --filter @briefyard/web lint
 
 Expected: both exit 0.
 
-- [ ] **Step 15: Install Playwright browsers (one-time)**
+- [x] **Step 15: Install Playwright browsers (one-time)**
 
 Run:
 
@@ -1589,7 +1589,7 @@ pnpm exec playwright install --with-deps chromium
 
 Expected: chromium installed.
 
-- [ ] **Step 16: Run the Playwright smoke test against a freshly built server**
+- [x] **Step 16: Run the Playwright smoke test against a freshly built server**
 
 Run:
 
@@ -1600,7 +1600,7 @@ pnpm --filter @briefyard/web test:e2e
 
 Expected: 1 test passes.
 
-- [ ] **Step 17: Commit**
+- [x] **Step 17: Commit**
 
 Run:
 
@@ -1620,7 +1620,7 @@ Expected: clean commit.
 - Create: `D:\thebriefyard\.github\workflows\ci.yml`
 - Create: `D:\thebriefyard\.github\pull_request_template.md`
 
-- [ ] **Step 1: Write CI workflow**
+- [x] **Step 1: Write CI workflow**
 
 Create `D:\thebriefyard\.github\workflows\ci.yml`:
 
@@ -1708,7 +1708,7 @@ jobs:
       - run: pnpm run spec:check
 ```
 
-- [ ] **Step 2: Write PR template**
+- [x] **Step 2: Write PR template**
 
 Create `D:\thebriefyard\.github\pull_request_template.md`:
 
@@ -1723,12 +1723,12 @@ Create `D:\thebriefyard\.github\pull_request_template.md`:
 
 ## Scope check
 
-- [ ] Changes stay within the current phase (see `STATE.md`).
-- [ ] No new dependency added (or: an ADR is included justifying it).
-- [ ] No `any` introduced.
-- [ ] No `Math.random()` in generator paths.
-- [ ] If content slots changed: `CONTENT_VERSION` bumped.
-- [ ] If a public contract changed: ADR added or amended.
+- [x] Changes stay within the current phase (see `STATE.md`).
+- [x] No new dependency added (or: an ADR is included justifying it).
+- [x] No `any` introduced.
+- [x] No `Math.random()` in generator paths.
+- [x] If content slots changed: `CONTENT_VERSION` bumped.
+- [x] If a public contract changed: ADR added or amended.
 
 ## How to verify
 
@@ -1741,7 +1741,7 @@ pnpm verify
 
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 Run:
 
@@ -1763,7 +1763,7 @@ Expected: clean commit.
 
 The phase-check script is intentionally lightweight in P0: it parses `STATE.md`, prints the active phase, and exits 0. P1+ extend it to inspect changed files.
 
-- [ ] **Step 1: Write `scripts/verify-phase.ts`**
+- [x] **Step 1: Write `scripts/verify-phase.ts`**
 
 Create `D:\thebriefyard\scripts\verify-phase.ts`:
 
@@ -1802,7 +1802,7 @@ function main(): void {
 main();
 ```
 
-- [ ] **Step 2: Write `scripts/new-adr.ts`**
+- [x] **Step 2: Write `scripts/new-adr.ts`**
 
 Create `D:\thebriefyard\scripts\new-adr.ts`:
 
@@ -1880,7 +1880,7 @@ function main(): void {
 main();
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 Run:
 
@@ -1901,7 +1901,7 @@ Expected: clean commit.
 - Create: `D:\thebriefyard\LICENSE-content`
 - Create: `D:\thebriefyard\README.md`
 
-- [ ] **Step 1: Write MIT `LICENSE`**
+- [x] **Step 1: Write MIT `LICENSE`**
 
 Create `D:\thebriefyard\LICENSE`:
 
@@ -1929,7 +1929,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-- [ ] **Step 2: Write content license pointer**
+- [x] **Step 2: Write content license pointer**
 
 Create `D:\thebriefyard\LICENSE-content`:
 
@@ -1950,7 +1950,7 @@ To comply with CC BY-SA 4.0 when reusing the corpus:
   3. Distribute your derivative under the same CC BY-SA 4.0 license.
 ```
 
-- [ ] **Step 3: Write `README.md`**
+- [x] **Step 3: Write `README.md`**
 
 Create `D:\thebriefyard\README.md`:
 
@@ -2000,7 +2000,7 @@ Each lives in `docs/superpowers/plans/`.
 
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 Run:
 ```
@@ -2018,7 +2018,7 @@ Expected: clean commit.
 **Files:**
 - Create: `D:\thebriefyard\CLAUDE.md`
 
-- [ ] **Step 1: Write `CLAUDE.md`**
+- [x] **Step 1: Write `CLAUDE.md`**
 
 Create `D:\thebriefyard\CLAUDE.md`:
 ```markdown
@@ -2098,7 +2098,7 @@ If in doubt between Tier 1 and Tier 2, escalate to Tier 2.
 - Code style → read existing code in the layer first.
 ````
 
-- [ ] **Step 2: Verify file length is under 200 lines**
+- [x] **Step 2: Verify file length is under 200 lines**
 
 Run (bash on Windows, via Git Bash or WSL):
 
@@ -2109,7 +2109,7 @@ wc -l D:/thebriefyard/CLAUDE.md
 Expected: number ≤ 200. (If using PowerShell instead:
 `(Get-Content D:\thebriefyard\CLAUDE.md | Measure-Object -Line).Lines`.)
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 Run:
 
@@ -2128,7 +2128,7 @@ Expected: clean commit.
 
 - Create: `D:\thebriefyard\STATE.md`
 
-- [ ] **Step 1: Write `STATE.md`**
+- [x] **Step 1: Write `STATE.md`**
 
 Create `D:\thebriefyard\STATE.md`:
 
@@ -2170,7 +2170,7 @@ LD-001 through LD-012. See `LANDSCAPE.md`.
 2026-05-12.
 ```
 
-- [ ] **Step 2: Verify `pnpm spec:check` parses the file**
+- [x] **Step 2: Verify `pnpm spec:check` parses the file**
 
 Run:
 
@@ -2186,7 +2186,7 @@ Expected output (something like):
 [spec:check] OK — P0 scope check is informational only.
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 Run:
 
@@ -2205,7 +2205,7 @@ Expected: clean commit.
 
 - Create: `D:\thebriefyard\LANDSCAPE.md`
 
-- [ ] **Step 1: Write `LANDSCAPE.md` consolidating SPEC §4 + §5 of the design**
+- [x] **Step 1: Write `LANDSCAPE.md` consolidating SPEC §4 + §5 of the design**
 
 Create `D:\thebriefyard\LANDSCAPE.md`:
 
@@ -2305,7 +2305,7 @@ Revised at the end of each phase, and whenever a new LD is approved. Superseded 
 marked, never deleted.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 Run:
 
@@ -2324,7 +2324,7 @@ Expected: clean commit.
 
 - Create: `D:\thebriefyard\ROADMAP.md`
 
-- [ ] **Step 1: Write `ROADMAP.md`**
+- [x] **Step 1: Write `ROADMAP.md`**
 
 Create `D:\thebriefyard\ROADMAP.md`:
 
@@ -2464,7 +2464,7 @@ If any of these appear, revisit strategy, not just delivery:
 - Last reviewed: 2026-05-12.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 Run:
 
@@ -2485,7 +2485,7 @@ Expected: clean commit.
 
 The repo's `SPEC.md` is the architecture-and-implementation reference. It pulls everything below L-1/L-2 out of the design doc. Most of it links back to ADRs and the design.
 
-- [ ] **Step 1: Write `SPEC.md`**
+- [x] **Step 1: Write `SPEC.md`**
 
 Create `D:\thebriefyard\SPEC.md`:
 
@@ -2682,7 +2682,7 @@ All gaps from design §16 are resolved at P0 completion:
 - `randombrief.com` registration: queued for Phase 1 week 0.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 Run:
 
@@ -2716,7 +2716,7 @@ Expected: clean commit.
 
 Each ADR follows the template emitted by `scripts/new-adr.ts`. To keep this plan readable, only the content (Context, Decision, Consequences) is shown per ADR — the header is identical.
 
-- [ ] **Step 1: Write `docs/adrs/README.md`**
+- [x] **Step 1: Write `docs/adrs/README.md`**
 
 Create `D:\thebriefyard\docs\adrs\README.md`:
 
@@ -2752,7 +2752,7 @@ pnpm adr:new "Title of the decision"
 
 ````
 
-- [ ] **Step 2: Write ADR-001**
+- [x] **Step 2: Write ADR-001**
 
 Create `D:\thebriefyard\docs\adrs\ADR-001-nextjs-app-router-typescript.md`:
 ```markdown
@@ -2802,7 +2802,7 @@ Strong server-side story. Rejected: SSG/ISR pattern is less idiomatic; Vercel
 support weaker than Next.
 ````
 
-- [ ] **Step 3: Write ADR-002**
+- [x] **Step 3: Write ADR-002**
 
 Create `D:\thebriefyard\docs\adrs\ADR-002-postgres-single-store.md`:
 
@@ -2841,7 +2841,7 @@ No separate analytics warehouse until ROADMAP §6.3 threshold is measured.
   is observed in telemetry.
 ```
 
-- [ ] **Step 4: Write ADR-003**
+- [x] **Step 4: Write ADR-003**
 
 Create `D:\thebriefyard\docs\adrs\ADR-003-slot-corpus-json-in-git.md`:
 
@@ -2886,7 +2886,7 @@ Postgres holds zero corpus data.
   ~10MB compiled is comfortable; if we ever approach 100MB, revisit.
 ```
 
-- [ ] **Step 5: Write ADR-004**
+- [x] **Step 5: Write ADR-004**
 
 Create `D:\thebriefyard\docs\adrs\ADR-004-pure-deterministic-generator.md`:
 
@@ -2928,7 +2928,7 @@ base36 (`[0-9a-z]{6}`, ~2.18B combinations).
 - mulberry32 is not cryptographic. Acceptable: seeds are not secrets.
 ```
 
-- [ ] **Step 6: Write ADR-005**
+- [x] **Step 6: Write ADR-005**
 
 Create `D:\thebriefyard\docs\adrs\ADR-005-pdf-react-pdf-og-satori.md`:
 
@@ -2969,7 +2969,7 @@ year (the seed is immutable for a fixed contentVersion).
   because they serve different contexts (print vs feed).
 ```
 
-- [ ] **Step 7: Write ADR-006**
+- [x] **Step 7: Write ADR-006**
 
 Create `D:\thebriefyard\docs\adrs\ADR-006-better-auth-self-hosted.md`:
 
@@ -3007,7 +3007,7 @@ auth becomes necessary.
   specifically. Documented in ROADMAP §6.5.
 ```
 
-- [ ] **Step 8: Write ADR-007**
+- [x] **Step 8: Write ADR-007**
 
 Create `D:\thebriefyard\docs\adrs\ADR-007-next-intl-localized-routes.md`:
 
@@ -3047,7 +3047,7 @@ EN content exists in Phase 1.
   Lighthouse budget.
 ```
 
-- [ ] **Step 9: Write ADR-008**
+- [x] **Step 9: Write ADR-008**
 
 Create `D:\thebriefyard\docs\adrs\ADR-008-code-mit-content-ccbysa.md`:
 
@@ -3090,7 +3090,7 @@ re-share their derivatives.
   contributions remain BY-SA per their original terms.
 ```
 
-- [ ] **Step 10: Write ADR-009**
+- [x] **Step 10: Write ADR-009**
 
 Create `D:\thebriefyard\docs\adrs\ADR-009-no-orm-postgres-js.md`:
 
@@ -3128,7 +3128,7 @@ co-located with the relevant module. Migrations are raw SQL files in
   SQL-first feel.
 ```
 
-- [ ] **Step 11: Write ADR-010**
+- [x] **Step 11: Write ADR-010**
 
 Create `D:\thebriefyard\docs\adrs\ADR-010-zod-schema-validates-content-in-ci.md`:
 
@@ -3169,7 +3169,7 @@ generates 1,000 random briefs and validates each against `Brief.parse`.
   could accept things the schema rejects. We choose schema-strict on purpose.
 ```
 
-- [ ] **Step 12: Write ADR-011**
+- [x] **Step 12: Write ADR-011**
 
 Create `D:\thebriefyard\docs\adrs\ADR-011-cookie-and-privacy-policy.md`:
 
@@ -3213,7 +3213,7 @@ respect for users.
   this ADR is amended and a banner is added under standard consent rules.
 ```
 
-- [ ] **Step 13: Write ADR-012**
+- [x] **Step 13: Write ADR-012**
 
 Create `D:\thebriefyard\docs\adrs\ADR-012-public-api-rate-limit-policy.md`:
 
@@ -3256,7 +3256,7 @@ free tier.
   quotas at the Vercel function level.
 ```
 
-- [ ] **Step 14: Write ADR-013**
+- [x] **Step 14: Write ADR-013**
 
 Create `D:\thebriefyard\docs\adrs\ADR-013-husky-precommit-quality-gate.md`:
 
@@ -3295,7 +3295,7 @@ packages). Total expected runtime < 10 s on incremental commits.
   authoritative gate.
 ```
 
-- [ ] **Step 15: Verify `pnpm adr:new` doesn't collide with existing numbers**
+- [x] **Step 15: Verify `pnpm adr:new` doesn't collide with existing numbers**
 
 Run:
 
@@ -3309,7 +3309,7 @@ Expected: creates `docs/adrs/ADR-014-test-placeholder.md`. Delete it:
 rm docs/adrs/ADR-014-test-placeholder.md
 ```
 
-- [ ] **Step 16: Commit**
+- [x] **Step 16: Commit**
 
 Run:
 
@@ -3331,7 +3331,7 @@ Expected: clean commit (14 files).
 - Create: `D:\thebriefyard\docs\sponsor-policy.md`
 - Create: `D:\thebriefyard\docs\outreach-manu.md`
 
-- [ ] **Step 1: Write `docs/content-style-guide.md`**
+- [x] **Step 1: Write `docs/content-style-guide.md`**
 
 Create `D:\thebriefyard\docs\content-style-guide.md`:
 
@@ -3386,7 +3386,7 @@ authors (founder, future contributors).
 - Original; not summaries of other sources.
 ```
 
-- [ ] **Step 2: Write `docs/seo-playbook.md`**
+- [x] **Step 2: Write `docs/seo-playbook.md`**
 
 Create `D:\thebriefyard\docs\seo-playbook.md`:
 
@@ -3445,7 +3445,7 @@ Operational guide for shipping new SEO-relevant pages. Aligns with SPEC §4
 - Cached forever at the seed level.
 ```
 
-- [ ] **Step 3: Write `docs/sponsor-policy.md`**
+- [x] **Step 3: Write `docs/sponsor-policy.md`**
 
 Create `D:\thebriefyard\docs\sponsor-policy.md`:
 
@@ -3484,7 +3484,7 @@ tracking, no auction.
 - Sponsors do not get editorial control or backlinks beyond the single slot.
 ```
 
-- [ ] **Step 4: Write `docs/outreach-manu.md`**
+- [x] **Step 4: Write `docs/outreach-manu.md`**
 
 Create `D:\thebriefyard\docs\outreach-manu.md`:
 
@@ -3526,7 +3526,7 @@ internet and I hope mine is too.
 — [name], thebriefyard.com
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 Run:
 
@@ -3557,7 +3557,7 @@ Expected: clean commit.
 - Create: `D:\thebriefyard\.claude\hooks\pre-commit-tests.sh`
 - Create: `D:\thebriefyard\.claude\hooks\pre-pr-spec-check.sh`
 
-- [ ] **Step 1: Write `.claude/settings.json`**
+- [x] **Step 1: Write `.claude/settings.json`**
 
 Create `D:\thebriefyard\.claude\settings.json`:
 
@@ -3580,7 +3580,7 @@ Create `D:\thebriefyard\.claude\settings.json`:
 }
 ```
 
-- [ ] **Step 2: Write `generator-engineer.md`**
+- [x] **Step 2: Write `generator-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\generator-engineer.md`:
 
@@ -3606,7 +3606,7 @@ Before proposing a change, describe in ≤ 5 lines: current state, change, valid
 test, accepted risk.
 ```
 
-- [ ] **Step 3: Write `content-curator.md`**
+- [x] **Step 3: Write `content-curator.md`**
 
 Create `D:\thebriefyard\.claude\agents\content-curator.md`:
 
@@ -3632,7 +3632,7 @@ Rules:
 When editing the schema, update both Zod and tests in the same commit.
 ```
 
-- [ ] **Step 4: Write `seo-engineer.md`**
+- [x] **Step 4: Write `seo-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\seo-engineer.md`:
 
@@ -3659,7 +3659,7 @@ Lighthouse failures (Perf < 90, SEO < 100, A11y < 95, Best Practices < 95) block
 merge.
 ```
 
-- [ ] **Step 5: Write `frontend-engineer.md`**
+- [x] **Step 5: Write `frontend-engineer.md`**
 
 Create `D:\thebriefyard\.claude\agents\frontend-engineer.md`:
 
@@ -3683,7 +3683,7 @@ Rules:
 - Dark mode supported (yard-ink background, yard-cream text).
 ```
 
-- [ ] **Step 6: Write `architect-reviewer.md`**
+- [x] **Step 6: Write `architect-reviewer.md`**
 
 Create `D:\thebriefyard\.claude\agents\architect-reviewer.md`:
 
@@ -3709,7 +3709,7 @@ For every proposal, output:
 Do not soften the verdict. Reject is information, not a social failure.
 ```
 
-- [ ] **Step 7: Write slash commands**
+- [x] **Step 7: Write slash commands**
 
 Create `D:\thebriefyard\.claude\commands\adr-new.md`:
 
@@ -3750,7 +3750,7 @@ it is a placeholder. In P3 it will run Lighthouse CI on 5 reference routes
 budget.
 ```
 
-- [ ] **Step 8: Write Claude hooks**
+- [x] **Step 8: Write Claude hooks**
 
 Create `D:\thebriefyard\.claude\hooks\pre-commit-tests.sh`:
 
@@ -3775,7 +3775,7 @@ pnpm spec:check
 pnpm --filter @briefyard/content test
 ```
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 Run:
 
@@ -3790,7 +3790,7 @@ Expected: clean commit.
 
 ## Task 19 — End-to-end smoke run of the whole pipeline
 
-- [ ] **Step 1: Fresh install**
+- [x] **Step 1: Fresh install**
 
 Run:
 
@@ -3800,7 +3800,7 @@ pnpm install --frozen-lockfile
 
 Expected: lockfile honoured, no diff.
 
-- [ ] **Step 2: Format check**
+- [x] **Step 2: Format check**
 
 Run:
 
@@ -3810,7 +3810,7 @@ pnpm format:check
 
 Expected: exit 0. If files fail, run `pnpm format` then re-commit.
 
-- [ ] **Step 3: Lint, typecheck, test, build (single command)**
+- [x] **Step 3: Lint, typecheck, test, build (single command)**
 
 Run:
 
@@ -3820,7 +3820,7 @@ pnpm verify
 
 Expected: all four pass. Output ends with `Tasks:  N successful, N total`.
 
-- [ ] **Step 4: Build the web app and run the e2e**
+- [x] **Step 4: Build the web app and run the e2e**
 
 Run:
 
@@ -3831,7 +3831,7 @@ pnpm --filter @briefyard/web test:e2e
 
 Expected: e2e passes (1 test).
 
-- [ ] **Step 5: Spec check**
+- [x] **Step 5: Spec check**
 
 Run:
 
@@ -3841,7 +3841,7 @@ pnpm spec:check
 
 Expected: prints "Active phase: P0 — Foundation".
 
-- [ ] **Step 6: Confirm Husky hook still runs**
+- [x] **Step 6: Confirm Husky hook still runs**
 
 Run:
 
@@ -3859,12 +3859,12 @@ test). Commit succeeds.
 This task is one-time and partly external. Replace `<your-gh-user>` with the actual
 account.
 
-- [ ] **Step 1: Create the GitHub repo (manual, external)**
+- [x] **Step 1: Create the GitHub repo (manual, external)**
 
 Open `https://github.com/new`. Create a **public** repo named `thebriefyard`. Do
 NOT initialise with README or license (we already have them).
 
-- [ ] **Step 2: Add remote and push**
+- [x] **Step 2: Add remote and push**
 
 Run:
 
@@ -3876,7 +3876,7 @@ git push -u origin main
 
 Expected: push succeeds, GitHub Actions CI triggers automatically.
 
-- [ ] **Step 3: Verify CI passes on `main`**
+- [x] **Step 3: Verify CI passes on `main`**
 
 Open the Actions tab on GitHub. Verify the `verify`, `e2e`, and `spec-check` jobs
 all complete green.
@@ -3934,22 +3934,22 @@ Expected: CI re-runs and stays green.
 
 ## Task 21 — Close P0
 
-- [ ] **Step 1: Verify the binary acceptance criteria for P0**
+- [x] **Step 1: Verify the binary acceptance criteria for P0**
 
 Manually walk through this checklist. Tick each:
 
-- [ ] `pnpm install --frozen-lockfile` works on a fresh clone (test by deleting `node_modules` and re-installing).
-- [ ] `pnpm verify` exits 0.
-- [ ] `pnpm build` exits 0, produces `apps/web/.next` and package `dist/` artifacts (for `@briefyard/types`).
-- [ ] `pnpm spec:check` prints "P0 — Foundation".
-- [ ] GitHub Actions CI green on main for at least 1 push.
+- [x] `pnpm install --frozen-lockfile` works on a fresh clone (test by deleting `node_modules` and re-installing).
+- [x] `pnpm verify` exits 0.
+- [x] `pnpm build` exits 0, produces `apps/web/.next` and package `dist/` artifacts (for `@briefyard/types`).
+- [x] `pnpm spec:check` prints "P0 — Foundation".
+- [x] GitHub Actions CI green on main for at least 1 push.
 - [ ] Vercel preview deploys and the home page renders the foundation scaffold.
-- [ ] All 5 governance docs exist at repo root (LANDSCAPE, ROADMAP, SPEC, CLAUDE, STATE).
-- [ ] 13 ADRs present in `docs/adrs/`.
-- [ ] 5 subagents, 5 slash commands, 2 Claude hooks present in `.claude/`.
-- [ ] MIT `LICENSE` and `LICENSE-content` (CC BY-SA 4.0 pointer) present.
+- [x] All 5 governance docs exist at repo root (LANDSCAPE, ROADMAP, SPEC, CLAUDE, STATE).
+- [x] 13 ADRs present in `docs/adrs/`.
+- [x] 5 subagents, 5 slash commands, 2 Claude hooks present in `.claude/`.
+- [x] MIT `LICENSE` and `LICENSE-content` (CC BY-SA 4.0 pointer) present.
 
-- [ ] **Step 2: Update STATE.md**
+- [x] **Step 2: Update STATE.md**
 
 Edit `D:\thebriefyard\STATE.md`:
 
@@ -3992,7 +3992,7 @@ LD-001 through LD-012.
 <today's date>.
 ```
 
-- [ ] **Step 3: Commit and push**
+- [x] **Step 3: Commit and push**
 
 Run:
 
@@ -4004,7 +4004,7 @@ git push
 
 Expected: clean commit, CI green.
 
-- [ ] **Step 4: Tag the foundation**
+- [x] **Step 4: Tag the foundation**
 
 Run:
 
