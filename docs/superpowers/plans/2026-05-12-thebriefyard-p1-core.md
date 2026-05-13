@@ -1,29 +1,29 @@
-# thebriefyard P1 — Generator Core (preceded by P2-stub) Implementation Plan
+﻿# thebriefyard P1 â€” Generator Core (preceded by P2-stub) Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. **TDD discipline is non-negotiable in `packages/core`.** Write the failing test first, observe it fail for the right reason, then implement.
 
-**Goal:** Ship a deterministic, byte-stable `generateBrief()` in `@briefyard/core` with ≥ 95% line coverage, validated against a minimal viable corpus (1 job × 1 industry, EN only) authored in `@briefyard/content`. The generator becomes the technical heart (CAP-1, SEG-A) of every downstream feature: SSG hub pages (P3), permalinks, OG images, exports.
+**Goal:** Ship a deterministic, byte-stable `generateBrief()` in `@briefyard/core` with â‰¥ 95% line coverage, validated against a minimal viable corpus (1 job Ã— 1 industry, EN only) authored in `@briefyard/content`. The generator becomes the technical heart (CAP-1, SEG-A) of every downstream feature: SSG hub pages (P3), permalinks, OG images, exports.
 
 **Architecture:** Two phases sequenced in one plan because P2-stub blocks P1.
 
-1. **P2-stub (Tasks 1–4) — minimal viable corpus.** Author 1 industry (`food`) × 1 job (`logo`) corpus in `packages/content/locales/en/`. Adds Zod schemas for `SlotEntry`, `IndustryFile`, `JobFile`, `Brief`. Adds the `loader` that compiles JSON → in-memory artefact and validates against schema. Adds content-lint test suite (schema-valid, length-bounds, no-duplicates). Bumps `CONTENT_VERSION` from 1 → 2 because schema is being added (semantic change). No PT, no curated seeds yet, no smoke-1000 in this phase.
-2. **P1 (Tasks 5–11) — generator core.** Mulberry32 PRNG with chi-squared distribution test. Seed encoding/decoding (base36, 6 chars). Weighted slot picker. Template filler. `generateBrief({job, industry, locale, seed?, contentVersion?, expanded?})` end-to-end. Determinism regression (100 iterations identical for fixed input). Smoke-1000 (1000 random briefs against the 1×1 corpus, all pass `Brief.parse`). Coverage ≥ 95% lines on `packages/core`.
+1. **P2-stub (Tasks 1â€“4) â€” minimal viable corpus.** Author 1 industry (`food`) Ã— 1 job (`logo`) corpus in `packages/content/locales/en/`. Adds Zod schemas for `SlotEntry`, `IndustryFile`, `JobFile`, `Brief`. Adds the `loader` that compiles JSON â†’ in-memory artefact and validates against schema. Adds content-lint test suite (schema-valid, length-bounds, no-duplicates). Bumps `CONTENT_VERSION` from 1 â†’ 2 because schema is being added (semantic change). No PT, no curated seeds yet, no smoke-1000 in this phase.
+2. **P1 (Tasks 5â€“11) â€” generator core.** Mulberry32 PRNG with chi-squared distribution test. Seed encoding/decoding (base36, 6 chars). Weighted slot picker. Template filler. `generateBrief({job, industry, locale, seed?, contentVersion?, expanded?})` end-to-end. Determinism regression (100 iterations identical for fixed input). Smoke-1000 (1000 random briefs against the 1Ã—1 corpus, all pass `Brief.parse`). Coverage â‰¥ 95% lines on `packages/core`.
 
 **Tech Stack:** No new dependencies. Existing: TS 5.4 strict, Vitest 2, Zod 3, `@briefyard/types` (existing JobId/IndustryId/LocaleId/Seed enums).
 
 **Prerequisites:**
 
-- P0 complete (this plan presumes the monorepo, CI, and `STATE.md = "P1 — Generator core (next)"`).
+- P0 complete (this plan presumes the monorepo, CI, and `STATE.md = "P1 â€” Generator core (next)"`).
 - `pnpm install` clean. `pnpm verify` exits 0 on `main`.
 - Vercel preview live (already done at P0 close).
 
 **Out of scope of this plan:**
 
 - PT-BR corpus (Phase 2 of v1, separate plan).
-- Curated-seeds JSON (P3 — Discoverable Web).
-- Multi-industry corpus beyond 1×1 (P4 — Corpus authoring + launch).
+- Curated-seeds JSON (P3 â€” Discoverable Web).
+- Multi-industry corpus beyond 1Ã—1 (P4 â€” Corpus authoring + launch).
 - Forbidden-terms test (deferred to P4 when corpus volume justifies; ADR-010 unaffected because the empty list is still a valid list).
-- HTTP routes (`/api/brief`, etc.) — those land in P3.
+- HTTP routes (`/api/brief`, etc.) â€” those land in P3.
 
 ---
 
@@ -33,47 +33,47 @@ Files created in this plan:
 
 ```
 thebriefyard/
-├── packages/
-│   ├── content/
-│   │   ├── version.ts                                  # bumped to 2
-│   │   ├── src/
-│   │   │   ├── schema.ts                               # Zod: SlotEntry, IndustryFile, JobFile, Brief
-│   │   │   ├── loader.ts                               # readCorpus(): validates & returns CompiledCorpus
-│   │   │   └── index.ts                                # re-exports schema + loader + CONTENT_VERSION
-│   │   ├── locales/en/
-│   │   │   ├── ui.json                                 # minimal UI strings (title, cta, footer)
-│   │   │   ├── slots/
-│   │   │   │   ├── name-prefix.json                    # name grammar — prefix
-│   │   │   │   ├── name-core.json                      # name grammar — core (authored, NOT Wordlab)
-│   │   │   │   ├── name-suffix.json                    # name grammar — suffix
-│   │   │   │   ├── audiences.json
-│   │   │   │   ├── deadlines.json
-│   │   │   │   └── emotions.json
-│   │   │   ├── industries/
-│   │   │   │   └── food.json                           # industry blurb + templates + industry-scoped slots
-│   │   │   └── jobs/
-│   │   │       └── logo.json                           # job blurb + jobDescriptionTemplates + jobSlots
-│   │   └── __tests__/
-│   │       ├── schema-valid.test.ts                    # every JSON parses against Zod
-│   │       ├── length-bounds.test.ts                   # all entries 1..280 chars
-│   │       ├── no-duplicates.test.ts                   # no entry text in two slots within same locale
-│   │       └── loader.test.ts                          # readCorpus() round-trip
-│   └── core/
-│       ├── src/
-│       │   ├── prng.ts                                 # mulberry32
-│       │   ├── seed.ts                                 # encode/decode seed (base36 6 chars)
-│       │   ├── slot-picker.ts                          # weighted random pick
-│       │   ├── template.ts                             # {{slot}} placeholder filler
-│       │   ├── generate.ts                             # generateBrief()
-│       │   └── index.ts                                # public exports
-│       └── __tests__/
-│           ├── prng.test.ts                            # determinism + chi-squared distribution
-│           ├── seed.test.ts                            # encode/decode round-trip + format
-│           ├── slot-picker.test.ts                     # weighted distribution
-│           ├── template.test.ts                        # placeholder substitution + missing-slot error
-│           ├── generate.test.ts                        # end-to-end generateBrief
-│           ├── determinism.test.ts                     # 100 iterations identical
-│           └── smoke-1000.test.ts                      # 1000 random briefs all parse
+â”œâ”€â”€ packages/
+â”‚   â”œâ”€â”€ content/
+â”‚   â”‚   â”œâ”€â”€ version.ts                                  # bumped to 2
+â”‚   â”‚   â”œâ”€â”€ src/
+â”‚   â”‚   â”‚   â”œâ”€â”€ schema.ts                               # Zod: SlotEntry, IndustryFile, JobFile, Brief
+â”‚   â”‚   â”‚   â”œâ”€â”€ loader.ts                               # readCorpus(): validates & returns CompiledCorpus
+â”‚   â”‚   â”‚   â””â”€â”€ index.ts                                # re-exports schema + loader + CONTENT_VERSION
+â”‚   â”‚   â”œâ”€â”€ locales/en/
+â”‚   â”‚   â”‚   â”œâ”€â”€ ui.json                                 # minimal UI strings (title, cta, footer)
+â”‚   â”‚   â”‚   â”œâ”€â”€ slots/
+â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ name-prefix.json                    # name grammar â€” prefix
+â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ name-core.json                      # name grammar â€” core (authored, NOT Wordlab)
+â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ name-suffix.json                    # name grammar â€” suffix
+â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ audiences.json
+â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ deadlines.json
+â”‚   â”‚   â”‚   â”‚   â””â”€â”€ emotions.json
+â”‚   â”‚   â”‚   â”œâ”€â”€ industries/
+â”‚   â”‚   â”‚   â”‚   â””â”€â”€ food.json                           # industry blurb + templates + industry-scoped slots
+â”‚   â”‚   â”‚   â””â”€â”€ jobs/
+â”‚   â”‚   â”‚       â””â”€â”€ logo.json                           # job blurb + jobDescriptionTemplates + jobSlots
+â”‚   â”‚   â””â”€â”€ __tests__/
+â”‚   â”‚       â”œâ”€â”€ schema-valid.test.ts                    # every JSON parses against Zod
+â”‚   â”‚       â”œâ”€â”€ length-bounds.test.ts                   # all entries 1..280 chars
+â”‚   â”‚       â”œâ”€â”€ no-duplicates.test.ts                   # no entry text in two slots within same locale
+â”‚   â”‚       â””â”€â”€ loader.test.ts                          # readCorpus() round-trip
+â”‚   â””â”€â”€ core/
+â”‚       â”œâ”€â”€ src/
+â”‚       â”‚   â”œâ”€â”€ prng.ts                                 # mulberry32
+â”‚       â”‚   â”œâ”€â”€ seed.ts                                 # encode/decode seed (base36 6 chars)
+â”‚       â”‚   â”œâ”€â”€ slot-picker.ts                          # weighted random pick
+â”‚       â”‚   â”œâ”€â”€ template.ts                             # {{slot}} placeholder filler
+â”‚       â”‚   â”œâ”€â”€ generate.ts                             # generateBrief()
+â”‚       â”‚   â””â”€â”€ index.ts                                # public exports
+â”‚       â””â”€â”€ __tests__/
+â”‚           â”œâ”€â”€ prng.test.ts                            # determinism + chi-squared distribution
+â”‚           â”œâ”€â”€ seed.test.ts                            # encode/decode round-trip + format
+â”‚           â”œâ”€â”€ slot-picker.test.ts                     # weighted distribution
+â”‚           â”œâ”€â”€ template.test.ts                        # placeholder substitution + missing-slot error
+â”‚           â”œâ”€â”€ generate.test.ts                        # end-to-end generateBrief
+â”‚           â”œâ”€â”€ determinism.test.ts                     # 100 iterations identical
+â”‚           â””â”€â”€ smoke-1000.test.ts                      # 1000 random briefs all parse
 ```
 
 Files modified:
@@ -81,7 +81,7 @@ Files modified:
 ```
 - packages/content/package.json          # add Zod runtime dep
 - packages/content/src/index.ts          # re-export schema + loader
-- packages/content/version.ts            # CONTENT_VERSION 1 → 2
+- packages/content/version.ts            # CONTENT_VERSION 1 â†’ 2
 - packages/core/package.json             # add @briefyard/content workspace dep
 - packages/core/vitest.config.ts         # raise coverage thresholds to 95
 - STATE.md                               # mark P1 complete at end
@@ -89,18 +89,18 @@ Files modified:
 
 ---
 
-## Phase A — P2-stub (corpus 1×1 EN)
+## Phase A â€” P2-stub (corpus 1Ã—1 EN)
 
 Authoring discipline (read once, follow for every entry):
 
 - Subagent: invoke `content-curator` (defined in `.claude/agents/content-curator.md`) when authoring. It loads `docs/content-style-guide.md` automatically.
 - No LLM-bulk generation; each entry is hand-authored to fit the slot grammar.
-- 1–280 chars per entry.
+- 1â€“280 chars per entry.
 - No proper nouns of real companies/people/products.
 - No emoji, no hype.
-- The corpus must yield coherent prose across all combinations — verify by running the generator's smoke test at the end of P1.
+- The corpus must yield coherent prose across all combinations â€” verify by running the generator's smoke test at the end of P1.
 
-### Task 1 — Zod schemas in `@briefyard/content`
+### Task 1 â€” Zod schemas in `@briefyard/content`
 
 **Files:**
 
@@ -108,7 +108,7 @@ Authoring discipline (read once, follow for every entry):
 - Modify: `packages/content/package.json` (add `zod` dependency)
 - Modify: `packages/content/src/index.ts` (re-export schemas)
 
-- [ ] **Step 1: Add `zod` to `@briefyard/content`**
+- [x] **Step 1: Add `zod` to `@briefyard/content`**
 
 Run:
 
@@ -118,9 +118,9 @@ pnpm --filter @briefyard/content add zod@^3.23.8
 
 Expected: lockfile updated, dependency listed.
 
-- [ ] **Step 2: Write `packages/content/src/schema.ts`**
+- [x] **Step 2: Write `packages/content/src/schema.ts`**
 
-Schemas mirror SPEC §9.2 verbatim. Reuses `JobId`, `IndustryId`, `LocaleId` from `@briefyard/types`.
+Schemas mirror SPEC Â§9.2 verbatim. Reuses `JobId`, `IndustryId`, `LocaleId` from `@briefyard/types`.
 
 ```ts
 import { z } from 'zod';
@@ -199,7 +199,7 @@ export const Brief = z.object({
 export type Brief = z.infer<typeof Brief>;
 ```
 
-- [ ] **Step 3: Re-export from `packages/content/src/index.ts`**
+- [x] **Step 3: Re-export from `packages/content/src/index.ts`**
 
 Append:
 
@@ -208,7 +208,7 @@ export * from './schema';
 export * from './loader';
 ```
 
-- [ ] **Step 4: Bump `CONTENT_VERSION` from 1 to 2**
+- [x] **Step 4: Bump `CONTENT_VERSION` from 1 to 2**
 
 Edit `packages/content/version.ts`:
 
@@ -218,7 +218,7 @@ export const CONTENT_VERSION = 2 as const;
 
 Update the existing smoke test in `packages/content/__tests__/smoke.test.ts` to expect `2`.
 
-- [ ] **Step 5: Verify**
+- [x] **Step 5: Verify**
 
 Run:
 
@@ -229,7 +229,7 @@ pnpm --filter @briefyard/content test
 
 Expected: both exit 0. Smoke test passes with `CONTENT_VERSION === 2`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 Run:
 
@@ -238,9 +238,9 @@ git add packages/content
 git commit -m "feat(content): add Zod schemas (SlotEntry, IndustryFile, JobFile, Brief), bump CONTENT_VERSION to 2"
 ```
 
-### Task 2 — Author the 1×1 EN corpus
+### Task 2 â€” Author the 1Ã—1 EN corpus
 
-Sub-agent: dispatch `content-curator` for each file. It will read `docs/content-style-guide.md` first, then write entries. Number of entries per slot is intentionally small (10–15) to keep diffing cheap; the smoke-1000 test still works because (10^k) combinations across k slots is well above 1000.
+Sub-agent: dispatch `content-curator` for each file. It will read `docs/content-style-guide.md` first, then write entries. Number of entries per slot is intentionally small (10â€“15) to keep diffing cheap; the smoke-1000 test still works because (10^k) combinations across k slots is well above 1000.
 
 **Files:**
 
@@ -249,7 +249,7 @@ Sub-agent: dispatch `content-curator` for each file. It will read `docs/content-
 - Create: `packages/content/locales/en/industries/food.json`
 - Create: `packages/content/locales/en/jobs/logo.json`
 
-- [ ] **Step 1: Write `ui.json`** (minimal — title, generate button, footer attribution)
+- [x] **Step 1: Write `ui.json`** (minimal â€” title, generate button, footer attribution)
 
 ```json
 {
@@ -260,13 +260,13 @@ Sub-agent: dispatch `content-curator` for each file. It will read `docs/content-
 }
 ```
 
-- [ ] **Step 2: Write the three name-grammar slots**
+- [x] **Step 2: Write the three name-grammar slots**
 
-These produce `prefix + core + suffix`. Blank entries (weight ≥ 5) make "no prefix / no suffix" likely, so most names are bare cores.
+These produce `prefix + core + suffix`. Blank entries (weight â‰¥ 5) make "no prefix / no suffix" likely, so most names are bare cores.
 
-`name-prefix.json` — 10 entries, including 5 blanks.
-`name-core.json` — 15 distinct authored cores. NOT from Wordlab. Phonotactics: 2–3 syllables, easy to pronounce in EN and PT.
-`name-suffix.json` — 10 entries including 5 blanks; non-blank options include `" Co."`, `" Studio"`, `" Works"`, `" & Sons"`, `" Lab"`.
+`name-prefix.json` â€” 10 entries, including 5 blanks.
+`name-core.json` â€” 15 distinct authored cores. NOT from Wordlab. Phonotactics: 2â€“3 syllables, easy to pronounce in EN and PT.
+`name-suffix.json` â€” 10 entries including 5 blanks; non-blank options include `" Co."`, `" Studio"`, `" Works"`, `" & Sons"`, `" Lab"`.
 
 Schema reminder (from Task 1):
 
@@ -279,22 +279,22 @@ Schema reminder (from Task 1):
 
 The content-curator subagent must produce all 35 entries in one shot, then we read & spot-check.
 
-- [ ] **Step 3: Write the three shared slots**
+- [x] **Step 3: Write the three shared slots**
 
-`audiences.json` — 12 entries: parents, college students, weekend cooks, urban cyclists, retirees on a budget, restaurant owners, food bloggers, vegans, busy professionals, tourists, families with young kids, fitness enthusiasts.
+`audiences.json` â€” 12 entries: parents, college students, weekend cooks, urban cyclists, retirees on a budget, restaurant owners, food bloggers, vegans, busy professionals, tourists, families with young kids, fitness enthusiasts.
 
-`deadlines.json` — 9 entries: "2 days", "3 days", "4 days", "5 days", "6 days", "1 week", "10 days", "2 weeks", "3 weeks". Weight 1 each.
+`deadlines.json` â€” 9 entries: "2 days", "3 days", "4 days", "5 days", "6 days", "1 week", "10 days", "2 weeks", "3 weeks". Weight 1 each.
 
-`emotions.json` — 12 entries: bravery, comfort, delight, elegance, freshness, generosity, mystery, nostalgia, security, simplicity, warmth, wonder.
+`emotions.json` â€” 12 entries: bravery, comfort, delight, elegance, freshness, generosity, mystery, nostalgia, security, simplicity, warmth, wonder.
 
-- [ ] **Step 4: Write `industries/food.json`**
+- [x] **Step 4: Write `industries/food.json`**
 
 ```json
 {
   "id": "food",
   "locale": "en",
   "displayName": "Food & Beverage",
-  "blurb": "<200–400 words: written by content-curator, describing the design considerations of designing for food brands. Reference packaging, signage, menu typography, sensory associations, regulation. Hemingway readability ≤ grade 9. End with a sentence inviting the practice exercise.>",
+  "blurb": "<200â€“400 words: written by content-curator, describing the design considerations of designing for food brands. Reference packaging, signage, menu typography, sensory associations, regulation. Hemingway readability â‰¤ grade 9. End with a sentence inviting the practice exercise.>",
   "slots": {
     "cuisine": [
       { "text": "vegan", "weight": 1 },
@@ -328,7 +328,7 @@ The content-curator subagent must produce all 35 entries in one shot, then we re
     "distribution": [
       { "text": "shipped directly to your home", "weight": 1 },
       { "text": "available in stores nationwide", "weight": 1 },
-      { "text": "served in cafés across the country", "weight": 1 },
+      { "text": "served in cafÃ©s across the country", "weight": 1 },
       { "text": "sold at weekend farmers' markets", "weight": 1 }
     ]
   },
@@ -337,21 +337,21 @@ The content-curator subagent must produce all 35 entries in one shot, then we re
       "pattern": "We are a company that makes and distributes {{cuisine}} {{product}}. Our main product is made with {{process}} and {{distribution}}. Our target audience is {{audiences}}. We want to convey a sense of {{emotions}}, while at the same time being approachable."
     }
   ],
-  "seoTitle": "Logo Design Brief Generator for Food Brands — thebriefyard",
+  "seoTitle": "Logo Design Brief Generator for Food Brands â€” thebriefyard",
   "seoDescription": "Practice realistic logo briefs for food and beverage brands. Reproducible, shareable, no AI. Generate a unique brief in one click."
 }
 ```
 
 The content-curator must replace the `<...>` blurb with real authored prose (~250 words).
 
-- [ ] **Step 5: Write `jobs/logo.json`**
+- [x] **Step 5: Write `jobs/logo.json`**
 
 ```json
 {
   "id": "logo",
   "locale": "en",
   "displayName": "Logo design",
-  "blurb": "<200–400 words: design considerations for logo work — symbol vs wordmark, scalability, monochrome, use cases, semiotics. Same authoring rules as industries/food.json.>",
+  "blurb": "<200â€“400 words: design considerations for logo work â€” symbol vs wordmark, scalability, monochrome, use cases, semiotics. Same authoring rules as industries/food.json.>",
   "jobDescriptionTemplates": [
     {
       "pattern": "You must create a logo using the information given in this brief. They would prefer {{logoStyle}} that uses the colour {{colour}}. The logo will be {{useCase}}. Take into account the company's values and preferences, and make sure it works for the planned use cases."
@@ -386,12 +386,12 @@ The content-curator must replace the `<...>` blurb with real authored prose (~25
       { "text": "displayed on storefront signage", "weight": 1 }
     ]
   },
-  "seoTitle": "Logo Design Brief Generator — Practice Briefs for Designers",
+  "seoTitle": "Logo Design Brief Generator â€” Practice Briefs for Designers",
   "seoDescription": "Generate realistic logo design briefs to practice your portfolio work. Human-curated, reproducible, free."
 }
 ```
 
-- [ ] **Step 6: Commit the corpus**
+- [x] **Step 6: Commit the corpus**
 
 Run:
 
@@ -400,7 +400,7 @@ git add packages/content/locales
 git commit -m "feat(content): seed 1x1 EN corpus (logo x food) for P1 generator validation"
 ```
 
-### Task 3 — Loader
+### Task 3 â€” Loader
 
 Loader reads JSON files at runtime (in tests + dev), validates against schemas, and returns a `CompiledCorpus` shape that `@briefyard/core` consumes.
 
@@ -408,7 +408,7 @@ Loader reads JSON files at runtime (in tests + dev), validates against schemas, 
 
 - Create: `packages/content/src/loader.ts`
 
-- [ ] **Step 1: Write loader signature & types**
+- [x] **Step 1: Write loader signature & types**
 
 ```ts
 import { readFileSync, readdirSync } from 'node:fs';
@@ -432,11 +432,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const localesRoot = join(__dirname, '..', 'locales');
 ```
 
-- [ ] **Step 2: Implement `readCorpus(locale: LocaleId): CompiledCorpus`**
+- [x] **Step 2: Implement `readCorpus(locale: LocaleId): CompiledCorpus`**
 
 Reads `locales/<locale>/slots/*.json` (each is a `SlotEntry[]`), `locales/<locale>/industries/*.json` (each parsed by `IndustryFile`), `locales/<locale>/jobs/*.json` (each parsed by `JobFile`). Throws on any validation failure with file path in the error.
 
-- [ ] **Step 3: Write `__tests__/loader.test.ts`**
+- [x] **Step 3: Write `__tests__/loader.test.ts`**
 
 TDD discipline: write the test first describing the expected shape, then run (red), then implement loader (green).
 
@@ -485,17 +485,17 @@ describe('readCorpus', () => {
 });
 ```
 
-- [ ] **Step 4: Run red → implement → green**
+- [x] **Step 4: Run red â†’ implement â†’ green**
 
 Sequence:
 
 ```
-pnpm --filter @briefyard/content test --run loader  # RED — file does not exist
+pnpm --filter @briefyard/content test --run loader  # RED â€” file does not exist
 # implement loader.ts
 pnpm --filter @briefyard/content test --run loader  # GREEN
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 Run:
 
@@ -504,13 +504,13 @@ git add packages/content/src/loader.ts packages/content/__tests__/loader.test.ts
 git commit -m "feat(content): add corpus loader with placeholder resolution test"
 ```
 
-### Task 4 — Content-lint suite
+### Task 4 â€” Content-lint suite
 
 Three lints required by ADR-010 + `docs/content-style-guide.md`:
 
-- `schema-valid` — every JSON file parses
-- `length-bounds` — every entry's text is 1..280 chars
-- `no-duplicates` — no entry text appears in two slot keys within the same locale
+- `schema-valid` â€” every JSON file parses
+- `length-bounds` â€” every entry's text is 1..280 chars
+- `no-duplicates` â€” no entry text appears in two slot keys within the same locale
 
 (The `parity` test is deferred to Phase 2 when PT corpus exists. The `forbidden-terms` test is deferred to P4 with the full corpus.)
 
@@ -518,32 +518,32 @@ Three lints required by ADR-010 + `docs/content-style-guide.md`:
 
 - Create: `packages/content/__tests__/{schema-valid,length-bounds,no-duplicates}.test.ts`
 
-- [ ] **Step 1: Write `schema-valid.test.ts`**
+- [x] **Step 1: Write `schema-valid.test.ts`**
 
 Reads every JSON file in `locales/en/**`, attempts `JSON.parse` then routes to the right Zod schema based on path:
 
-- `slots/*.json` → `z.array(SlotEntry)`
-- `industries/*.json` → `IndustryFile`
-- `jobs/*.json` → `JobFile`
-- `ui.json` → `z.record(z.string(), z.string())`
+- `slots/*.json` â†’ `z.array(SlotEntry)`
+- `industries/*.json` â†’ `IndustryFile`
+- `jobs/*.json` â†’ `JobFile`
+- `ui.json` â†’ `z.record(z.string(), z.string())`
 
 Each parse failure produces a test failure naming the file and the Zod error.
 
-- [ ] **Step 2: Write `length-bounds.test.ts`**
+- [x] **Step 2: Write `length-bounds.test.ts`**
 
 Walks every `SlotEntry.text` from every slot file and every industry/job slot, asserting `text.length >= 1 && text.length <= 280`. Failure message includes file + entry index.
 
-- [ ] **Step 3: Write `no-duplicates.test.ts`**
+- [x] **Step 3: Write `no-duplicates.test.ts`**
 
-Builds a `Map<string, string>` of `text` → `slotKey`. On collision, the test fails with both keys and the duplicated text. Note: blank `""` entries in `name-prefix` and `name-suffix` legitimately collide — exempt empty strings from the check.
+Builds a `Map<string, string>` of `text` â†’ `slotKey`. On collision, the test fails with both keys and the duplicated text. Note: blank `""` entries in `name-prefix` and `name-suffix` legitimately collide â€” exempt empty strings from the check.
 
-- [ ] **Step 4: Run all three**
+- [x] **Step 4: Run all three**
 
 ```
 pnpm --filter @briefyard/content test
 ```
 
-Expected: schema-valid, length-bounds, no-duplicates, loader, smoke — 5 suites pass.
+Expected: schema-valid, length-bounds, no-duplicates, loader, smoke â€” 5 suites pass.
 
 - [ ] **Step 5: Commit**
 
@@ -556,11 +556,11 @@ git commit -m "test(content): add schema-valid, length-bounds, no-duplicates con
 
 ---
 
-## Phase B — P1 (generator core)
+## Phase B â€” P1 (generator core)
 
 TDD is mandatory throughout this phase. Pattern for every module: write the test, watch it fail for the _right_ reason (not "import error"), implement minimum code, watch it pass, refactor.
 
-### Task 5 — Mulberry32 PRNG
+### Task 5 â€” Mulberry32 PRNG
 
 ADR-004: deterministic, no IO, no `Math.random`, no `Date.now()` in dependency tree.
 
@@ -586,7 +586,7 @@ describe('mulberry32', () => {
     }
   });
 
-  it('is deterministic — same seed yields the same sequence', () => {
+  it('is deterministic â€” same seed yields the same sequence', () => {
     const a = mulberry32(123456);
     const b = mulberry32(123456);
     for (let i = 0; i < 1000; i++) {
@@ -670,7 +670,7 @@ git add packages/core/src/prng.ts packages/core/__tests__/prng.test.ts packages/
 git commit -m "feat(core): add mulberry32 PRNG with chi-squared uniformity test (ADR-004)"
 ```
 
-### Task 6 — Seed encoding (base36, 6 chars)
+### Task 6 â€” Seed encoding (base36, 6 chars)
 
 **Files:**
 
@@ -744,7 +744,7 @@ git add packages/core/src/seed.ts packages/core/__tests__/seed.test.ts
 git commit -m "feat(core): seed encoding (base36 6-char) and FNV-1a hash to PRNG state"
 ```
 
-### Task 7 — Weighted slot picker
+### Task 7 â€” Weighted slot picker
 
 **Files:**
 
@@ -770,7 +770,7 @@ describe('pickWeighted', () => {
     expect(['a', 'b']).toContain(picked.text);
   });
 
-  it('respects weights — item with weight 99 dominates over 1', () => {
+  it('respects weights â€” item with weight 99 dominates over 1', () => {
     const rng = mulberry32(7);
     const items = [
       { text: 'rare', weight: 1 },
@@ -821,7 +821,7 @@ export function pickWeighted<T extends Weighted>(items: readonly T[], rng: () =>
     r -= it.weight;
     if (r < 0) return it;
   }
-  // Floating-point edge case — return the last element.
+  // Floating-point edge case â€” return the last element.
   return items[items.length - 1]!;
 }
 ```
@@ -834,7 +834,7 @@ git add packages/core/src/slot-picker.ts packages/core/__tests__/slot-picker.tes
 git commit -m "feat(core): weighted slot picker with deterministic RNG"
 ```
 
-### Task 8 — Template filler
+### Task 8 â€” Template filler
 
 **Files:**
 
@@ -888,7 +888,7 @@ git add packages/core/src/template.ts packages/core/__tests__/template.test.ts
 git commit -m "feat(core): template filler with strict missing-slot error"
 ```
 
-### Task 9 — `generateBrief()` end-to-end
+### Task 9 â€” `generateBrief()` end-to-end
 
 **Files:**
 
@@ -945,7 +945,7 @@ describe('generateBrief', () => {
 
 - [ ] **Step 3: Implement `generateBrief`**
 
-Algorithm follows SPEC §6.3 exactly:
+Algorithm follows SPEC Â§6.3 exactly:
 
 ```ts
 import { readCorpus, type CompiledCorpus, Brief } from '@briefyard/content';
@@ -1026,7 +1026,7 @@ export function generateBrief(input: GenerateInput): Brief {
     company: { name, description, audience },
     deliverable: { description: jobDescription, constraints: [], useCases: [] },
     deadline,
-    generatedAt: new Date(0).toISOString(), // FIXED epoch — purity!
+    generatedAt: new Date(0).toISOString(), // FIXED epoch â€” purity!
   };
 }
 
@@ -1071,7 +1071,7 @@ git add packages/core packages/core/package.json
 git commit -m "feat(core): implement generateBrief() pure deterministic generator"
 ```
 
-### Task 10 — Determinism regression + smoke-1000
+### Task 10 â€” Determinism regression + smoke-1000
 
 **Files:**
 
@@ -1109,7 +1109,7 @@ describe('determinism', () => {
 
 - [ ] **Step 2: Smoke-1000 test**
 
-Generate 1000 random briefs against the 1×1 corpus and validate each against `Brief.parse`.
+Generate 1000 random briefs against the 1Ã—1 corpus and validate each against `Brief.parse`.
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -1149,7 +1149,7 @@ git add packages/core/__tests__/determinism.test.ts packages/core/__tests__/smok
 git commit -m "test(core): determinism regression (100 iterations) + smoke-1000"
 ```
 
-### Task 11 — Coverage gate ≥ 95% lines on `@briefyard/core`
+### Task 11 â€” Coverage gate â‰¥ 95% lines on `@briefyard/core`
 
 - [ ] **Step 1: Raise vitest coverage thresholds**
 
@@ -1204,7 +1204,7 @@ All exit 0. CI on `main` green.
 ```markdown
 ## Current phase
 
-P3 — Discoverable Web (next)
+P3 â€” Discoverable Web (next)
 
 ## In progress
 
@@ -1212,7 +1212,7 @@ P3 — Discoverable Web (next)
 
 ## Recent decisions
 
-- 2026-MM-DD: P1 (Generator core) + P2-stub closed. Generator deterministic, 1×1 EN corpus authored, smoke-1000 green, ≥ 95% line coverage on @briefyard/core.
+- 2026-MM-DD: P1 (Generator core) + P2-stub closed. Generator deterministic, 1Ã—1 EN corpus authored, smoke-1000 green, â‰¥ 95% line coverage on @briefyard/core.
 ```
 
 (P3 next per the design's phase plan: SSG hub pages + SEO scaffolding + the rest of the corpus authoring happens in P4.)
@@ -1220,7 +1220,7 @@ P3 — Discoverable Web (next)
 - [ ] **Tag**
 
 ```
-git tag -a p1-core -m "P1 — Generator core complete"
+git tag -a p1-core -m "P1 â€” Generator core complete"
 git push origin p1-core
 ```
 
@@ -1231,7 +1231,7 @@ git push origin p1-core
 - `forbidden-terms` test (deferred to P4 with full corpus).
 - `parity` test (deferred to Phase 2 with PT corpus).
 - Curated-seeds JSON (P3).
-- The full 15 × 20 corpus (P4).
+- The full 15 Ã— 20 corpus (P4).
 - Complete CLAUDE-side review of every authored entry against `docs/content-style-guide.md` (do as part of P4 or sooner if a content-curator subagent finishes early).
 
 ---
