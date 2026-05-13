@@ -1,0 +1,108 @@
+{
+  "id": "fashion",
+  "locale": "en",
+  "displayName": "Fashion & Apparel",
+  "blurb": "Fashion is the design discipline where the brand has to survive being worn. The mark goes on a label, a hangtag, a shopping bag, a delivery box, an Instagram grid, a return slip, sometimes a removable patch on a sleeve. None of those surfaces is the brand book moodboard. The work has to read on warm white paper and on the back-screen of a phone in a poorly-lit bedroom at midnight, when somebody is deciding whether the return is worth the trouble. Most fashion brands collapse into two failure modes: the all-caps minimal sans-serif that says nothing, or the over-decorated heritage script that promises a story the product can't deliver. The harder choice is to make a specific commitment — a kind of body, a kind of weather, a kind of week — and design the brand against that customer's actual life. Sustainability, fit inclusivity, and price honesty are now table stakes for the audiences that buy from indie brands; pretending otherwise is the fastest path to bounce. Use the brief below to design backwards from a real wear occasion. Decide who the customer is, when she wears the piece, what she returns it next to in her closet, and let the brand do that work.",
+  "slots": {
+    "category": [
+      { "text": "everyday basics", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "workwear-inspired pieces",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "swimwear", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "outerwear for cold climates",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "loungewear", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "denim", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "tailored separates", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "knitwear", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "footwear", "weight": 1, "contributor": "founder-reviewed-ai-draft" }
+    ],
+    "approach": [
+      {
+        "text": "made in small batches from a single mill",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "cut from deadstock fabric",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "produced in a workshop owned by the founder",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "designed for repair, not replacement",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "made-to-order with a four-week lead time",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "released in two seasons a year, no drops",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "claim": [
+      { "text": "honest sizing", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "a single, transparent price",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "free repairs for the lifetime of the garment",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "natural fibers only", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "no sales, ever", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "garments that age into something better",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "channel": [
+      {
+        "text": "sold through their own online store",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "stocked by independent boutiques",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "available at pop-ups in three cities a year",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "shipped directly from the workshop",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ]
+  },
+  "templates": [
+    {
+      "pattern": "We are a brand that makes {{category}}, {{approach}}. We promise {{claim}} and our pieces are {{channel}}. Our target audience is {{audiences}}. We want to convey a sense of {{emotions}}, while at the same time being approachable."
+    }
+  ],
+  "seoTitle": "Design Brief Generator for Fashion & Apparel Brands — thebriefyard",
+  "seoDescription": "Practice realistic design briefs for fashion and apparel labels. Reproducible permalinks, free, no LLM in the generator."
+}
