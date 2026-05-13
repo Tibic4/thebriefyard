@@ -2,11 +2,11 @@
 
 ## Current phase
 
-P1 — Generator core (next)
+P3 — Discoverable Web (next)
 
 ## Current week
 
-0 (between phases — write P1 plan before starting)
+0 (between phases — write P3 plan before starting)
 
 ## Active ADRs
 
@@ -18,7 +18,7 @@ LD-001 through LD-012.
 
 ## In progress
 
-- Awaiting P1 plan authoring (`docs/superpowers/plans/<date>-thebriefyard-p1-core.md`).
+- Awaiting P3 plan authoring (`docs/superpowers/plans/<date>-thebriefyard-p3-web.md`).
 
 ## Blockers
 
@@ -26,12 +26,15 @@ LD-001 through LD-012.
 
 ## Recent decisions
 
-- 2026-05-12: Vercel production deployment live at https://thebriefyard-web.vercel.app (commit `eb81c38`, deploy `GzQXu7Gnb...`).
-- 2026-05-12: P0 (Foundation) fully closed. Monorepo + governance + CI + Next.js shell ready. CI green on main (run 25770194816).
+- 2026-05-12: P1 (Generator core) + P2-stub closed. `generateBrief()` deterministic, 1×1 EN corpus authored, smoke-1000 green, 98.4% line coverage on `@briefyard/core`. Tag `p1-core`.
+- 2026-05-12: SlotEntry.text allows empty string (sentinel for absent name-prefix/suffix). Schema change is implicit Tier 1; documented in commit `ab28c58`.
+- 2026-05-12: CONTENT_VERSION bumped 1 → 2 for schema introduction (Task 1 of P1 plan).
+- 2026-05-12: Vercel production deployment live at https://thebriefyard-web.vercel.app.
+- 2026-05-12: P0 (Foundation) closed. Tag `p0-foundation`.
 - 2026-05-12: Brand palette "Yard" locked (SPEC §16.1).
 - 2026-05-12: Slot corpus license CC BY-SA 4.0.
 - 2026-05-12: Working name `thebriefyard.com` (RDAP-verified available).
-- 2026-05-12: Public GitHub repo created at `https://github.com/Tibic4/thebriefyard`.
+- 2026-05-12: Public GitHub repo at `https://github.com/Tibic4/thebriefyard`.
 
 ## Last reviewed
 

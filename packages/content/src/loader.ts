@@ -6,6 +6,7 @@ import type { IndustryId, JobId, LocaleId } from '@briefyard/types';
 import { z } from 'zod';
 
 import { CONTENT_VERSION } from '../version';
+
 import { IndustryFile, JobFile, SlotEntry } from './schema';
 
 export interface CompiledCorpus {

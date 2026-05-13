@@ -545,7 +545,7 @@ pnpm --filter @briefyard/content test
 
 Expected: schema-valid, length-bounds, no-duplicates, loader, smoke â€” 5 suites pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 Run:
 
@@ -569,7 +569,7 @@ ADR-004: deterministic, no IO, no `Math.random`, no `Date.now()` in dependency t
 - Create: `packages/core/src/prng.ts`
 - Create: `packages/core/__tests__/prng.test.ts`
 
-- [ ] **Step 1: Write the test first**
+- [x] **Step 1: Write the test first**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -617,7 +617,7 @@ describe('mulberry32', () => {
 });
 ```
 
-- [ ] **Step 2: Implement `mulberry32`**
+- [x] **Step 2: Implement `mulberry32`**
 
 Standard reference (public domain):
 
@@ -634,7 +634,7 @@ export function mulberry32(seed: number): () => number {
 }
 ```
 
-- [ ] **Step 3: ESLint rule against `Math.random` in core**
+- [x] **Step 3: ESLint rule against `Math.random` in core**
 
 Add to `packages/core/.eslintrc.cjs`:
 
@@ -654,7 +654,7 @@ module.exports = {
 };
 ```
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 ```
 pnpm --filter @briefyard/core test
@@ -663,7 +663,7 @@ pnpm --filter @briefyard/core lint
 
 Both exit 0.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```
 git add packages/core/src/prng.ts packages/core/__tests__/prng.test.ts packages/core/.eslintrc.cjs
@@ -677,7 +677,7 @@ git commit -m "feat(core): add mulberry32 PRNG with chi-squared uniformity test 
 - Create: `packages/core/src/seed.ts`
 - Create: `packages/core/__tests__/seed.test.ts`
 
-- [ ] **Step 1: Write the test first**
+- [x] **Step 1: Write the test first**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -709,7 +709,7 @@ describe('seed', () => {
 });
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```ts
 import { randomBytes } from 'node:crypto';
@@ -736,7 +736,7 @@ export function seedToInt(seed: string): number {
 }
 ```
 
-- [ ] **Step 3: Verify + commit**
+- [x] **Step 3: Verify + commit**
 
 ```
 pnpm --filter @briefyard/core test
@@ -751,7 +751,7 @@ git commit -m "feat(core): seed encoding (base36 6-char) and FNV-1a hash to PRNG
 - Create: `packages/core/src/slot-picker.ts`
 - Create: `packages/core/__tests__/slot-picker.test.ts`
 
-- [ ] **Step 1: Test first**
+- [x] **Step 1: Test first**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -802,7 +802,7 @@ describe('pickWeighted', () => {
 });
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```ts
 export interface Weighted {
@@ -826,7 +826,7 @@ export function pickWeighted<T extends Weighted>(items: readonly T[], rng: () =>
 }
 ```
 
-- [ ] **Step 3: Verify + commit**
+- [x] **Step 3: Verify + commit**
 
 ```
 pnpm --filter @briefyard/core test
@@ -841,7 +841,7 @@ git commit -m "feat(core): weighted slot picker with deterministic RNG"
 - Create: `packages/core/src/template.ts`
 - Create: `packages/core/__tests__/template.test.ts`
 
-- [ ] **Step 1: Test first**
+- [x] **Step 1: Test first**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -867,7 +867,7 @@ describe('fillTemplate', () => {
 });
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```ts
 export function fillTemplate(pattern: string, values: Readonly<Record<string, string>>): string {
@@ -880,7 +880,7 @@ export function fillTemplate(pattern: string, values: Readonly<Record<string, st
 }
 ```
 
-- [ ] **Step 3: Verify + commit**
+- [x] **Step 3: Verify + commit**
 
 ```
 pnpm --filter @briefyard/core test
@@ -897,7 +897,7 @@ git commit -m "feat(core): template filler with strict missing-slot error"
 - Modify: `packages/core/src/index.ts` (re-export public API)
 - Modify: `packages/core/package.json` (add `@briefyard/content` dep)
 
-- [ ] **Step 1: Add `@briefyard/content` workspace dep to core**
+- [x] **Step 1: Add `@briefyard/content` workspace dep to core**
 
 Run:
 
@@ -905,7 +905,7 @@ Run:
 pnpm --filter @briefyard/core add @briefyard/content@workspace:*
 ```
 
-- [ ] **Step 2: Write the test first**
+- [x] **Step 2: Write the test first**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -943,7 +943,7 @@ describe('generateBrief', () => {
 });
 ```
 
-- [ ] **Step 3: Implement `generateBrief`**
+- [x] **Step 3: Implement `generateBrief`**
 
 Algorithm follows SPEC Â§6.3 exactly:
 
@@ -1051,7 +1051,7 @@ function resolvePlaceholders(
 
 Important: `generatedAt: new Date(0).toISOString()` is a **fixed epoch string** (`"1970-01-01T00:00:00.000Z"`) so the brief is byte-identical across machines. The HTTP layer (P3) will replace this with `Date.now()` _outside_ the pure function before storing in the log table.
 
-- [ ] **Step 4: Re-export**
+- [x] **Step 4: Re-export**
 
 `packages/core/src/index.ts` becomes:
 
@@ -1063,7 +1063,7 @@ export { generateSeed, seedToInt } from './seed';
 
 Remove the `VERSION` placeholder from P0; update `packages/core/__tests__/smoke.test.ts` to import `generateBrief` instead.
 
-- [ ] **Step 5: Verify + commit**
+- [x] **Step 5: Verify + commit**
 
 ```
 pnpm --filter @briefyard/core test
@@ -1078,7 +1078,7 @@ git commit -m "feat(core): implement generateBrief() pure deterministic generato
 - Create: `packages/core/__tests__/determinism.test.ts`
 - Create: `packages/core/__tests__/smoke-1000.test.ts`
 
-- [ ] **Step 1: Determinism test (100 iterations identical)**
+- [x] **Step 1: Determinism test (100 iterations identical)**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -1107,7 +1107,7 @@ describe('determinism', () => {
 });
 ```
 
-- [ ] **Step 2: Smoke-1000 test**
+- [x] **Step 2: Smoke-1000 test**
 
 Generate 1000 random briefs against the 1Ã—1 corpus and validate each against `Brief.parse`.
 
@@ -1141,7 +1141,7 @@ describe('smoke-1000', () => {
 });
 ```
 
-- [ ] **Step 3: Verify + commit**
+- [x] **Step 3: Verify + commit**
 
 ```
 pnpm --filter @briefyard/core test
@@ -1151,7 +1151,7 @@ git commit -m "test(core): determinism regression (100 iterations) + smoke-1000"
 
 ### Task 11 â€” Coverage gate â‰¥ 95% lines on `@briefyard/core`
 
-- [ ] **Step 1: Raise vitest coverage thresholds**
+- [x] **Step 1: Raise vitest coverage thresholds**
 
 Edit `packages/core/vitest.config.ts`:
 
@@ -1169,7 +1169,7 @@ coverage: {
 },
 ```
 
-- [ ] **Step 2: Run coverage**
+- [x] **Step 2: Run coverage**
 
 ```
 pnpm --filter @briefyard/core test --coverage
@@ -1177,7 +1177,7 @@ pnpm --filter @briefyard/core test --coverage
 
 If coverage < threshold, the task is to add tests (not lower the bar). Likely uncovered branches: `pickWeighted` floating-point fallback line, `resolvePlaceholders` missing-slot throw. Add targeted unit tests.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```
 git add packages/core/vitest.config.ts
@@ -1188,7 +1188,7 @@ git commit -m "test(core): enforce 95% line coverage threshold per ADR-004"
 
 ## Final integration & close-out
 
-- [ ] **Run full pipeline**
+- [x] **Run full pipeline**
 
 ```
 pnpm verify
@@ -1199,7 +1199,7 @@ pnpm spec:check
 
 All exit 0. CI on `main` green.
 
-- [ ] **Update STATE.md**
+- [x] **Update STATE.md**
 
 ```markdown
 ## Current phase
@@ -1217,7 +1217,7 @@ P3 â€” Discoverable Web (next)
 
 (P3 next per the design's phase plan: SSG hub pages + SEO scaffolding + the rest of the corpus authoring happens in P4.)
 
-- [ ] **Tag**
+- [x] **Tag**
 
 ```
 git tag -a p1-core -m "P1 â€” Generator core complete"
