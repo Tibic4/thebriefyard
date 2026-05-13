@@ -42,4 +42,15 @@ describe('pickWeighted', () => {
     const b = pickWeighted(items, mulberry32(99));
     expect(a.text).toBe(b.text);
   });
+
+  it('returns the last item via floating-point fallback when rng() yields exactly 1', () => {
+    const items = [
+      { text: 'a', weight: 1 },
+      { text: 'b', weight: 1 },
+    ];
+    // rng()*total === total → r never goes negative in the loop, fallback fires.
+    const rng = (): number => 1;
+    const picked = pickWeighted(items, rng);
+    expect(picked.text).toBe('b');
+  });
 });
