@@ -1,14 +1,5 @@
-/**
- * @briefyard/core — pure deterministic brief generator.
- *
- * P0 ships an empty scaffold so the workspace resolves. P1 implements:
- *   - PRNG (mulberry32)
- *   - seed encoding/decoding (base36 6 chars)
- *   - slot picker (weighted)
- *   - template filler
- *   - generateBrief()
- *
- * Until P1 lands, importing from this package returns the package version only.
- */
-
-export const VERSION = '0.0.0';
+export { generateBrief, type GenerateInput } from './generate.js';
+export { mulberry32 } from './prng.js';
+export { generateSeed, seedToInt } from './seed.js';
+export { pickWeighted, type Weighted } from './slot-picker.js';
+export { fillTemplate } from './template.js';

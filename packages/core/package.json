@@ -23,6 +23,7 @@
     "vitest": "^2.1.2"
   },
   "dependencies": {
+    "@briefyard/content": "workspace:^",
     "@briefyard/types": "workspace:*",
     "zod": "^3.23.8"
   }

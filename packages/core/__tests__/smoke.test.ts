@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { VERSION } from '../src/index.js';
+import { generateBrief, generateSeed, mulberry32, seedToInt } from '../src/index.js';
 
-describe('@briefyard/core smoke', () => {
-  it('exposes VERSION constant (P0 placeholder)', () => {
-    expect(VERSION).toBe('0.0.0');
+describe('@briefyard/core public API', () => {
+  it('exposes generateBrief, generateSeed, seedToInt, mulberry32', () => {
+    expect(typeof generateBrief).toBe('function');
+    expect(typeof generateSeed).toBe('function');
+    expect(typeof seedToInt).toBe('function');
+    expect(typeof mulberry32).toBe('function');
   });
 });

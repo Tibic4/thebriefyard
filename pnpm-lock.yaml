@@ -118,6 +118,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@briefyard/content':
+        specifier: workspace:^
+        version: link:../content
       '@briefyard/types':
         specifier: workspace:*
         version: link:../types
