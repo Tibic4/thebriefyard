@@ -7,10 +7,10 @@ import {
 } from '@briefyard/content';
 import type { IndustryId, JobId, LocaleId } from '@briefyard/types';
 
-import { mulberry32 } from './prng.js';
-import { generateSeed, seedToInt } from './seed.js';
-import { pickWeighted } from './slot-picker.js';
-import { fillTemplate } from './template.js';
+import { mulberry32 } from './prng';
+import { generateSeed, seedToInt } from './seed';
+import { pickWeighted } from './slot-picker';
+import { fillTemplate } from './template';
 
 export interface GenerateInput {
   job: JobId;
