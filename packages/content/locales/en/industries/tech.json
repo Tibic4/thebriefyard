@@ -1,0 +1,114 @@
+{
+  "id": "tech",
+  "locale": "en",
+  "displayName": "Technology & Software",
+  "blurb": "Designing for tech brands is the inverse of designing for food. The product is invisible — a service that exists only as pixels, packets, or a stack of integrations — but the design has to make it feel concrete enough to trust. The brand has to do the work that physical packaging would do somewhere else: signal price band, signal who it is for, signal whether it will be maintained in three years. Generic tech identities tend to collapse into the same palette of blue-green gradients, geometric sans-serifs, and friendly-but-corporate illustration. The harder choice — and the one that produces memorable work — is to commit to a specific kind of user. A tax tool for freelancers is a different design problem from a tax tool for accounting firms; an analytics product for product managers is not the same brief as an analytics product for game studios. The screenshots in the deck almost always lie about how the product really feels at 11pm on a Wednesday. Real-world constraints are dense: light and dark modes, accessibility on screen readers, eight breakpoints, animation that respects reduced-motion, copy that survives translation. Use this brief as a chance to design backwards from one specific use case. State whose problem the product solves, then choose the brand assets that earn that user's attention. The brief below gives you a fictional client and a constrained scope. Treat the constraint as a gift.",
+  "slots": {
+    "verb": [
+      { "text": "develops", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "produces", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "researches", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "operates", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "ships", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "maintains", "weight": 1, "contributor": "founder-reviewed-ai-draft" }
+    ],
+    "use_case": [
+      {
+        "text": "communicate with coworkers",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "track expenses on the go",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "learn a new language", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "find a quiet place to work",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "monitor a small business",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "share research notes", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "manage shared calendars",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "publish a personal site",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "back up family photos", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "coordinate a remote team",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "ingredient_a": [
+      { "text": "a small dedicated team", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "a stubborn focus on speed",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "a public roadmap", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "twelve years of niche experience",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "open-source foundations",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "a quietly opinionated design system",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "ingredient_b": [
+      {
+        "text": "a calm, readable interface",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "an unusually fast onboarding",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "documentation that respects your time",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "a single, well-chosen keyboard shortcut",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "no dark patterns anywhere",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ]
+  },
+  "templates": [
+    {
+      "pattern": "We are a company that {{verb}} software to help people {{use_case}}. We bet on {{ingredient_a}} and {{ingredient_b}}. Our target audience is {{audiences}}. We want to convey a sense of {{emotions}}, while at the same time being approachable."
+    }
+  ],
+  "seoTitle": "Design Brief Generator for Tech & Software Brands — thebriefyard",
+  "seoDescription": "Practice realistic design briefs for tech and software products. Reproducible permalinks, no AI in the generator, free."
+}
