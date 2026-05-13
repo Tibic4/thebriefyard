@@ -22,11 +22,12 @@ LD-001 through LD-012.
 
 ## Blockers
 
-- Vercel preview deploy is the only P0 item still open (Task 20 steps 4–5, external). Tracked, not blocking.
+- None.
 
 ## Recent decisions
 
-- 2026-05-12: P0 (Foundation) closed. Monorepo + governance + CI + Next.js shell ready. CI green on main (run 25770001555).
+- 2026-05-12: Vercel production deployment live at https://thebriefyard-web.vercel.app (commit `eb81c38`, deploy `GzQXu7Gnb...`).
+- 2026-05-12: P0 (Foundation) fully closed. Monorepo + governance + CI + Next.js shell ready. CI green on main (run 25770194816).
 - 2026-05-12: Brand palette "Yard" locked (SPEC §16.1).
 - 2026-05-12: Slot corpus license CC BY-SA 4.0.
 - 2026-05-12: Working name `thebriefyard.com` (RDAP-verified available).

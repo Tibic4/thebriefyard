@@ -3881,7 +3881,7 @@ Expected: push succeeds, GitHub Actions CI triggers automatically.
 Open the Actions tab on GitHub. Verify the `verify`, `e2e`, and `spec-check` jobs
 all complete green.
 
-- [ ] **Step 4: Import project into Vercel (manual, external)**
+- [x] **Step 4: Import project into Vercel (manual, external)**
 
 In Vercel: New Project → Import from GitHub → select `thebriefyard`.
 
@@ -3904,13 +3904,13 @@ Click Deploy.
 
 If Vercel fails on "pnpm not found", add `corepack enable && corepack prepare pnpm@9.12.0 --activate` to the start of the install command.
 
-- [ ] **Step 5: Verify Vercel preview deploys**
+- [x] **Step 5: Verify Vercel preview deploys**
 
 After the import, Vercel produces a preview URL like
 `https://thebriefyard-<random>.vercel.app`. Visit it. Confirm the home page renders
 with the "thebriefyard" headline.
 
-- [ ] **Step 6: Update README with the preview URL**
+- [x] **Step 6: Update README with the preview URL**
 
 Edit `D:\thebriefyard\README.md`. Add a line under the status block:
 
@@ -3918,7 +3918,7 @@ Edit `D:\thebriefyard\README.md`. Add a line under the status block:
 **Preview:** https://thebriefyard-<your-deployment>.vercel.app
 ```
 
-- [ ] **Step 7: Commit and push**
+- [x] **Step 7: Commit and push**
 
 Run:
 
@@ -3943,7 +3943,7 @@ Manually walk through this checklist. Tick each:
 - [x] `pnpm build` exits 0, produces `apps/web/.next` and package `dist/` artifacts (for `@briefyard/types`).
 - [x] `pnpm spec:check` prints "P0 — Foundation".
 - [x] GitHub Actions CI green on main for at least 1 push.
-- [ ] Vercel preview deploys and the home page renders the foundation scaffold.
+- [x] Vercel preview deploys and the home page renders the foundation scaffold.
 - [x] All 5 governance docs exist at repo root (LANDSCAPE, ROADMAP, SPEC, CLAUDE, STATE).
 - [x] 13 ADRs present in `docs/adrs/`.
 - [x] 5 subagents, 5 slash commands, 2 Claude hooks present in `.claude/`.

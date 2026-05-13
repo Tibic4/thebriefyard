@@ -2,8 +2,10 @@
 
 Practice briefs for designers. Human-curated combinatorial brief generator. No AI, no paywall.
 
-> **Status:** P0 (foundation) under construction. Not yet usable. See `STATE.md` for
-> the active phase.
+> **Status:** P0 (foundation) complete. Awaiting P1 plan. See `STATE.md` for the
+> active phase.
+
+**Preview:** https://thebriefyard-web.vercel.app
 
 ## Read this in order
 
