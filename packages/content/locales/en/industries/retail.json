@@ -1,0 +1,133 @@
+{
+  "id": "retail",
+  "locale": "en",
+  "displayName": "Retail & Specialty Stores",
+  "blurb": "Retail design is, in practice, three jobs at once: a storefront, a shopping bag, and a checkout screen. The storefront tells passers-by whether to push the door. The bag is a free billboard that will outlive the visit by months. The checkout screen — physical or online — is the moment the customer second-guesses everything. A design system that holds across those three surfaces is what separates a real retail identity from a logo applied at random. Independent retail in particular needs to do work that the chain alternative does not: argue why the trip is worth it, signal the depth of the inventory in one glance, and make the staff visible as part of the proposition. The aisle, the receipt, and the founder's handwritten note next to the till are part of the brand whether the designer notices or not. Most failed retail brands sand off the founder until the store reads like a private-label SKU of itself. Use this brief as a chance to commit to a sharp point of view. Decide what the store is best at, decide who comes in on a Tuesday at 3 p.m., and let the identity do that conversation before the customer is in the room.",
+  "slots": {
+    "store_type": [
+      {
+        "text": "neighborhood corner shop",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "specialty hardware store",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "independent bookshop", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "stationery and art-supply store",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "home goods boutique", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "pet supply store", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      { "text": "hobby and craft shop", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "vintage furniture store",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "florist with a side of plants",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "selection": [
+      {
+        "text": "a tightly curated catalog of about 200 items",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "everything you need for one specific hobby",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "stock you cannot find online",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "imports from independent makers in three countries",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "a rotating selection that changes every six weeks",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "the same goods their grandparents sold",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "promise": [
+      {
+        "text": "advice from people who actually use what they sell",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "fair prices written on the wall, not negotiated",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      { "text": "in-store repairs", "weight": 1, "contributor": "founder-reviewed-ai-draft" },
+      {
+        "text": "same-day pickup from a real human",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "a no-questions-asked return policy",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "a loyalty card that isn't a database play",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ],
+    "neighborhood": [
+      {
+        "text": "on a quiet residential street",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "in a market hall with twelve other stalls",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "in a small downtown a tourist would walk past",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "next to the bus stop everyone uses",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      },
+      {
+        "text": "in a converted garage near the train tracks",
+        "weight": 1,
+        "contributor": "founder-reviewed-ai-draft"
+      }
+    ]
+  },
+  "templates": [
+    {
+      "pattern": "We are a {{store_type}} {{neighborhood}}. We carry {{selection}} and we are known for {{promise}}. Our target audience is {{audiences}}. We want to convey a sense of {{emotions}}, while at the same time being approachable."
+    }
+  ],
+  "seoTitle": "Design Brief Generator for Independent Retail Brands — thebriefyard",
+  "seoDescription": "Practice realistic design briefs for independent and specialty retail stores. Reproducible permalinks, free, no LLM in the generator."
+}
