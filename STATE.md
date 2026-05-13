@@ -26,7 +26,8 @@ LD-001 through LD-012.
 
 ## Recent decisions
 
-- 2026-05-12: P1 (Generator core) + P2-stub closed. `generateBrief()` deterministic, 1×1 EN corpus authored, smoke-1000 green, 98.4% line coverage on `@briefyard/core`. Tag `p1-core`.
+- 2026-05-12: P1 (Generator core) + P2-infra closed. `generateBrief()` deterministic, 1×1 EN corpus authored, smoke-1000 green, 98.4% line coverage on `@briefyard/core`. Tag `p1-core`.
+- 2026-05-12: Phase naming locked. P2 = Content library infrastructure (schemas + loader + lints + seed corpus, all shipped). Full 15×20 corpus authoring moved to P4. See README "Naming convention".
 - 2026-05-12: SlotEntry.text allows empty string (sentinel for absent name-prefix/suffix). Schema change is implicit Tier 1; documented in commit `ab28c58`.
 - 2026-05-12: CONTENT_VERSION bumped 1 → 2 for schema introduction (Task 1 of P1 plan).
 - 2026-05-12: Vercel production deployment live at https://thebriefyard-web.vercel.app.
